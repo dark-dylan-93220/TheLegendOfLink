@@ -137,12 +137,17 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Mur.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assets.hpp" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="AssetLoader.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Map.hpp" />
+    <ClInclude Include="Mur.hpp" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

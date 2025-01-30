@@ -7,6 +7,7 @@ Game::Game() :
 {
 	window.setFramerateLimit(60);
 	window.setActive(true);
+	map.loadFromFile("assets/tiles/map.txt");
 }
 
 Game::~Game() {
@@ -34,6 +35,7 @@ void Game::run() {
 
 		window.draw(whiteBackground);
 		window.draw(playerSprite);
+		map.draw(window);
 
 		window.display();
 
