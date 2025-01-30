@@ -44,6 +44,11 @@ void Player::update(float& deltaTime,sf::Event& event)
     isAttacking = false;
 }
 
+void Player::draw(sf::RenderWindow& window)
+{
+    window.draw(spritePlayer);
+}
+
 sf::Sprite Player::getSprite()
 {
     return spritePlayer;

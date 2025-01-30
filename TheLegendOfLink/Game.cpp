@@ -39,10 +39,9 @@ void Game::run() {
 
 		//window.draw(whiteBackground);
 		player.update(deltaTime,event);
-		window.draw(player.getSprite());
+		player.draw(window);
 		
 		window.display();
 		deltaTime = cloc.getElapsedTime().asSeconds();
-		std::cout << deltaTime << '\n';
 	}
 }
