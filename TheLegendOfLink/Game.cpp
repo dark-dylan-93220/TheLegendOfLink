@@ -1,5 +1,5 @@
 #include "Game.hpp"
-
+#include "Player.h"
 Game::Game() {
 
 }
@@ -22,6 +22,5 @@ void Game::run() {
 				break;
 			}
 		}
-
 	}
 }
