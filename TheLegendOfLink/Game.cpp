@@ -3,8 +3,11 @@
 #include "AssetLoader.hpp"
 
 Game::Game() : 
-	window(sf::VideoMode::getFullscreenModes().at(0), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode::getDesktopMode(), "The Legend Of Link", sf::Style::Fullscreen)
 {
+	sf::View view = window.getDefaultView();
+	view.setViewport(sf::FloatRect(0.20f, 0.0f, 0.5625f, 1.0f));
+	window.setView(view);
 	window.setFramerateLimit(60);
 	window.setActive(true);
 	map.loadFromFile("assets/tiles/map.txt");
@@ -15,7 +18,7 @@ Game::~Game() {
 }
 
 void Game::run() {
-	//Assets assets(window);
+	Assets assets(window);
 
 	sf::Event event;
 	while (window.isOpen()) {
