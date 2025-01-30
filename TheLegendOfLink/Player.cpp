@@ -39,9 +39,9 @@ void Player::update(float& deltaTime,sf::Event& event)
     {
         spritePlayer.move(  0, speed * deltaTime);
         moving = true;
-    }
-
+    } 
     moving = false;
+    isAttacking = false;
 }
 
 sf::Sprite Player::getSprite()
