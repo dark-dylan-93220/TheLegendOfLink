@@ -37,6 +37,14 @@ void Game::run() {
 		//window.draw(playerSprite);
 		map.draw(window);
 
+		window.draw(playButton);
+		window.draw(settingsButton);
+		window.draw(leaveButton);
+
+		window.draw(playButtonText);
+		window.draw(settingsButtonText);
+		window.draw(leaveButtonText);
+
 		window.display();
 
 	}
