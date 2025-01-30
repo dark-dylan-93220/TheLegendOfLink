@@ -7,7 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="" />
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Entity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,41 +26,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "cbobeda"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;cbobeda&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/dark-dylan-93220/TheLegendOfLink.git",
-    "accountId": "12a31af1-9c39-46e5-b5e2-4386aa35360c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dark-dylan-93220/TheLegendOfLink.git&quot;,
+    &quot;accountId&quot;: &quot;12a31af1-9c39-46e5-b5e2-4386aa35360c&quot;
   }
-}]]></component>
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2sLHP82E9vMsyuPOvwH00nNqEi7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ Project.TheLegendOfLink.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ Project.TheLegendOfLink.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="TheLegendOfLink" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -85,7 +93,18 @@
       <option name="presentableId" value="Default" />
       <updated>1738227908865</updated>
       <workItem from="1738227911371" duration="1250000" />
+      <workItem from="1738229181456" duration="446000" />
+      <workItem from="1738229695520" duration="466000" />
     </task>
+    <task id="LOCAL-00001" summary="entity">
+      <option name="closed" value="true" />
+      <created>1738229200527</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738229200527</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +114,7 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="entity" />
   </component>
 </project>
