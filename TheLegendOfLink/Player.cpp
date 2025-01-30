@@ -9,12 +9,17 @@ Player::Player(sf::Sprite sprite, sf::Vector2f position) : spawnPos(position)
 void Player::init(sf::Sprite& sprite)
 {
     spritePlayer = sprite;
-    spritePlayer.setScale(0.01f, 0.01f);
+    //spritePlayer.setScale(0.01f, 0.01f);
     spritePlayer.setPosition(spawnPos);
 }
 
 void Player::update(float& deltaTime,sf::Event& event)
 {
+    hitBox.setPosition(spritePlayer.getPosition());
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+    {
+        isAttacking = true;
+    }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
     {
         spritePlayer.move(speed * deltaTime, 0);
@@ -34,9 +39,9 @@ void Player::update(float& deltaTime,sf::Event& event)
     {
         spritePlayer.move(  0, speed * deltaTime);
         moving = true;
-    }
-
+    } 
     moving = false;
+    isAttacking = false;
 }
 
 sf::Sprite Player::getSprite()

@@ -7,17 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Player movement">
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" afterDir="false" />
-    </list>
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Player movement" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,15 +122,7 @@
       <option name="project" value="LOCAL" />
       <updated>1738231651729</updated>
     </task>
-    <task id="LOCAL-00005" summary="Base">
-      <option name="closed" value="true" />
-      <created>1738234423651</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1738234423651</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +136,6 @@
     <MESSAGE value="basic movement" />
     <MESSAGE value=" movement sans diagonales" />
     <MESSAGE value="Player movement" />
-    <MESSAGE value="Base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player movement" />
   </component>
 </project>

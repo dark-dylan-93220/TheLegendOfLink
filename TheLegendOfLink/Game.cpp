@@ -1,6 +1,10 @@
 #include "Game.hpp"
 #include "Player.h"
 #include "AssetLoader.hpp"
+float deltaTime = 1.0f;
+sf::Clock cloc;
+
+
 
 Game::Game() : 
 	window(sf::VideoMode::getFullscreenModes().at(0), "The Legend Of Link", sf::Style::Fullscreen)
@@ -15,11 +19,11 @@ Game::~Game() {
 }
 
 void Game::run() {
-	//Assets assets(window);
-
+	Assets assets(window);
+	Player player(playerSprite, sf::Vector2f(0, 0));
 	sf::Event event;
 	while (window.isOpen()) {
-
+		cloc.restart();
 		while (window.pollEvent(event)) {
 			switch (event.type) {
 			case sf::Event::Closed:
@@ -34,10 +38,11 @@ void Game::run() {
 		window.clear(sf::Color::Black);
 
 		//window.draw(whiteBackground);
-		//window.draw(playerSprite);
-		map.draw(window);
-
+		player.update(deltaTime,event);
+		window.draw(player.getSprite());
+		
 		window.display();
-
+		deltaTime = cloc.getElapsedTime().asSeconds();
+		std::cout << deltaTime << '\n';
 	}
 }
