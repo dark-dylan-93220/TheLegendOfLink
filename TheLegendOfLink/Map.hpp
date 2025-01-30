@@ -1,18 +1,25 @@
 #pragma once
 
-#include "assets.hpp"
+#include "SFML/Graphics.hpp"
+#include <string>
+#include <vector>
+#include <fstream>
 
 class Map {
 private:
-    Texture murTexture;
-    Sprite murSprite;
+    sf::Texture murTexture;
+    sf::Sprite murSprite;
 
 public:
     bool doorLocked = true;
-    vector<string> mapData;
-    void loadFromFile(const string& filename);
-    void draw(RenderWindow& window);
+    const int SIZEX = 40;
+    const int SIZEY = 40;
+    std::vector<std::string> mapData;
+
+public:
     bool isObstacle(double x, double y);
-    void resize(Texture& texture, Sprite& sprite, float scaleX, float scaleY);
+    void loadFromFile(const std::string& filename);
+    void draw(sf::RenderWindow& window);
+    void resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY);
 
 };

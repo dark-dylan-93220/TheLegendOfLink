@@ -1,24 +1,23 @@
 #include "Map.hpp"
 
-void Map::resize(Texture& texture, Sprite& sprite, float scaleX, float scaleY) {
+void Map::resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY) {
     sprite.setTexture(texture);
     float scaleFinaleX = scaleX / texture.getSize().x;
     float scaleFinaleY = scaleY / texture.getSize().y;
     sprite.setScale(scaleFinaleX, scaleFinaleY);
 }
 
-void Map::loadFromFile(const string& filename) {
-    ifstream file(filename);
-    string line;
+void Map::loadFromFile(const std::string& filename) {
+    std::ifstream file(filename);
+    std::string line;
     while (getline(file, line)) {
         mapData.push_back(line);
     }
-
     murTexture.loadFromFile("assets/tiles/wall.png");
     resize(murTexture, murSprite, SIZEX, SIZEY);
 }
 
-void Map::draw(RenderWindow& window) {
+void Map::draw(sf::RenderWindow& window) {
     for (size_t y = 0; y < mapData.size(); ++y) {
         for (size_t x = 0; x < mapData[y].size(); ++x) {
             if (mapData[y][x] == '#') {
