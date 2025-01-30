@@ -15,7 +15,7 @@ Game::~Game() {
 }
 
 void Game::run() {
-	Assets assets(window);
+	//Assets assets(window);
 
 	sf::Event event;
 	while (window.isOpen()) {
@@ -33,8 +33,8 @@ void Game::run() {
 
 		window.clear(sf::Color::Black);
 
-		window.draw(whiteBackground);
-		window.draw(playerSprite);
+		//window.draw(whiteBackground);
+		//window.draw(playerSprite);
 		map.draw(window);
 
 		window.display();
