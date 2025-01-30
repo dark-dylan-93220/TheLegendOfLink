@@ -14,20 +14,26 @@ void Player::init(sf::Sprite& sprite)
 
 void Player::update(float& deltaTime,sf::Event& event)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
     {
         spritePlayer.move(speed, 0);
+        moving = true;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !moving)
     {
         spritePlayer.move( -speed , 0);
+        moving = true;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !moving)
     {
         spritePlayer.move( 0 , -speed);
+        moving = true;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !moving)
     {
         spritePlayer.move(  0, speed);
+        moving = true;
     }
+
+    moving = false;
 }
