@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="AssetLoader.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
