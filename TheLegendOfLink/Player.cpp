@@ -1,14 +1,11 @@
 ﻿#include "Player.h"
 
-Player::Player(sf::Sprite sprite, sf::Vector2f position)
+Player::Player() {}
+
+
+void Player::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
     spawnPos = position;
-    init(sprite);
-}
-
-
-void Player::init(sf::Sprite& sprite)
-{
     spriteEntity = sprite;
     spriteEntity.setPosition(spawnPos);
 }
@@ -37,7 +34,7 @@ void Player::update(float& deltaTime,sf::Event& event)
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !moving)
     {
-        spriteEntity.move(  0, speed * deltaTime);
+        spriteEntity.move(0, speed * deltaTime);
         moving = true;
     } 
     moving = false;

@@ -12,11 +12,10 @@ namespace {
 float deltaTime = 1.0f;
 sf::Clock cloc;
 
-
-
 Game::Game() : 
 	window(sf::VideoMode::getDesktopMode(), "The Legend Of Link", sf::Style::Fullscreen)
 {
+	spawnPos = { 0.f, 0.f };
 	event = {};
 	mapView = window.getDefaultView();
 	float spacingBetweenMapAndBorder = 1.0f / (window.getSize().x / ((window.getSize().x - window.getSize().y) / 2.0f));
@@ -39,6 +38,10 @@ Game::~Game() {
 void Game::run() {
 	
 	Assets assets(window);
+	player.init(Shared::playerSprite, spawnPos);
+	Bokoblin bok;
+	bok.init(Shared::playerSprite, spawnPos);
+	ennemies.push_back(bok);
 	
 	while (window.isOpen() && isRunning) {
 
@@ -50,8 +53,7 @@ void Game::run() {
 	std::cout << "Programme termine" << '\n';
 	window.close();
 }
-Player player(Shared::playerSprite,sf::Vector2f(0,0));
-Bokoblin bok(Shared::playerSprite,sf::Vector2f(0,0));
+
 void Game::pollEvents(Assets& assets) {
 	while (window.pollEvent(event)) {
 		switch (event.type) {
@@ -119,19 +121,21 @@ void Game::draw(Assets& assets) {
 		//window.draw(whiteBackground);
 		player.update(deltaTime,event);
 		player.draw(window);
-		player.getSprite().getPosition();
-		if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x) , std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y))< (100,100))
-		{
-			bok.followUpdate(deltaTime, player);
-		}
-		else
-		{
-			bok.update(deltaTime,event);
+		
+		for (auto& bok : ennemies) {
+			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))
+			{
+				bok.followUpdate(deltaTime, player);
+			}
+			else
+			{
+				bok.update(deltaTime, event);
+			}
+			bok.draw(window);
 		}
 		
-		bok.draw(window);
-		
-		deltaTime = cloc.getElapsedTime().asSeconds();
+		deltaTime = cloc.restart().asSeconds();
+		std::cout << deltaTime << '\n';
 		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {

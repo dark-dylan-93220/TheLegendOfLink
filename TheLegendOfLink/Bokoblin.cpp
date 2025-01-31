@@ -1,12 +1,10 @@
 ﻿#include "Bokoblin.h"
 
-Bokoblin::Bokoblin(sf::Sprite sprite, sf::Vector2f position) : spawnPos(position)
-{
-    init(sprite);
-}
+Bokoblin::Bokoblin() {}
 
-void Bokoblin::init(sf::Sprite& sprite)
+void Bokoblin::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
+    spawnPos = position;
     spriteEntity = sprite;
     spriteEntity.setPosition(spawnPos);
 }

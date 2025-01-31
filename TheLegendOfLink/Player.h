@@ -1,5 +1,7 @@
 ﻿#pragma once
+
 #include "Entity.h"
+
 class Player : public Entity
 {
 private:
@@ -9,8 +11,8 @@ private:
     bool moving;
     bool isAttacking;
 public:
-    Player(sf::Sprite sprite, sf::Vector2f position);
-    void init(sf::Sprite& sprite) override;
+    Player();
+    void init(sf::Sprite& sprite, sf::Vector2f& position) override;
     void update(float& deltaTime,sf::Event& event) override;
     void draw(sf::RenderWindow& window) override;
     sf::Sprite getSprite();

@@ -10,8 +10,8 @@ private:
     sf::Vector2f spawnPos;
     sf::Vector2f position[4] = {{spawnPos.x,spawnPos.y},{spawnPos.x + 200,spawnPos.y},{spawnPos.x + 200,spawnPos.y + 200},{spawnPos.x,spawnPos.y + 200}};    
 public:
-    Bokoblin(sf::Sprite sprite, sf::Vector2f position);
-    void init(sf::Sprite& sprite) override;
+    Bokoblin();
+    void init(sf::Sprite& sprite, sf::Vector2f& position) override;
     void update(float& deltaTime, sf::Event& event) override;
     void followUpdate(float& deltaTime,Player player);
     sf::Sprite getSprite();

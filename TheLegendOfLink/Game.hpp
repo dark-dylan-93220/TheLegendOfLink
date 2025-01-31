@@ -1,5 +1,4 @@
 #pragma once
-#include "Player.h"
 // STD library
 #include <iostream>
 
@@ -10,17 +9,22 @@
 #include "SharedVariables.h"
 
 // Map / AssetLoader
+#include "Bokoblin.h"
+#include "Player.h"
 #include "Map.hpp"
 #include "AssetLoader.hpp"
 
 class Game {
 private:
+	Player player;
 	Map map;
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
 
 private:
+	sf::Vector2f spawnPos;
+	std::vector<Bokoblin> ennemies;
 	bool isRunning;
 	bool lockClick;
 	bool isHomePageOn;
