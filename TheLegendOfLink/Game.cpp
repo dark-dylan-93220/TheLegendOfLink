@@ -2,12 +2,18 @@
 #include "Player.h"
 #include "AssetLoader.hpp"
 #include "SharedVariables.h"
+#include "Bokoblin.h"
 
 namespace {
-	// Utilisé pour les variables souvent utilisées dans ce fichier, pour éviter les copies
+	// Utilisï¿½ pour les variables souvent utilisï¿½es dans ce fichier, pour ï¿½viter les copies
 	sf::Vector2f mouseMovePosition;
 	sf::Vector2f mouseButtonPosition;
 }
+
+float deltaTime = 1.0f;
+sf::Clock cloc;
+
+
 
 Game::Game() : 
 	window(sf::VideoMode::getDesktopMode(), "The Legend Of Link", sf::Style::Fullscreen)
@@ -74,9 +80,9 @@ void Game::pollEvents(Assets& assets) {
 		case sf::Event::MouseButtonPressed:
 			mouseButtonPosition = { (float)event.mouseButton.x, (float)event.mouseButton.y };
 			if (event.mouseButton.button == sf::Mouse::Left) {
-				if (!lockClick) { // Pour éviter la répétition en boucle d'une action avec un seul clic
+				if (!lockClick) { // Pour ï¿½viter la rï¿½pï¿½tition en boucle d'une action avec un seul clic
 					lockClick = true;
-					if (isHomePageOn) { // Condition non nécessaire, ici pour la simplicité de compréhension du code
+					if (isHomePageOn) { // Condition non nï¿½cessaire, ici pour la simplicitï¿½ de comprï¿½hension du code
 						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							isGameplayOn = true;
 							isHomePageOn = false;
@@ -106,11 +112,29 @@ void Game::pollEvents(Assets& assets) {
 void Game::draw(Assets& assets) {
 	window.clear(sf::Color::Black);
 
-	// Essayez d'être le plus court possible ici, juste des appels de fonctions
+		
+	
+	// Essayez d'ï¿½tre le plus court possible ici, juste des appels de fonctions
 	if (isGameplayOn) {
 		window.setView(mapView);
 		map.draw(window);
-		// Plus de trucs à venir avec les ennemis, joueur, objets etc...
+		//window.draw(whiteBackground);
+		player.update(deltaTime,event);
+		player.draw(window);
+		player.getSprite().getPosition();
+		if ((abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x) , abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y))< (100,100))
+		{
+			bok.followUpdate(deltaTime, player);
+		}
+		else
+		{
+			bok.update(deltaTime,event);
+		}
+		
+		bok.draw(window);
+		window.display();
+		deltaTime = cloc.getElapsedTime().asSeconds();
+		// Plus de trucs ï¿½ venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
