@@ -3,10 +3,6 @@
 
 #include <iostream>
 
-namespace {
-	bool done = false;
-}
-
 Assets::Assets(sf::RenderWindow& window) {
 	initHomePage(window);
 }

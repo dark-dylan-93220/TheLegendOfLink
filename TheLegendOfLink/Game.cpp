@@ -112,8 +112,6 @@ void Game::pollEvents(Assets& assets) {
 void Game::draw(Assets& assets) {
 	window.clear(sf::Color::Black);
 
-		
-	
 	// Essayez d'�tre le plus court possible ici, juste des appels de fonctions
 	if (isGameplayOn) {
 		window.setView(mapView);
@@ -122,7 +120,7 @@ void Game::draw(Assets& assets) {
 		player.update(deltaTime,event);
 		player.draw(window);
 		player.getSprite().getPosition();
-		if ((abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x) , abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y))< (100,100))
+		if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x) , std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y))< (100,100))
 		{
 			bok.followUpdate(deltaTime, player);
 		}
@@ -132,7 +130,7 @@ void Game::draw(Assets& assets) {
 		}
 		
 		bok.draw(window);
-		window.display();
+		
 		deltaTime = cloc.getElapsedTime().asSeconds();
 		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
