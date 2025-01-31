@@ -7,12 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Push merge">
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="correction taille window">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738336857323</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="correction taille window">
+      <option name="closed" value="true" />
+      <created>1738337487374</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738337487374</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +222,7 @@
     <MESSAGE value="ennemi final" />
     <MESSAGE value="Push merge" />
     <MESSAGE value="player view" />
-    <option name="LAST_COMMIT_MESSAGE" value="player view" />
+    <MESSAGE value="correction taille window" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction taille window" />
   </component>
 </project>
