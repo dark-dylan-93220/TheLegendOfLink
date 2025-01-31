@@ -25,6 +25,7 @@ private:
 	bool lockClick;
 	bool isHomePageOn;
 	bool isGameplayOn;
+	bool isSaveSceneOn;
 
 public:
 	Game();
@@ -34,7 +35,7 @@ public:
 	void run();
 
 private:
-	void pollEvents(Assets& assets);
+	void pollEvents();
 	void draw(Assets& assets);
 
 };

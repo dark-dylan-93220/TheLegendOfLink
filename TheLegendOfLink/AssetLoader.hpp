@@ -12,5 +12,6 @@ public:
 
 private:
 	void initHomePage(sf::RenderWindow& window);
+	void initSaveSelection(sf::RenderWindow& window);
 	
 };

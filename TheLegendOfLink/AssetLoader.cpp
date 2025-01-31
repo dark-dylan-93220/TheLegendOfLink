@@ -9,6 +9,7 @@ namespace {
 
 Assets::Assets(sf::RenderWindow& window) {
 	initHomePage(window);
+	initSaveSelection(window);
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -53,6 +54,10 @@ void Assets::initHomePage(sf::RenderWindow& window) {
 	Shared::leaveButtonText.setCharacterSize(35);
 	Shared::leaveButtonText.setFillColor(sf::Color::Black);
 	Shared::leaveButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::leaveButtonText.getLocalBounds().width / 2.f, Shared::leaveButton.getPosition().y + Shared::leaveButton.getSize().y / 2.f - Shared::leaveButtonText.getLocalBounds().height / 1.2f));
+}
+
+void Assets::initSaveSelection(sf::RenderWindow& window) {
+
 }
 
 void Assets::color(sf::RectangleShape& element, const sf::Color& color) {
