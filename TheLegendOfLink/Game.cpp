@@ -1,5 +1,4 @@
 #include "Game.hpp"
-#include "Player.h"
 #include "AssetLoader.hpp"
 #include "SharedVariables.h"
 #include "Bokoblin.h"
@@ -40,7 +39,7 @@ Game::~Game() {
 void Game::run() {
 	
 	Assets assets(window);
-
+	
 	while (window.isOpen() && isRunning) {
 
 		pollEvents(assets);
@@ -51,7 +50,8 @@ void Game::run() {
 	std::cout << "Programme termine" << '\n';
 	window.close();
 }
-
+Player player(Shared::playerSprite,sf::Vector2f(0,0));
+Bokoblin bok(Shared::playerSprite,sf::Vector2f(0,0));
 void Game::pollEvents(Assets& assets) {
 	while (window.pollEvent(event)) {
 		switch (event.type) {

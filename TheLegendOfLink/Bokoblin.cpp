@@ -14,7 +14,6 @@ void Bokoblin::init(sf::Sprite& sprite)
 void Bokoblin::update(float& deltaTime, sf::Event& event)
 {
     if (i >= 4) {
-        std::cerr << "Erreur : Indice 'i' dépasse la taille de 'position'.\n";
         i = 0;
         return;
     }
