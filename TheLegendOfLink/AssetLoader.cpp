@@ -19,6 +19,7 @@ void Assets::loadAssetsFromFiles() {
 		std::cerr << "Chargement de la police pixelNes impossible" << '\n';
 	Shared::playerTexture.loadFromFile("assets/player.png");
 	Shared::backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
+	Shared::saveBackground.loadFromFile("assets/images/saveSelectionBackground.jpg");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -72,7 +73,7 @@ void Assets::initHomePage(sf::RenderWindow& window) {
 }
 
 void Assets::initSaveSelection(sf::RenderWindow& window) {
-
+	
 }
 
 void Assets::color(sf::RectangleShape& element, const sf::Color& color) {
