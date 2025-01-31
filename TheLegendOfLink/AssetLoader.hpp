@@ -4,13 +4,13 @@
 
 class Assets {
 public:
-	Assets(sf::RenderWindow& window, SharedVariable& shared);
+	Assets(sf::RenderWindow& window);
 
 public:
-	void drawHomePage(sf::RenderWindow& window, SharedVariable& shared);
+	void drawHomePage(sf::RenderWindow& window);
 	void color(sf::RectangleShape& element, const sf::Color& color);
 
 private:
-	void initHomePage(sf::RenderWindow& window, SharedVariable& shared);
+	void initHomePage(sf::RenderWindow& window);
 	
 };

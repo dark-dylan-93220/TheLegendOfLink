@@ -2,22 +2,22 @@
 
 #include "SFML/Graphics.hpp"
 
-class SharedVariable {
-    // HomePage
+// HomePage
+class Shared {
 public:
 	// Fonts
-	sf::Font pixelNes;
+	static sf::Font pixelNes;
 	// Texts
-	sf::Text playButtonText;
-	sf::Text settingsButtonText;
-	sf::Text leaveButtonText;
+	static sf::Text playButtonText;
+	static sf::Text settingsButtonText;
+	static sf::Text leaveButtonText;
 	// Textures & Sprites
-	sf::Texture backgroundTexture;
-	sf::Texture playerTexture;
-	sf::Sprite playerSprite;
+	static sf::Texture backgroundTexture;
+	static sf::Texture playerTexture;
+	static sf::Sprite playerSprite;
 	// RectangleShape
-	sf::RectangleShape homePageBackground;
-	sf::RectangleShape playButton;
-	sf::RectangleShape settingsButton;
-	sf::RectangleShape leaveButton; // Déclenchera la sauvegarde
+	static sf::RectangleShape homePageBackground;
+	static sf::RectangleShape playButton;
+	static sf::RectangleShape settingsButton;
+	static sf::RectangleShape leaveButton; // Déclenchera la sauvegarde
 };

@@ -17,7 +17,6 @@ class Game {
 private:
 	Map map;
 	sf::RenderWindow window;
-	SharedVariable shared;
 	sf::View mapView;
 	sf::Event event;
 

@@ -7,67 +7,67 @@ namespace {
 	bool done = false;
 }
 
-Assets::Assets(sf::RenderWindow& window, SharedVariable& shared) {
-	initHomePage(window, shared);
+Assets::Assets(sf::RenderWindow& window) {
+	initHomePage(window);
 }
 
-void Assets::initHomePage(sf::RenderWindow& window, SharedVariable& shared) {
-	if (!shared.pixelNes.loadFromFile("assets/fonts/pixelNes.otf"))
+void Assets::initHomePage(sf::RenderWindow& window) {
+	if (!Shared::pixelNes.loadFromFile("assets/fonts/pixelNes.otf"))
 		std::cerr << "Chargement de la police pixelNes impossible" << '\n';
-	shared.homePageBackground.setSize(sf::Vector2f(window.getSize().y, window.getSize().y));
-	shared.homePageBackground.setFillColor(sf::Color::White);
-	shared.homePageBackground.setPosition(sf::Vector2f(window.getSize().x / 2.f - shared.homePageBackground.getSize().x / 2.f, 0.f));
-	shared.playerTexture.loadFromFile("assets/player.png");
-	shared.playerSprite.setTexture(shared.playerTexture);
-	shared.backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
-	shared.homePageBackground.setTexture(&shared.backgroundTexture);
+	Shared::homePageBackground.setSize(sf::Vector2f(window.getSize().y, window.getSize().y));
+	Shared::homePageBackground.setFillColor(sf::Color::White);
+	Shared::homePageBackground.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::homePageBackground.getSize().x / 2.f, 0.f));
+	Shared::playerTexture.loadFromFile("assets/player.png");
+	Shared::playerSprite.setTexture(Shared::playerTexture);
+	Shared::backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
+	Shared::homePageBackground.setTexture(&Shared::backgroundTexture);
 	// Boutons menu home
-	float spacingBGTohomePageBackground = ((window.getSize().x / 2.f) - (shared.homePageBackground.getSize().x / 2.f));
-	shared.settingsButton.setSize(sf::Vector2f(shared.homePageBackground.getSize().x / 3.f, shared.homePageBackground.getSize().x / 12.f));
-	shared.settingsButton.setFillColor(sf::Color(155, 155, 155));
-	shared.settingsButton.setOutlineThickness(5.f);
-	shared.settingsButton.setOutlineColor(sf::Color::Black);
-	shared.settingsButton.setPosition(sf::Vector2f(window.getSize().x / 2.f - shared.settingsButton.getSize().x / 2.f, shared.homePageBackground.getSize().y / 2.f - shared.settingsButton.getSize().y / 2.f));
-	shared.playButton.setSize(shared.settingsButton.getSize());
-	shared.playButton.setFillColor(shared.settingsButton.getFillColor());
-	shared.playButton.setOutlineThickness(shared.settingsButton.getOutlineThickness());
-	shared.playButton.setOutlineColor(shared.settingsButton.getOutlineColor());
-	shared.playButton.setPosition(shared.settingsButton.getPosition().x, shared.settingsButton.getPosition().y - shared.settingsButton.getSize().y - shared.homePageBackground.getSize().y * 0.02f);
-	shared.leaveButton.setSize(shared.settingsButton.getSize());
-	shared.leaveButton.setFillColor(shared.settingsButton.getFillColor());
-	shared.leaveButton.setOutlineThickness(shared.settingsButton.getOutlineThickness());
-	shared.leaveButton.setOutlineColor(shared.settingsButton.getOutlineColor());
-	shared.leaveButton.setPosition(shared.settingsButton.getPosition().x, shared.settingsButton.getPosition().y + shared.settingsButton.getSize().y + shared.homePageBackground.getSize().y * 0.02f);
-	shared.playButtonText.setString("Play");
-	shared.playButtonText.setFont(shared.pixelNes);
-	shared.playButtonText.setCharacterSize(35);
-	shared.playButtonText.setFillColor(sf::Color::Black);
-	shared.playButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - shared.playButtonText.getLocalBounds().width / 2.f, shared.playButton.getPosition().y + shared.playButton.getSize().y / 2.f - shared.playButtonText.getLocalBounds().height / 1.2f));
-	shared.settingsButtonText.setString("Settings");
-	shared.settingsButtonText.setFont(shared.pixelNes);
-	shared.settingsButtonText.setCharacterSize(35);
-	shared.settingsButtonText.setFillColor(sf::Color::Black);
-	shared.settingsButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - shared.settingsButtonText.getLocalBounds().width / 2.f, shared.settingsButton.getPosition().y + shared.settingsButton.getSize().y / 2.f - shared.settingsButtonText.getLocalBounds().height / 1.2f));
-	shared.leaveButtonText.setString("Leave");
-	shared.leaveButtonText.setFont(shared.pixelNes);
-	shared.leaveButtonText.setCharacterSize(35);
-	shared.leaveButtonText.setFillColor(sf::Color::Black);
-	shared.leaveButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - shared.leaveButtonText.getLocalBounds().width / 2.f, shared.leaveButton.getPosition().y + shared.leaveButton.getSize().y / 2.f - shared.leaveButtonText.getLocalBounds().height / 1.2f));
+	float spacingBGTohomePageBackground = ((window.getSize().x / 2.f) - (Shared::homePageBackground.getSize().x / 2.f));
+	Shared::settingsButton.setSize(sf::Vector2f(Shared::homePageBackground.getSize().x / 3.f, Shared::homePageBackground.getSize().x / 12.f));
+	Shared::settingsButton.setFillColor(sf::Color(155, 155, 155));
+	Shared::settingsButton.setOutlineThickness(5.f);
+	Shared::settingsButton.setOutlineColor(sf::Color::Black);
+	Shared::settingsButton.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::settingsButton.getSize().x / 2.f, Shared::homePageBackground.getSize().y / 2.f - Shared::settingsButton.getSize().y / 2.f));
+	Shared::playButton.setSize(Shared::settingsButton.getSize());
+	Shared::playButton.setFillColor(Shared::settingsButton.getFillColor());
+	Shared::playButton.setOutlineThickness(Shared::settingsButton.getOutlineThickness());
+	Shared::playButton.setOutlineColor(Shared::settingsButton.getOutlineColor());
+	Shared::playButton.setPosition(Shared::settingsButton.getPosition().x, Shared::settingsButton.getPosition().y - Shared::settingsButton.getSize().y - Shared::homePageBackground.getSize().y * 0.02f);
+	Shared::leaveButton.setSize(Shared::settingsButton.getSize());
+	Shared::leaveButton.setFillColor(Shared::settingsButton.getFillColor());
+	Shared::leaveButton.setOutlineThickness(Shared::settingsButton.getOutlineThickness());
+	Shared::leaveButton.setOutlineColor(Shared::settingsButton.getOutlineColor());
+	Shared::leaveButton.setPosition(Shared::settingsButton.getPosition().x, Shared::settingsButton.getPosition().y + Shared::settingsButton.getSize().y + Shared::homePageBackground.getSize().y * 0.02f);
+	Shared::playButtonText.setString("Play");
+	Shared::playButtonText.setFont(Shared::pixelNes);
+	Shared::playButtonText.setCharacterSize(35);
+	Shared::playButtonText.setFillColor(sf::Color::Black);
+	Shared::playButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::playButtonText.getLocalBounds().width / 2.f, Shared::playButton.getPosition().y + Shared::playButton.getSize().y / 2.f - Shared::playButtonText.getLocalBounds().height / 1.2f));
+	Shared::settingsButtonText.setString("Settings");
+	Shared::settingsButtonText.setFont(Shared::pixelNes);
+	Shared::settingsButtonText.setCharacterSize(35);
+	Shared::settingsButtonText.setFillColor(sf::Color::Black);
+	Shared::settingsButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::settingsButtonText.getLocalBounds().width / 2.f, Shared::settingsButton.getPosition().y + Shared::settingsButton.getSize().y / 2.f - Shared::settingsButtonText.getLocalBounds().height / 1.2f));
+	Shared::leaveButtonText.setString("Leave");
+	Shared::leaveButtonText.setFont(Shared::pixelNes);
+	Shared::leaveButtonText.setCharacterSize(35);
+	Shared::leaveButtonText.setFillColor(sf::Color::Black);
+	Shared::leaveButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::leaveButtonText.getLocalBounds().width / 2.f, Shared::leaveButton.getPosition().y + Shared::leaveButton.getSize().y / 2.f - Shared::leaveButtonText.getLocalBounds().height / 1.2f));
 }
 
 void Assets::color(sf::RectangleShape& element, const sf::Color& color) {
 	element.setFillColor(color);
 }
 
-void Assets::drawHomePage(sf::RenderWindow& window, SharedVariable& shared) {
+void Assets::drawHomePage(sf::RenderWindow& window) {
 
-	window.draw(shared.homePageBackground);
+	window.draw(Shared::homePageBackground);
 
-	window.draw(shared.playButton);
-	window.draw(shared.settingsButton);
-	window.draw(shared.leaveButton);
+	window.draw(Shared::playButton);
+	window.draw(Shared::settingsButton);
+	window.draw(Shared::leaveButton);
 
-	window.draw(shared.playButtonText);
-	window.draw(shared.settingsButtonText);
-	window.draw(shared.leaveButtonText);
+	window.draw(Shared::playButtonText);
+	window.draw(Shared::settingsButtonText);
+	window.draw(Shared::leaveButtonText);
 }

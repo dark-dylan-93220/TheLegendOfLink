@@ -33,7 +33,7 @@ Game::~Game() {
 
 void Game::run() {
 	
-	Assets assets(window, shared);
+	Assets assets(window);
 
 	while (window.isOpen() && isRunning) {
 
@@ -56,18 +56,18 @@ void Game::pollEvents(Assets& assets) {
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
 			if (isHomePageOn) {
-				if (shared.playButton.getGlobalBounds().contains(mouseMovePosition))
-					shared.playButton.setFillColor(sf::Color(200,200,200));
+				if (Shared::playButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::playButton.setFillColor(sf::Color(200,200,200));
 				else
-					shared.playButton.setFillColor(sf::Color(155, 155, 155));
-				if (shared.settingsButton.getGlobalBounds().contains(mouseMovePosition))
-					shared.settingsButton.setFillColor(sf::Color(200, 200, 200));
+					Shared::playButton.setFillColor(sf::Color(155, 155, 155));
+				if (Shared::settingsButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::settingsButton.setFillColor(sf::Color(200, 200, 200));
 				else
-					shared.settingsButton.setFillColor(sf::Color(155, 155, 155));
-				if (shared.leaveButton.getGlobalBounds().contains(mouseMovePosition))
-					shared.leaveButton.setFillColor(sf::Color(200, 200, 200));
+					Shared::settingsButton.setFillColor(sf::Color(155, 155, 155));
+				if (Shared::leaveButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::leaveButton.setFillColor(sf::Color(200, 200, 200));
 				else
-					shared.leaveButton.setFillColor(sf::Color(155, 155, 155));
+					Shared::leaveButton.setFillColor(sf::Color(155, 155, 155));
 			}
 			break;
 
@@ -77,14 +77,14 @@ void Game::pollEvents(Assets& assets) {
 				if (!lockClick) { // Pour éviter la répétition en boucle d'une action avec un seul clic
 					lockClick = true;
 					if (isHomePageOn) { // Condition non nécessaire, ici pour la simplicité de compréhension du code
-						if (shared.playButton.getGlobalBounds().contains(mouseButtonPosition)) {
+						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							isGameplayOn = true;
 							isHomePageOn = false;
 						}
-						else if (shared.settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
+						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Ouvrir le menu settings
 						}
-						else if (shared.leaveButton.getGlobalBounds().contains(mouseButtonPosition)) {
+						else if (Shared::leaveButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Sauvegarder la progression et quitter le jeu
 							isRunning = false;
 						}
@@ -114,7 +114,7 @@ void Game::draw(Assets& assets) {
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
-		assets.drawHomePage(window, shared);
+		assets.drawHomePage(window);
 	}
 
 	window.display();
