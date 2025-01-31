@@ -11,6 +11,7 @@ Assets::Assets(sf::RenderWindow& window)
 {
 	loadAssetsFromFiles();
 	initHomePage(window);
+	initGameOver(window);
 	initSaveSelection(window);
 }
 
@@ -28,6 +29,7 @@ void Assets::loadAssetsFromFiles() {
 		Shared::playerTexturesBack.push_back(player);
 	}
 	Shared::backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
+	Shared::gameOverBackgroundTexture.loadFromFile("assets/images/GameOverBackground.jpg");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -78,6 +80,44 @@ void Assets::initHomePage(sf::RenderWindow& window) {
 	Shared::leaveButtonText.setCharacterSize(35);
 	Shared::leaveButtonText.setFillColor(sf::Color::Black);
 	Shared::leaveButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::leaveButtonText.getLocalBounds().width / 2.f, Shared::leaveButton.getPosition().y + Shared::leaveButton.getSize().y / 2.f - Shared::leaveButtonText.getLocalBounds().height / 1.2f));
+
+}
+
+void Assets::initGameOver(sf::RenderWindow& window) {
+
+	Shared::gameOverBackground.setSize(sf::Vector2f(window.getSize().y, window.getSize().y));
+	Shared::gameOverBackground.setFillColor(sf::Color::White);
+	Shared::gameOverBackground.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::gameOverBackground.getSize().x / 2.f, 0.f));
+	Shared::gameOverBackground.setTexture(&Shared::gameOverBackgroundTexture);
+
+	// Boutons Game Over
+	float spacingBGTohomePageBackground = ((window.getSize().x / 2.f) - (Shared::gameOverBackground.getSize().x / 2.f));
+
+	Shared::retryButton.setSize(sf::Vector2f(Shared::gameOverBackground.getSize().x / 3.f, Shared::gameOverBackground.getSize().x / 12.f));
+	Shared::retryButton.setFillColor(sf::Color(155, 155, 155));
+	Shared::retryButton.setOutlineThickness(5.f);
+	Shared::retryButton.setOutlineColor(sf::Color::Black);
+	Shared::retryButton.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::retryButton.getSize().x / 2.f, window.getSize().y / 2.f - Shared::retryButton.getSize().y / 2.f));
+	
+	Shared::homeButton.setSize(Shared::retryButton.getSize());
+	Shared::homeButton.setFillColor(Shared::retryButton.getFillColor());
+	Shared::homeButton.setOutlineThickness(Shared::retryButton.getOutlineThickness());
+	Shared::homeButton.setOutlineColor(Shared::retryButton.getOutlineColor());
+	Shared::homeButton.setPosition(Shared::retryButton.getPosition().x, Shared::retryButton.getPosition().y - Shared::retryButton.getSize().y - window.getSize().y * 0.02f);
+	
+	// Texts
+
+	Shared::homeButtonText.setString("Return to home");
+	Shared::homeButtonText.setFont(Shared::pixelNes);
+	Shared::homeButtonText.setCharacterSize(35);
+	Shared::homeButtonText.setFillColor(sf::Color::Black);
+	Shared::homeButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::homeButtonText.getLocalBounds().width / 2.f, Shared::homeButton.getPosition().y + Shared::homeButton.getSize().y / 2.f - Shared::homeButtonText.getLocalBounds().height / 1.2f - Shared::homeButtonText.getLocalBounds().height / 2.f));
+	
+	Shared::retryButtonText.setString("Retry");
+	Shared::retryButtonText.setFont(Shared::pixelNes);
+	Shared::retryButtonText.setCharacterSize(35);
+	Shared::retryButtonText.setFillColor(sf::Color::Black);
+	Shared::retryButtonText.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::retryButtonText.getLocalBounds().width / 2.f, Shared::retryButton.getPosition().y + Shared::retryButton.getSize().y / 2.f - Shared::retryButtonText.getLocalBounds().height / 1.2f + Shared::retryButtonText.getLocalBounds().height / 2.f));
 }
 
 void Assets::initSaveSelection(sf::RenderWindow& window) {
@@ -86,6 +126,16 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 
 void Assets::color(sf::RectangleShape& element, const sf::Color& color) {
 	element.setFillColor(color);
+}
+
+void Assets::drawGameOver(sf::RenderWindow& window) {
+	window.draw(Shared::gameOverBackground);
+
+	window.draw(Shared::retryButton);
+	window.draw(Shared::homeButton);
+
+	window.draw(Shared::retryButtonText);
+	window.draw(Shared::homeButtonText);
 }
 
 void Assets::drawHomePage(sf::RenderWindow& window) {

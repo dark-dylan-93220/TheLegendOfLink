@@ -30,6 +30,7 @@ private:
 	bool lockClick;
 	bool isHomePageOn;
 	bool isGameplayOn;
+	bool isGameOver;
 	bool isSaveSceneOn;
 
 public:
