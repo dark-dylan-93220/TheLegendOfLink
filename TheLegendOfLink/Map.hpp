@@ -7,6 +7,8 @@
 
 class Map {
 private:
+    sf::Texture grassTexture;
+    sf::Sprite grassSprite;
     sf::Texture murTexture;
     sf::Sprite murSprite;
 

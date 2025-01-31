@@ -1,5 +1,9 @@
-C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\Entity.cpp;C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\x64\Debug\Entity.obj
-C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\Game.cpp;C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\x64\Debug\Game.obj
-C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\main.cpp;C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\x64\Debug\main.obj
-C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\Map.cpp;C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\x64\Debug\Map.obj
-C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\Player.cpp;C:\Users\orio6\source\repos\dark-dylan-93220\TheLegendOfLink\TheLegendOfLink\x64\Debug\Player.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\AssetLoader.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\AssetLoader.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\Bokoblin.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\Bokoblin.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\Ennemies.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\Ennemies.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\Entity.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\Entity.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\Game.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\Game.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\main.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\main.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\Map.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\Map.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\Player.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\Player.obj
+C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\SharedVariables.cpp;C:\Users\cleme\RiderProjects\TheLegendOfLink\TheLegendOfLink\x64\Debug\SharedVariables.obj
