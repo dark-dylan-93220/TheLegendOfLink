@@ -4,7 +4,6 @@ class Player : public Entity
 {
 private:
     sf::Vector2f spawnPos;
-    sf::Sprite spritePlayer;
     sf::RectangleShape hitBox;
     float speed = 200;
     bool moving;
