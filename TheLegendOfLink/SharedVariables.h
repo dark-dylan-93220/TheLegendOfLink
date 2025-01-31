@@ -2,8 +2,9 @@
 
 #include "SFML/Graphics.hpp"
 
-// HomePage
+
 class Shared {
+// HomePage
 public:
 	// Fonts
 	static sf::Font pixelNes;
@@ -20,4 +21,11 @@ public:
 	static sf::RectangleShape playButton;
 	static sf::RectangleShape settingsButton;
 	static sf::RectangleShape leaveButton; // Déclenchera la sauvegarde
+
+// SaveScene
+public:
+	// Textures & Sprites
+	static sf::Texture heartTexture;
+	static sf::Sprite heartSprite;
+	static sf::Texture b;
 };

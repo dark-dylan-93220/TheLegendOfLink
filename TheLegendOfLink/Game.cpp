@@ -25,10 +25,13 @@ Game::Game() :
 	window.setFramerateLimit(60);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
+	isRunning = true;
+	// Scenes
 	isHomePageOn = true;
+	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
-	isRunning = true;
+	
 }
 
 Game::~Game() {
@@ -45,7 +48,7 @@ void Game::run() {
 	
 	while (window.isOpen() && isRunning) {
 
-		pollEvents(assets);
+		pollEvents();
 		draw(assets);
 
 	}
@@ -54,7 +57,7 @@ void Game::run() {
 	window.close();
 }
 
-void Game::pollEvents(Assets& assets) {
+void Game::pollEvents() {
 	while (window.pollEvent(event)) {
 		switch (event.type) {
 		case sf::Event::Closed:
@@ -86,7 +89,7 @@ void Game::pollEvents(Assets& assets) {
 					lockClick = true;
 					if (isHomePageOn) { // Condition non n�cessaire, ici pour la simplicit� de compr�hension du code
 						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
-							isGameplayOn = true;
+							isSaveSceneOn = true;
 							isHomePageOn = false;
 						}
 						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
@@ -96,6 +99,9 @@ void Game::pollEvents(Assets& assets) {
 							// Sauvegarder la progression et quitter le jeu
 							isRunning = false;
 						}
+					}
+					else if (isSaveSceneOn) {
+
 					}
 				}
 			}
