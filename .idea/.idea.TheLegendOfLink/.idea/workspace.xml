@@ -10,10 +10,6 @@
     <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Push merge">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Map.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/assets/tiles/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/assets/tiles/map.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
@@ -30,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="View" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,7 +72,7 @@
     "C/C++ Project.TheLegendOfLink.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "View",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -184,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738329274341</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="player view">
+      <option name="closed" value="true" />
+      <created>1738336857323</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336857323</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +217,7 @@
     <MESSAGE value="viewport" />
     <MESSAGE value="ennemi final" />
     <MESSAGE value="Push merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Push merge" />
+    <MESSAGE value="player view" />
+    <option name="LAST_COMMIT_MESSAGE" value="player view" />
   </component>
 </project>

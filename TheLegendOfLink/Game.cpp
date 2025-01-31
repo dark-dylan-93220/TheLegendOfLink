@@ -21,7 +21,7 @@ Game::Game() :
 	spacingBetweenMapAndBorder = 1.0f / (window.getSize().x / ((window.getSize().x - window.getSize().y) / 2.0f));
 	// Exemple : pour une dimension de 1920x1080 pixels
 	// 1 / (1920 / ((1920 - 1080) / 2)) = 0.21875f ~ 21.875%
-	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 0.5f, 1.0f));
+	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f - 2 * spacingBetweenMapAndBorder , 1.0f));
 	window.setFramerateLimit(60);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members

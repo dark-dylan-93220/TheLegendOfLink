@@ -21,12 +21,12 @@ void Player::update(float& deltaTime,sf::Event& event)
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
     {
-        spriteEntity.move(speed * deltaTime, 0);
+        spriteEntity.move(speed * 2 * deltaTime, 0);
         moving = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !moving)
     {
-        spriteEntity.move( -speed * deltaTime, 0);
+        spriteEntity.move( -speed * 2  * deltaTime, 0);
         moving = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !moving)
