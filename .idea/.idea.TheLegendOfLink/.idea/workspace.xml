@@ -7,21 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Player movement">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.exe.recipe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" afterDir="false" />
-    </list>
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738234423651</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="viewport">
+      <option name="closed" value="true" />
+      <created>1738239116010</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738239116010</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +153,7 @@
     <MESSAGE value=" movement sans diagonales" />
     <MESSAGE value="Player movement" />
     <MESSAGE value="Base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base" />
+    <MESSAGE value="viewport" />
+    <option name="LAST_COMMIT_MESSAGE" value="viewport" />
   </component>
 </project>
