@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Readme">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +110,7 @@
       <workItem from="1738229181456" duration="446000" />
       <workItem from="1738229695520" duration="466000" />
       <workItem from="1738230226259" duration="1507000" />
-      <workItem from="1738340392021" duration="910000" />
+      <workItem from="1738340392021" duration="1226000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -202,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738339727837</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Readme">
+      <option name="closed" value="true" />
+      <created>1738341884424</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738341884424</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +240,7 @@
     <MESSAGE value="player view" />
     <MESSAGE value="correction taille window" />
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme" />
   </component>
 </project>
