@@ -145,7 +145,6 @@
     <ClCompile Include="SharedVariables.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="assets.hpp" />
     <ClInclude Include="Bokoblin.h" />
     <ClInclude Include="Ennemies.h" />
     <ClInclude Include="Entity.h" />
