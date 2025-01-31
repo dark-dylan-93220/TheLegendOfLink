@@ -12,8 +12,8 @@ private:
 
 public:
     bool doorLocked = true;
-    const int SIZEX = 40;
-    const int SIZEY = 40;
+    const float SIZEX = sf::VideoMode::getDesktopMode().height / 13.5f;
+    const float SIZEY = sf::VideoMode::getDesktopMode().height / 27.0f;
     std::vector<std::string> mapData;
 
 public:

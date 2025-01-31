@@ -25,6 +25,7 @@ private:
 private:
 	sf::Vector2f spawnPos;
 	std::vector<Bokoblin> ennemies;
+	float spacingBetweenMapAndBorder;
 	bool isRunning;
 	bool lockClick;
 	bool isHomePageOn;

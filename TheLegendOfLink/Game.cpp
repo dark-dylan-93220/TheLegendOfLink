@@ -13,15 +13,15 @@ float deltaTime = 1.0f;
 sf::Clock cloc;
 
 Game::Game() : 
-	window(sf::VideoMode::getDesktopMode(), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link", sf::Style::Fullscreen)
 {
-	spawnPos = { 0.f, 0.f };
+	spawnPos = {960,540};
 	event = {};
 	mapView = window.getDefaultView();
-	float spacingBetweenMapAndBorder = 1.0f / (window.getSize().x / ((window.getSize().x - window.getSize().y) / 2.0f));
+	spacingBetweenMapAndBorder = 1.0f / (window.getSize().x / ((window.getSize().x - window.getSize().y) / 2.0f));
 	// Exemple : pour une dimension de 1920x1080 pixels
 	// 1 / (1920 / ((1920 - 1080) / 2)) = 0.21875f ~ 21.875%
-	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f, 1.0f));
+	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 0.5f, 1.0f));
 	window.setFramerateLimit(60);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
@@ -119,7 +119,7 @@ void Game::pollEvents() {
 
 void Game::draw(Assets& assets) {
 	window.clear(sf::Color::Black);
-
+	mapView.setCenter(player.getSprite().getPosition());
 	// Essayez d'�tre le plus court possible ici, juste des appels de fonctions
 	if (isGameplayOn) {
 		window.setView(mapView);
