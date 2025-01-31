@@ -7,15 +7,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="">
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Push merge">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/AssetLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/AssetLoader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/AssetLoader.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/AssetLoader.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Bokoblin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Bokoblin.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Entity.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.exe.recipe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
@@ -33,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AssetsViewports" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +58,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/AssetLoader.hpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Bokoblin.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -72,20 +80,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.TheLegendOfLink.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.TheLegendOfLink.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "AnnimationPlayer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="TheLegendOfLink" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -177,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738328471932</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Push merge">
+      <option name="closed" value="true" />
+      <created>1738329274341</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738329274341</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +221,7 @@
     <MESSAGE value="Base" />
     <MESSAGE value="viewport" />
     <MESSAGE value="ennemi final" />
-    <option name="LAST_COMMIT_MESSAGE" value="ennemi final" />
+    <MESSAGE value="Push merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push merge" />
   </component>
 </project>

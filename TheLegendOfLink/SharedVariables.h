@@ -15,12 +15,14 @@ public:
 	// Textures & Sprites
 	static sf::Texture backgroundTexture;
 	static sf::Texture playerTexture;
+	static std::vector<sf::Texture> playerTextures;
+	static std::vector<sf::Texture> playerTexturesBack;
 	static sf::Sprite playerSprite;
 	// RectangleShape
 	static sf::RectangleShape homePageBackground;
 	static sf::RectangleShape playButton;
 	static sf::RectangleShape settingsButton;
-	static sf::RectangleShape leaveButton; // Déclenchera la sauvegarde
+	static sf::RectangleShape leaveButton; // Dï¿½clenchera la sauvegarde
 
 // SaveScene
 public:

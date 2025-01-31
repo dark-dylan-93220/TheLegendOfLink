@@ -6,6 +6,7 @@ void Bokoblin::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
     spawnPos = position;
     spriteEntity = sprite;
+    spriteEntity.setScale(0.2f, 0.2f);
     spriteEntity.setPosition(spawnPos);
 }
 

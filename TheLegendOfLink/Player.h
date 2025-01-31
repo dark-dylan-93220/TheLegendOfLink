@@ -8,8 +8,10 @@ private:
     sf::Vector2f spawnPos;
     sf::RectangleShape hitBox;
     float speed = 200;
-    bool moving;
+    int frame = 0;
+    bool moving = false;
     bool isAttacking;
+    bool back;
 public:
     Player();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;

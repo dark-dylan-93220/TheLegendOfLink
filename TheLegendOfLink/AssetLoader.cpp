@@ -17,7 +17,16 @@ Assets::Assets(sf::RenderWindow& window)
 void Assets::loadAssetsFromFiles() {
 	if (!Shared::pixelNes.loadFromFile("assets/fonts/pixelNes.otf"))
 		std::cerr << "Chargement de la police pixelNes impossible" << '\n';
-	Shared::playerTexture.loadFromFile("assets/player.png");
+	for (int i = 0; i < 6 ; i++)
+	{
+		player.loadFromFile("assets/playerSprites/zelda_front/sprite_" + std::to_string(i) + ".png");
+		Shared::playerTextures.push_back(player);
+	}
+	for (int i = 0; i < 6 ; i++)
+	{
+		player.loadFromFile("assets/playerSprites/zelda_back/sprite_" + std::to_string(i) + ".png");
+		Shared::playerTexturesBack.push_back(player);
+	}
 	Shared::backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
 }
 
@@ -26,7 +35,7 @@ void Assets::initHomePage(sf::RenderWindow& window) {
 	Shared::homePageBackground.setSize(sf::Vector2f(window.getSize().y, window.getSize().y));
 	Shared::homePageBackground.setFillColor(sf::Color::White);
 	Shared::homePageBackground.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::homePageBackground.getSize().x / 2.f, 0.f));
-	Shared::playerSprite.setTexture(Shared::playerTexture);
+	Shared::playerSprite.setTexture(Shared::playerTextures.at(0));
 	Shared::homePageBackground.setTexture(&Shared::backgroundTexture);
 
 	// Boutons menu home

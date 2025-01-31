@@ -89,7 +89,7 @@ void Game::pollEvents() {
 					lockClick = true;
 					if (isHomePageOn) { // Condition non n�cessaire, ici pour la simplicit� de compr�hension du code
 						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
-							isSaveSceneOn = true;
+							isGameplayOn = true;
 							isHomePageOn = false;
 						}
 						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
