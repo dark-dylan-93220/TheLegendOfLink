@@ -33,16 +33,28 @@
 
 	// Textures & Sprites
 	sf::Texture Shared::heartTexture;
-	sf::Sprite Shared::heartSprite;
+	sf::Texture Shared::saveIntSlot;
+	sf::Texture Shared::saveIntSlotCenter;
 	sf::Texture Shared::saveBackground;
 	sf::Texture Shared::saveTitle;
+	sf::Texture Shared::saveSlotNumberOne;
+	sf::Texture Shared::saveSlotNumberTwo;
+	sf::Texture Shared::saveSlotNumberThree;
 
 	// RectangleShape (commentaire -> &texture ou sf::Color associée)
+	sf::RectangleShape Shared::heartSprite;              // -> &heartTexture
 	sf::RectangleShape Shared::savePageBackground;       // -> &saveBackground
-	sf::RectangleShape Shared::saveSlot;                 // -> sf::Color(255,255,255,20);
-	sf::RectangleShape Shared::saveIntSlot;              // -> sf::Color(255,255,255,20);
+	sf::RectangleShape Shared::saveSlotOne;              // -> sf::Color(255,255,255,20);
+	sf::RectangleShape Shared::saveSlotTwo;              // -> sf::Color(255,255,255,20);
+	sf::RectangleShape Shared::saveSlotThree;            // -> sf::Color(255,255,255,20);
+	sf::RectangleShape Shared::saveIntSlotOne;           // -> sf::Color(255,255,255,20);
+	sf::RectangleShape Shared::saveIntSlotTwo;           // -> sf::Color(255,255,255,20);
+	sf::RectangleShape Shared::saveIntSlotThree;         // -> sf::Color(255,255,255,20);
 	sf::RectangleShape Shared::transparentSaveSlotLayer; // -> sf::Color(255,255,255,20);
 	sf::RectangleShape Shared::savePageTitle;            // -> &saveTitle
-	sf::RectangleShape Shared::saveNumberRect;           // -> sf::Color(beige vieux)
+	sf::RectangleShape Shared::saveNumberRectOne;        // -> sf::Color(beige vieux)
+	sf::RectangleShape Shared::saveNumberRectTwo;        // -> sf::Color(beige vieux)
+	sf::RectangleShape Shared::saveNumberRectThree;      // -> sf::Color(beige vieux)
+	sf::RectangleShape Shared::saveTimePlayTimeBar;		 // -> sf::Color(150,100,0);
 	sf::RectangleShape Shared::confirmChoiceRect;        // -> sf::Color::Black;
 	sf::RectangleShape Shared::cancelChoiceRect;         // -> sf::Color::Black;

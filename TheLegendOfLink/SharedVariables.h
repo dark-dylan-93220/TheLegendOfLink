@@ -24,6 +24,11 @@ public:
 
 // SaveScene / inspiration : https://maplequeensaku.weebly.com/uploads/9/5/7/9/95792838/twilight-princess-rel-loader-save-screen-no-file_orig.png
 public:
+	// STD Data
+	//static int numberOfHearts;
+	//static float playTime;
+	// Un autre pour le moment de la dernière sauvegarde
+
 	// Texts
 	static sf::Text saveTitleText;
 	static sf::Text nonCreatedSaveText;
@@ -35,18 +40,29 @@ public:
 
 	// Textures & Sprites
 	static sf::Texture heartTexture;
-	static sf::Sprite heartSprite;
 	static sf::Texture saveBackground;
+	static sf::Texture saveIntSlot;
+	static sf::Texture saveIntSlotCenter;
 	static sf::Texture saveTitle;
+	static sf::Texture saveSlotNumberOne;
+	static sf::Texture saveSlotNumberTwo;
+	static sf::Texture saveSlotNumberThree;
 
 	// RectangleShape (commentaire -> &texture ou sf::Color associée)
+	static sf::RectangleShape heartSprite;              // -> &heartTexture
 	static sf::RectangleShape savePageBackground;       // -> &saveBackground
-	static sf::RectangleShape saveSlot;                 // -> sf::Color(255,255,255,20);
-	static sf::RectangleShape saveIntSlot;              // -> sf::Color(255,255,255,20);
+	static sf::RectangleShape saveSlotOne;              // -> sf::Color(255,255,255,20);
+	static sf::RectangleShape saveSlotTwo;              // -> sf::Color(255,255,255,20);
+	static sf::RectangleShape saveSlotThree;            // -> sf::Color(255,255,255,20);
+	static sf::RectangleShape saveIntSlotOne;           // -> &saveIntSlot
+	static sf::RectangleShape saveIntSlotTwo;           // -> &saveIntSlotCenter
+	static sf::RectangleShape saveIntSlotThree;         // -> &saveIntSlot
 	static sf::RectangleShape transparentSaveSlotLayer; // -> sf::Color(255,255,255,20);
 	static sf::RectangleShape savePageTitle;            // -> &saveTitle
-	static sf::RectangleShape saveNumberRect;           // -> sf::Color(beige vieux)
+	static sf::RectangleShape saveNumberRectOne;        // -> &saveSlotNumberOne
+	static sf::RectangleShape saveNumberRectTwo;        // -> &saveSlotNumberTwo
+	static sf::RectangleShape saveNumberRectThree;      // -> &saveSlotNumberThree
+	static sf::RectangleShape saveTimePlayTimeBar;      // -> sf::Color(150,100,0);
 	static sf::RectangleShape confirmChoiceRect;        // -> sf::Color::Black;
 	static sf::RectangleShape cancelChoiceRect;         // -> sf::Color::Black;
-
 };
