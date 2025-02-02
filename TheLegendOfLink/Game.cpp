@@ -89,7 +89,7 @@ void Game::pollEvents() {
 					lockClick = true;
 					if (isHomePageOn) { // Condition non n�cessaire, ici pour la simplicit� de compr�hension du code
 						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
-							isGameplayOn = true;
+							isSaveSceneOn = true;
 							isHomePageOn = false;
 						}
 						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
@@ -101,7 +101,8 @@ void Game::pollEvents() {
 						}
 					}
 					else if (isSaveSceneOn) {
-
+						isSaveSceneOn = false;
+						isGameplayOn = true;
 					}
 				}
 			}
@@ -147,6 +148,11 @@ void Game::draw(Assets& assets) {
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
 		assets.drawHomePage(window);
+	}
+	else if (isSaveSceneOn) {
+		// La save scene est statique pour le moment
+		window.setView(window.getDefaultView());
+		assets.drawSavePage(window);
 	}
 
 	window.display();
