@@ -64,6 +64,21 @@ void Game::pollEvents() {
 			isRunning = false;
 			break;
 
+		case sf::Event::KeyPressed:
+			switch (event.key.code) {
+			case sf::Keyboard::Escape:
+				if (isGameplayOn) {
+					isGameplayOn = false;
+					isSettingsSceneOn = true;
+				}
+				else if (isSettingsSceneOn) {
+					isSettingsSceneOn = false;
+					isGameplayOn = true;
+				}
+				break;
+			}
+			break;
+
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
 			if (isHomePageOn) {
@@ -94,6 +109,8 @@ void Game::pollEvents() {
 						}
 						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Ouvrir le menu settings
+							isHomePageOn = false;
+							isSettingsSceneOn = true;
 						}
 						else if (Shared::leaveButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Sauvegarder la progression et quitter le jeu
@@ -148,6 +165,10 @@ void Game::draw(Assets& assets) {
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
 		assets.drawHomePage(window);
+	}
+	else if (isSettingsSceneOn) {
+		window.setView(window.getDefaultView());
+		assets.drawSettingsPage(window);
 	}
 	else if (isSaveSceneOn) {
 		// La save scene est statique pour le moment

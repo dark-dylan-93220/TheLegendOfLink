@@ -12,6 +12,16 @@ Assets::Assets(sf::RenderWindow& window)
 	loadAssetsFromFiles();
 	initHomePage(window);
 	initSaveSelection(window);
+	initSettingsPage(window);
+}
+
+void Assets::changeLanguage(const char& language) {
+	switch (language) {
+	case 'F': // French
+		break;
+	case 'E': // English
+		break;
+	}
 }
 
 void Assets::loadAssetsFromFiles() {
@@ -182,6 +192,14 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectOne.getPosition().y + Shared::saveNumberRectOne.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
 }
 
+void Assets::initSettingsPage(sf::RenderWindow& window) {
+	Shared::settingsBox.setSize(sf::Vector2f(window.getSize().y * (3.f / 5.f), window.getSize().y * (3.f / 5.f)));
+	Shared::settingsBox.setPosition(window.getSize().y * (3.f / 13.f) + ((window.getSize().x - Shared::savePageBackground.getSize().x) / 2.f), (3.f / 13.f) * window.getSize().y);
+	Shared::settingsBox.setFillColor(sf::Color::Black);
+	Shared::settingsBox.setOutlineColor(sf::Color::White);
+	Shared::settingsBox.setOutlineThickness(2.f);
+}
+
 void Assets::drawHomePage(sf::RenderWindow& window) {
 
 	window.draw(Shared::homePageBackground);
@@ -238,4 +256,10 @@ void Assets::drawSavePage(sf::RenderWindow& window) {
 	window.draw(Shared::nonCreatedSaveText);
 	Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotTwo.getSize().x * 0.10f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotTwo.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
 
+}
+
+void Assets::drawSettingsPage(sf::RenderWindow& window) {
+	window.draw(Shared::savePageBackground);
+
+	window.draw(Shared::settingsBox);
 }
