@@ -10,8 +10,8 @@ private:
     float speed = 200;
     int frame = 0;
     bool moving = false;
-    bool isAttacking;
-    bool back;
+    bool isAttacking = false;
+    bool back = false;
 public:
     Player();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;

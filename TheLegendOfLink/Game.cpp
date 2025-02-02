@@ -101,8 +101,8 @@ void Game::pollEvents() {
 						}
 					}
 					else if (isSaveSceneOn) {
-						isGameplayOn = true;
 						isSaveSceneOn = false;
+						isGameplayOn = true;
 					}
 				}
 			}
@@ -148,6 +148,11 @@ void Game::draw(Assets& assets) {
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
 		assets.drawHomePage(window);
+	}
+	else if (isSaveSceneOn) {
+		// La save scene est statique pour le moment
+		window.setView(window.getDefaultView());
+		assets.drawSavePage(window);
 	}
 
 	window.display();

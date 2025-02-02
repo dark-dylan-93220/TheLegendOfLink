@@ -9,7 +9,7 @@ public:
 	sf::Texture player;
 public:
 	void drawHomePage(sf::RenderWindow& window);
-	void color(sf::RectangleShape& element, const sf::Color& color);
+	void drawSavePage(sf::RenderWindow& window);
 
 private:
 	void loadAssetsFromFiles();
