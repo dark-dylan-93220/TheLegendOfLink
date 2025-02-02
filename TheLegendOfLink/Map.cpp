@@ -14,7 +14,9 @@ void Map::loadFromFile(const std::string& filename) {
         mapData.push_back(line);
     }
     murTexture.loadFromFile("assets/tiles/wall.png");
+    grassTexture.loadFromFile("assets/tiles/grass.png");
     resize(murTexture, murSprite, SIZEX, SIZEY);
+    resize(grassTexture, grassSprite, SIZEX, SIZEY);
 }
 
 void Map::draw(sf::RenderWindow& window) {
@@ -23,6 +25,10 @@ void Map::draw(sf::RenderWindow& window) {
             if (mapData[y][x] == '#') {
                 murSprite.setPosition(x * SIZEX, y * SIZEY);
                 window.draw(murSprite);
+            }
+            else {
+                grassSprite.setPosition(x * SIZEX, y * SIZEY);
+                window.draw(grassSprite);
             }
         }
     }

@@ -7,8 +7,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Readme">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Map.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Map.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/vc143.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/x64/Debug/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/TheLegendOfLink.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="View" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +81,7 @@
     &quot;C/C++ Project.TheLegendOfLink.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;grass&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -90,6 +104,18 @@
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
         <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" />
       </configuration_1>
+      <configuration_2 setup="1">
+        <option name="CONFIGURATION" value="Debug" />
+        <option name="PLATFORM" value="x64" />
+        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
+        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
+        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
+        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
+        <option name="PASS_PARENT_ENVS" value="1" />
+        <option name="USE_EXTERNAL_CONSOLE" value="0" />
+        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" />
+      </configuration_2>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" />
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/TheLegendOfLink/TheLegendOfLink.vcxproj" />
       <option name="AUTO_SELECT_PRIORITY" value="0" />
@@ -110,7 +136,7 @@
       <workItem from="1738229181456" duration="446000" />
       <workItem from="1738229695520" duration="466000" />
       <workItem from="1738230226259" duration="1507000" />
-      <workItem from="1738340392021" duration="1226000" />
+      <workItem from="1738340392021" duration="1988000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -208,7 +234,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738341884424</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="txt">
+      <option name="closed" value="true" />
+      <created>1738342032259</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738342032259</updated>
+    </task>
+    <task id="LOCAL-00014" summary="readme">
+      <option name="closed" value="true" />
+      <created>1738342082245</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738342082245</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +283,8 @@
     <MESSAGE value="correction taille window" />
     <MESSAGE value="push" />
     <MESSAGE value="Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme" />
+    <MESSAGE value="txt" />
+    <MESSAGE value="readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme" />
   </component>
 </project>
