@@ -1,8 +1,8 @@
 #include "SharedVariables.h"
 
 /* Avantage des variables statiques :  
- - Elles ne sont initialisées qu'une seule fois
- - Elles permettent d'être utilisées par plusieurs fichiers .cpp sans avoir à créer de copies ni passer d'arguments 
+ - Elles ne sont initialisï¿½es qu'une seule fois
+ - Elles permettent d'ï¿½tre utilisï¿½es par plusieurs fichiers .cpp sans avoir ï¿½ crï¿½er de copies ni passer d'arguments 
  */
 
 // HomePage
@@ -41,7 +41,7 @@
 	sf::Texture Shared::saveSlotNumberTwo;
 	sf::Texture Shared::saveSlotNumberThree;
 
-	// RectangleShape (commentaire -> &texture ou sf::Color associée)
+	// RectangleShape (commentaire -> &texture ou sf::Color associÃ©e)
 	sf::RectangleShape Shared::heartSprite;              // -> &heartTexture
 	sf::RectangleShape Shared::savePageBackground;       // -> &saveBackground
 	sf::RectangleShape Shared::saveSlotOne;              // -> sf::Color(255,255,255,20);
@@ -58,3 +58,7 @@
 	sf::RectangleShape Shared::saveTimePlayTimeBar;		 // -> sf::Color(150,100,0);
 	sf::RectangleShape Shared::confirmChoiceRect;        // -> sf::Color::Black;
 	sf::RectangleShape Shared::cancelChoiceRect;         // -> sf::Color::Black;
+
+// Player
+	std::vector<sf::Texture> Shared::playerTextures;
+	std::vector<sf::Texture> Shared::playerTexturesBack;

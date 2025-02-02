@@ -1,23 +1,27 @@
 #include "Game.hpp"
-#include "Player.h"
 #include "AssetLoader.hpp"
 #include "SharedVariables.h"
+#include "Bokoblin.h"
 
 namespace {
-	// Utilisé pour les variables souvent utilisées dans ce fichier, pour éviter les copies
+	// Utilisï¿½ pour les variables souvent utilisï¿½es dans ce fichier, pour ï¿½viter les copies
 	sf::Vector2f mouseMovePosition;
 	sf::Vector2f mouseButtonPosition;
 }
 
+float deltaTime = 1.0f;
+sf::Clock cloc;
+
 Game::Game() : 
-	window(sf::VideoMode::getDesktopMode(), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link", sf::Style::Fullscreen)
 {
+	spawnPos = {960,540};
 	event = {};
 	mapView = window.getDefaultView();
-	float spacingBetweenMapAndBorder = 1.0f / (window.getSize().x / ((window.getSize().x - window.getSize().y) / 2.0f));
+	spacingBetweenMapAndBorder = 1.0f / (window.getSize().x / ((window.getSize().x - window.getSize().y) / 2.0f));
 	// Exemple : pour une dimension de 1920x1080 pixels
 	// 1 / (1920 / ((1920 - 1080) / 2)) = 0.21875f ~ 21.875%
-	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f, 1.0f));
+	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f - 2 * spacingBetweenMapAndBorder , 1.0f));
 	window.setFramerateLimit(60);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
@@ -37,7 +41,11 @@ Game::~Game() {
 void Game::run() {
 	
 	Assets assets(window);
-
+	player.init(Shared::playerSprite, spawnPos);
+	Bokoblin bok;
+	bok.init(Shared::playerSprite, spawnPos);
+	ennemies.push_back(bok);
+	
 	while (window.isOpen() && isRunning) {
 
 		pollEvents();
@@ -77,9 +85,9 @@ void Game::pollEvents() {
 		case sf::Event::MouseButtonPressed:
 			mouseButtonPosition = { (float)event.mouseButton.x, (float)event.mouseButton.y };
 			if (event.mouseButton.button == sf::Mouse::Left) {
-				if (!lockClick) { // Pour éviter la répétition en boucle d'une action avec un seul clic
+				if (!lockClick) { // Pour ï¿½viter la rï¿½pï¿½tition en boucle d'une action avec un seul clic
 					lockClick = true;
-					if (isHomePageOn) { // Condition non nécessaire, ici pour la simplicité de compréhension du code
+					if (isHomePageOn) { // Condition non nï¿½cessaire, ici pour la simplicitï¿½ de comprï¿½hension du code
 						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							isSaveSceneOn = true;
 							isHomePageOn = false;
@@ -93,7 +101,8 @@ void Game::pollEvents() {
 						}
 					}
 					else if (isSaveSceneOn) {
-
+						isSaveSceneOn = false;
+						isGameplayOn = true;
 					}
 				}
 			}
@@ -111,16 +120,39 @@ void Game::pollEvents() {
 
 void Game::draw(Assets& assets) {
 	window.clear(sf::Color::Black);
-
-	// Essayez d'être le plus court possible ici, juste des appels de fonctions
+	mapView.setCenter(player.getSprite().getPosition());
+	// Essayez d'ï¿½tre le plus court possible ici, juste des appels de fonctions
 	if (isGameplayOn) {
 		window.setView(mapView);
 		map.draw(window);
-		// Plus de trucs à venir avec les ennemis, joueur, objets etc...
+		//window.draw(whiteBackground);
+		player.update(deltaTime,event);
+		player.draw(window);
+		
+		for (auto& bok : ennemies) {
+			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))
+			{
+				bok.followUpdate(deltaTime, player);
+			}
+			else
+			{
+				bok.update(deltaTime, event);
+			}
+			bok.draw(window);
+		}
+		
+		deltaTime = cloc.restart().asSeconds();
+		std::cout << deltaTime << '\n';
+		// Plus de trucs ï¿½ venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
 		assets.drawHomePage(window);
+	}
+	else if (isSaveSceneOn) {
+		// La save scene est statique pour le moment
+		window.setView(window.getDefaultView());
+		assets.drawSavePage(window);
 	}
 
 	window.display();

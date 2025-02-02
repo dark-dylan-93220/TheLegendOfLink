@@ -1,16 +1,22 @@
 ﻿#pragma once
+
 #include "Entity.h"
+
 class Player : public Entity
 {
 private:
     sf::Vector2f spawnPos;
-    sf::Sprite spritePlayer;
-    float speed = 1;
-    bool moving;
+    sf::RectangleShape hitBox;
+    float speed = 200;
+    int frame = 0;
+    bool moving = false;
+    bool isAttacking = false;
+    bool back = false;
 public:
-    Player(sf::Sprite sprite, sf::Vector2f position);
-    void init(sf::Sprite& sprite) override;
+    Player();
+    void init(sf::Sprite& sprite, sf::Vector2f& position) override;
     void update(float& deltaTime,sf::Event& event) override;
+    void draw(sf::RenderWindow& window) override;
     sf::Sprite getSprite();
     ~Player();
 };

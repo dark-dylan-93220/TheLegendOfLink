@@ -7,12 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Release/TheLegendOfLink.exe" afterDir="false" />
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="Readme">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="AssetsViewports" />
+        <entry key="$PROJECT_DIR$" value="View" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +38,20 @@
     &quot;accountId&quot;: &quot;12a31af1-9c39-46e5-b5e2-4386aa35360c&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/AssetLoader.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/AssetLoader.hpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Bokoblin.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Game.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Player.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Player.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TheLegendOfLink/main.cpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -100,6 +110,7 @@
       <workItem from="1738229181456" duration="446000" />
       <workItem from="1738229695520" duration="466000" />
       <workItem from="1738230226259" duration="1507000" />
+      <workItem from="1738340392021" duration="1226000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -149,7 +160,55 @@
       <option name="project" value="LOCAL" />
       <updated>1738239116010</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ennemi final">
+      <option name="closed" value="true" />
+      <created>1738328471932</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738328471932</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Push merge">
+      <option name="closed" value="true" />
+      <created>1738329274341</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738329274341</updated>
+    </task>
+    <task id="LOCAL-00009" summary="player view">
+      <option name="closed" value="true" />
+      <created>1738336857323</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336857323</updated>
+    </task>
+    <task id="LOCAL-00010" summary="correction taille window">
+      <option name="closed" value="true" />
+      <created>1738337487374</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738337487374</updated>
+    </task>
+    <task id="LOCAL-00011" summary="push">
+      <option name="closed" value="true" />
+      <created>1738339727837</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738339727837</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Readme">
+      <option name="closed" value="true" />
+      <created>1738341884424</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738341884424</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +235,12 @@
     <MESSAGE value="Player movement" />
     <MESSAGE value="Base" />
     <MESSAGE value="viewport" />
-    <option name="LAST_COMMIT_MESSAGE" value="viewport" />
+    <MESSAGE value="ennemi final" />
+    <MESSAGE value="Push merge" />
+    <MESSAGE value="player view" />
+    <MESSAGE value="correction taille window" />
+    <MESSAGE value="push" />
+    <MESSAGE value="Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme" />
   </component>
 </project>

@@ -15,12 +15,14 @@ public:
 	// Textures & Sprites
 	static sf::Texture backgroundTexture;
 	static sf::Texture playerTexture;
+	static std::vector<sf::Texture> playerTextures;
+	static std::vector<sf::Texture> playerTexturesBack;
 	static sf::Sprite playerSprite;
 	// RectangleShape
 	static sf::RectangleShape homePageBackground;
 	static sf::RectangleShape playButton;
 	static sf::RectangleShape settingsButton;
-	static sf::RectangleShape leaveButton; // Déclenchera la sauvegarde
+	static sf::RectangleShape leaveButton; // Dï¿½clenchera la sauvegarde
 
 // SaveScene / inspiration : https://maplequeensaku.weebly.com/uploads/9/5/7/9/95792838/twilight-princess-rel-loader-save-screen-no-file_orig.png
 public:

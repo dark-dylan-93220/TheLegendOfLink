@@ -135,6 +135,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetLoader.cpp" />
+    <ClCompile Include="Bokoblin.cpp" />
+    <ClCompile Include="Ennemies.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
@@ -143,6 +145,8 @@
     <ClCompile Include="SharedVariables.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bokoblin.h" />
+    <ClInclude Include="Ennemies.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="AssetLoader.hpp" />
     <ClInclude Include="Game.hpp" />
