@@ -149,7 +149,7 @@ void Game::update() {
 		player.update(deltaTime, event, map);
 
 		for (auto& bok : ennemies) {
-			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))
+			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
 			{
 				bok.followUpdate(deltaTime, player);
 			}
