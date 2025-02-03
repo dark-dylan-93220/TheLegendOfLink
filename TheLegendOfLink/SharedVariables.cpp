@@ -6,6 +6,7 @@
  */
 
 // HomePage
+sf::Texture Shared::playerSwordTexture;
 	 // Fonts
 	sf::Font Shared::pixelNes;
 	// Texts
