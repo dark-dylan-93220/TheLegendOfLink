@@ -2,6 +2,10 @@
 #include "AssetLoader.hpp"
 #include "SharedVariables.h"
 #include "Bokoblin.h"
+#include "HearthContainer.hpp"
+
+
+sf::Vector2f pos = sf::Vector2f(200.0f,200.0f);
 
 namespace {
 	// Utilis� pour les variables souvent utilis�es dans ce fichier, pour �viter les copies
@@ -13,7 +17,7 @@ float deltaTime = 1.0f;
 sf::Clock cloc;
 
 Game::Game() : 
-	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode(sf::VideoMode::getFullscreenModes().at(0)), "The Legend Of Link", sf::Style::Fullscreen)
 {
 	spawnPos = {960,540};
 	event = {};
@@ -23,15 +27,19 @@ Game::Game() :
 	// 1 / (1920 / ((1920 - 1080) / 2)) = 0.21875f ~ 21.875%
 	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f - 2 * spacingBetweenMapAndBorder , 1.0f));
 	window.setFramerateLimit(60);
+	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
 	isHomePageOn = false;
 	isRunning = true;
+	isGameOver = false;
 	// Scenes
-	isHomePageOn = false;
+	isHomePageOn = true;
+	isSettingsSceneOn = false;
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
+	map.addVector();
 	isRunning = true;
 	isGameOver = true;
 }
@@ -48,13 +56,15 @@ void Game::run() {
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
+	renderer = std::thread(&Game::updateGame, this);
+
 	while (window.isOpen() && isRunning) {
 
 		pollEvents();
 		draw(assets);
-
 	}
 
+	renderer.join();
 	std::cout << "Programme termine" << '\n';
 	window.close();
 }
@@ -64,6 +74,21 @@ void Game::pollEvents() {
 		switch (event.type) {
 		case sf::Event::Closed:
 			isRunning = false;
+			break;
+
+		case sf::Event::KeyPressed:
+			switch (event.key.code) {
+			case sf::Keyboard::Escape:
+				if (isGameplayOn) {
+					isGameplayOn = false;
+					isSettingsSceneOn = true;
+				}
+				else if (isSettingsSceneOn) {
+					isSettingsSceneOn = false;
+					isGameplayOn = true;
+				}
+				break;
+			}
 			break;
 
 		case sf::Event::MouseMoved:
@@ -101,11 +126,13 @@ void Game::pollEvents() {
 					lockClick = true;
 					if (isHomePageOn) { // Condition non n�cessaire, ici pour la simplicit� de compr�hension du code
 						if (Shared::playButton.getGlobalBounds().contains(mouseButtonPosition)) {
-							isGameplayOn = true;
+							isSaveSceneOn = true;
 							isHomePageOn = false;
 						}
 						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Ouvrir le menu settings
+							isHomePageOn = false;
+							isSettingsSceneOn = true;
 						}
 						else if (Shared::leaveButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Sauvegarder la progression et quitter le jeu
@@ -113,7 +140,8 @@ void Game::pollEvents() {
 						}
 					}
 					else if (isSaveSceneOn) {
-
+						isSaveSceneOn = false;
+						isGameplayOn = true;
 					}
 					else if (isGameOver) {
 						if (Shared::homeButton.getGlobalBounds().contains(mouseButtonPosition)) {
@@ -141,36 +169,57 @@ void Game::pollEvents() {
 	}
 }
 
-void Game::draw(Assets& assets) {
-	window.clear(sf::Color::Black);
-	mapView.setCenter(player.getSprite().getPosition());
-	// Essayez d'�tre le plus court possible ici, juste des appels de fonctions
-	if (isGameplayOn) {
-		window.setView(mapView);
-		map.draw(window);
-		//window.draw(whiteBackground);
-		player.update(deltaTime,event);
-		player.draw(window);
-		
+void Game::updateGame() {
+	while (window.isOpen() && isRunning) {
+		deltaTime = cloc.restart().asSeconds();
+
+		player.update(deltaTime, event, map);
+
 		for (auto& bok : ennemies) {
-			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))
+			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
 			{
 				bok.followUpdate(deltaTime, player);
 			}
 			else
 			{
-				bok.update(deltaTime, event);
+				bok.update(deltaTime, event, map);
 			}
+		}
+	}
+}
+
+void Game::draw(Assets& assets) {
+
+	window.clear(sf::Color::Black);
+	mapView.setCenter(player.getSprite().getPosition());
+
+	if (isGameplayOn) {
+		window.setView(mapView);
+		map.draw(window);
+
+		player.draw(window);
+		player.attaquer(window, map);
+		
+
+		for (auto& bok : ennemies) {
 			bok.draw(window);
 		}
-		
-		deltaTime = cloc.restart().asSeconds();
-		std::cout << deltaTime << '\n';
-		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
+
+		//std::cout << deltaTime << '\n';
+		std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
 		assets.drawHomePage(window);
+	}
+	else if (isSettingsSceneOn) {
+		window.setView(window.getDefaultView());
+		assets.drawSettingsPage(window);
+	}
+	else if (isSaveSceneOn) {
+		// La save scene est statique pour le moment
+		window.setView(window.getDefaultView());
+		assets.drawSavePage(window);
 	}
 	else if (isGameOver) {
 		window.setView(window.getDefaultView());
@@ -178,4 +227,33 @@ void Game::draw(Assets& assets) {
 	}
 
 	window.display();
+}
+
+void Game::update() {
+	// Vérification des collisions avec les ennemis
+	for (auto& enemy : ennemies) {
+		if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
+			player.takeDamage(1);
+		}
+	}
+
+	// Vérification des collisions avec les objets récupérables
+	for (auto it = objects.begin(); it != objects.end(); ) {
+		if (player.intersects(**it)) {
+			HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
+			if (heart) {
+				player.heal(heart->getHealAmount());  // Soigne le joueur
+				delete* it;  // Libère la mémoire
+				it = objects.erase(it);  // Supprime l’objet de la liste
+				continue;
+			}
+		}
+		++it;
+	}
+
+	// Vérification du Game Over
+	if (player.isDead()) {
+		isGameplayOn = false;
+		isGameOver = true;
+	}
 }

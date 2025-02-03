@@ -10,7 +10,7 @@ void Bokoblin::init(sf::Sprite& sprite, sf::Vector2f& position)
     spriteEntity.setPosition(spawnPos);
 }
 
-void Bokoblin::update(float& deltaTime, sf::Event& event)
+void Bokoblin::update(float& deltaTime, sf::Event& event, Map& map)
 {
     if (i >= 4) {
         i = 0;
@@ -49,13 +49,13 @@ sf::Vector2f normalize(const sf::Vector2f& vector)
     return sf::Vector2f(vector.x / length, vector.y / length);
 }
 
-void Bokoblin::followUpdate(float& deltaTime, Player player)
+void Bokoblin::followUpdate(float& deltaTime, Player& player)
 {
     sf::Vector2f direction = normalize(player.getSprite().getPosition() - spriteEntity.getPosition());
     
     sf::Vector2f initialPosition = spriteEntity.getPosition();
     
-    spriteEntity.move(normalize( player.getSprite().getPosition() - spriteEntity.getPosition()));
+    spriteEntity.move(deltaTime * speed * normalize( player.getSprite().getPosition() - spriteEntity.getPosition()));
     
     /*for (auto& map : maps)
     {

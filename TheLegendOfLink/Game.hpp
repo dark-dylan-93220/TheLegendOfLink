@@ -1,6 +1,9 @@
 #pragma once
 // STD library
 #include <iostream>
+#include <thread>
+#include <iomanip>
+#include <sstream>
 
 // SFML
 #include "SFML/Audio.hpp"
@@ -13,6 +16,7 @@
 #include "Player.h"
 #include "Map.hpp"
 #include "AssetLoader.hpp"
+#include "Eprojectiles.h"
 
 class Game {
 private:
@@ -21,16 +25,19 @@ private:
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
+	std::thread renderer;
+	std::vector<Entity*> objects;  // Liste des objets (genre coffres, receptacles de coeurs...)
 
 private:
 	sf::Vector2f spawnPos;
 	std::vector<Bokoblin> ennemies;
 	float spacingBetweenMapAndBorder;
 	bool isRunning;
+	bool isGameOver;
 	bool lockClick;
 	bool isHomePageOn;
+	bool isSettingsSceneOn;
 	bool isGameplayOn;
-	bool isGameOver;
 	bool isSaveSceneOn;
 
 public:
@@ -41,7 +48,8 @@ public:
 	void run();
 
 private:
+	void updateGame();
 	void pollEvents();
 	void draw(Assets& assets);
-
+	void update();
 };
