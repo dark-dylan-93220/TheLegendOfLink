@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "Map.hpp"
 #include "AssetLoader.hpp"
+#include "Eprojectiles.h"
 
 class Game {
 private:
