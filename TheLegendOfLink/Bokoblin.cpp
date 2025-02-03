@@ -10,7 +10,7 @@ void Bokoblin::init(sf::Sprite& sprite, sf::Vector2f& position)
     spriteEntity.setPosition(spawnPos);
 }
 
-void Bokoblin::update(float& deltaTime, sf::Event& event)
+void Bokoblin::update(float& deltaTime, sf::Event& event, Map& map)
 {
     if (i >= 4) {
         i = 0;

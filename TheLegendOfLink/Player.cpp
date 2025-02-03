@@ -1,5 +1,6 @@
 ﻿#include "Player.h"
 #include "SharedVariables.h"
+
 Player::Player() {}
 
 sf::Clock clo;
@@ -12,52 +13,56 @@ void Player::init(sf::Sprite& sprite, sf::Vector2f& position)
     spriteEntity.setPosition(spawnPos);
 }
 
-void Player::update(float& deltaTime,sf::Event& event)
+void Player::update(float& deltaTime, sf::Event& event, Map& map)
 {
     hitBox.setPosition(spriteEntity.getPosition());
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
     {
         isAttacking = true;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
+    std::cout << "collide\n";
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        spriteEntity.move(speed * 2 * deltaTime, 0);
+        spriteEntity.move(speed * deltaTime, 0);
         moving = true;
+        for (int i = 0; i < map.spritesWall.size(); i++) {
+            if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(-speed * deltaTime, 0);
+                moving = false;
+            }
+        }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !moving)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
-        spriteEntity.move( -speed * 2  * deltaTime, 0);
+        spriteEntity.move(-speed * deltaTime, 0);
         moving = true;
+        for (int i = 0; i < map.spritesWall.size(); i++) {
+            if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(speed * deltaTime, 0);
+                moving = false;
+            }
+        }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !moving)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
-        spriteEntity.move( 0 , -speed * deltaTime);
-        back = true;
+        spriteEntity.move(0, -speed * deltaTime);
         moving = true;
+        for (int i = 0; i < map.spritesWall.size(); i++) {
+            if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(0, speed * deltaTime);
+                moving = false;
+            }
+        }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !moving)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         spriteEntity.move(0, speed * deltaTime);
-        back = false;
         moving = true;
-    }
-    if (moving)
-    {
-        if (frame > 5)
-        {
-            frame = 0;
-        }
-        if (clo.getElapsedTime().asSeconds() > 0.15f && !back)
-        {
-            spriteEntity.setTexture(Shared::playerTextures.at(frame));
-            clo.restart();
-            frame++;
-        }
-        else if (clo.getElapsedTime().asSeconds() > 0.15f && back)
-        {
-            spriteEntity.setTexture(Shared::playerTexturesBack.at(frame));
-            clo.restart();
-            frame++;
+        for (int i = 0; i < map.spritesWall.size(); i++) {
+            if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(0, -speed * deltaTime);
+                moving = false;
+            }
         }
     }
     moving = false;
