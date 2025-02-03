@@ -70,9 +70,13 @@ public:
 // SettingsScene
 public:
 	// Texts
+	static sf::Text settingsLanguageText;
 	static sf::Text frenchLanguageText;
 	static sf::Text englishLanguageText;
-
+	static sf::Text settingsVolumeText;
+	static sf::Text settingsFPSText;
+	static sf::Text settingsFPS60Text;
+	static sf::Text settingsFPSVSyncText;
 	static sf::Text settingsPlusText;
 	static sf::Text settingsMinusText;
 

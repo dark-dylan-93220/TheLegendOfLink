@@ -60,9 +60,13 @@
 	sf::RectangleShape Shared::cancelChoiceRect;         // -> sf::Color::Black;
 
 // SettingsScene
+	sf::Text Shared::settingsLanguageText;
 	sf::Text Shared::frenchLanguageText;
 	sf::Text Shared::englishLanguageText;
-			 
+	sf::Text Shared::settingsVolumeText;
+	sf::Text Shared::settingsFPSText;
+	sf::Text Shared::settingsFPS60Text;
+	sf::Text Shared::settingsFPSVSyncText;
 	sf::Text Shared::settingsPlusText;
 	sf::Text Shared::settingsMinusText;
 

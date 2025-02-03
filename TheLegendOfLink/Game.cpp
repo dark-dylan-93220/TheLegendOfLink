@@ -13,7 +13,7 @@ float deltaTime = 1.0f;
 sf::Clock cloc;
 
 Game::Game() : 
-	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode(sf::VideoMode::getFullscreenModes().at(0)), "The Legend Of Link", sf::Style::Fullscreen)
 {
 	spawnPos = {960,540};
 	event = {};
@@ -23,6 +23,7 @@ Game::Game() :
 	// 1 / (1920 / ((1920 - 1080) / 2)) = 0.21875f ~ 21.875%
 	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f - 2 * spacingBetweenMapAndBorder , 1.0f));
 	window.setFramerateLimit(60);
+	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
 	isRunning = true;
