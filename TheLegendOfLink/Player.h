@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Entity.h"
+#include <iostream>
 
 class Player : public Entity
 {
@@ -15,7 +16,7 @@ private:
 public:
     Player();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;
-    void update(float& deltaTime,sf::Event& event) override;
+    void update(float& deltaTime,sf::Event& event, Map& map) override;
     void draw(sf::RenderWindow& window) override;
     sf::Sprite getSprite();
     ~Player();

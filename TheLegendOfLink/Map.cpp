@@ -15,22 +15,33 @@ void Map::loadFromFile(const std::string& filename) {
     }
     murTexture.loadFromFile("assets/tiles/wall.png");
     grassTexture.loadFromFile("assets/tiles/grass.png");
-    resize(murTexture, murSprite, SIZEX, SIZEY);
-    resize(grassTexture, grassSprite, SIZEX, SIZEY);
 }
 
-void Map::draw(sf::RenderWindow& window) {
+void Map::addVector() {
     for (size_t y = 0; y < mapData.size(); ++y) {
         for (size_t x = 0; x < mapData[y].size(); ++x) {
             if (mapData[y][x] == '#') {
+                sf::Sprite murSprite;
+                resize(murTexture, murSprite, SIZEX, SIZEY);
                 murSprite.setPosition(x * SIZEX, y * SIZEY);
-                window.draw(murSprite);
+                spritesWall.push_back(murSprite);
             }
             else {
+                sf::Sprite grassSprite;
+                resize(grassTexture, grassSprite, SIZEX, SIZEY);
                 grassSprite.setPosition(x * SIZEX, y * SIZEY);
-                window.draw(grassSprite);
+                spritesGrass.push_back(grassSprite);
             }
         }
+    }
+}
+
+void Map::draw(sf::RenderWindow& window) {
+    for (auto elem : spritesGrass) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesWall) {
+        window.draw(elem);
     }
 }
 

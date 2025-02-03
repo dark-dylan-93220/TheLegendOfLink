@@ -31,7 +31,7 @@ Game::Game() :
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
-	
+	map.addVector();
 }
 
 Game::~Game() {
@@ -126,7 +126,7 @@ void Game::draw(Assets& assets) {
 		window.setView(mapView);
 		map.draw(window);
 		//window.draw(whiteBackground);
-		player.update(deltaTime,event);
+		player.update(deltaTime,event, map);
 		player.draw(window);
 		
 		for (auto& bok : ennemies) {
@@ -136,7 +136,7 @@ void Game::draw(Assets& assets) {
 			}
 			else
 			{
-				bok.update(deltaTime, event);
+				bok.update(deltaTime, event, map);
 			}
 			bok.draw(window);
 		}
