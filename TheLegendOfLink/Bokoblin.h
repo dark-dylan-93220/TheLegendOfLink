@@ -13,7 +13,7 @@ public:
     Bokoblin();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;
     void update(float& deltaTime, sf::Event& event, Map& map) override;
-    void followUpdate(float& deltaTime,Player player);
+    void followUpdate(float& deltaTime,Player& player);
     sf::Sprite getSprite();
     void draw(sf::RenderWindow& window) override;
 };

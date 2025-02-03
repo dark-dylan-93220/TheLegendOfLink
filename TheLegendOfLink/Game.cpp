@@ -46,17 +46,17 @@ Game::~Game() {
 void Game::run() {
 	
 	Assets assets(window);
-	renderer = std::thread(&Game::draw, this, std::ref(assets));
 	player.init(Shared::playerSprite, spawnPos);
 	Bokoblin bok;
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
+	renderer = std::thread(&Game::update, this);
+
 	while (window.isOpen() && isRunning) {
 
 		pollEvents();
 		draw(assets);
-
 	}
 
 	renderer.join();
@@ -142,20 +142,12 @@ void Game::pollEvents() {
 	}
 }
 
-void Game::draw(Assets& assets) {
+void Game::update() {
+	while (window.isOpen() && isRunning) {
+		deltaTime = cloc.restart().asSeconds();
 
-	
-	
-	window.clear(sf::Color::Black);
-	mapView.setCenter(player.getSprite().getPosition());
-	// Essayez d'�tre le plus court possible ici, juste des appels de fonctions
-	if (isGameplayOn) {
-		window.setView(mapView);
-		map.draw(window);
-		//window.draw(whiteBackground);
-		player.update(deltaTime,event, map);
-		player.draw(window);
-		
+		player.update(deltaTime, event, map);
+
 		for (auto& bok : ennemies) {
 			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))
 			{
@@ -165,12 +157,27 @@ void Game::draw(Assets& assets) {
 			{
 				bok.update(deltaTime, event, map);
 			}
+		}
+	}
+}
+
+void Game::draw(Assets& assets) {
+
+	window.clear(sf::Color::Black);
+	mapView.setCenter(player.getSprite().getPosition());
+
+	if (isGameplayOn) {
+		window.setView(mapView);
+		map.draw(window);
+
+		player.draw(window);
+
+		for (auto& bok : ennemies) {
 			bok.draw(window);
 		}
-		
-		deltaTime = cloc.restart().asSeconds();
-		std::cout << deltaTime << '\n';
-		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
+
+		//std::cout << deltaTime << '\n';
+		std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
