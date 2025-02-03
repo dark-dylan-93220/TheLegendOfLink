@@ -3,6 +3,9 @@
 #include "SharedVariables.h"
 #include "Bokoblin.h"
 
+
+sf::Vector2f pos = sf::Vector2f(200.0f,200.0f);
+
 namespace {
 	// Utilis� pour les variables souvent utilis�es dans ce fichier, pour �viter les copies
 	sf::Vector2f mouseMovePosition;
@@ -119,6 +122,9 @@ void Game::pollEvents() {
 }
 
 void Game::draw(Assets& assets) {
+
+	
+	
 	window.clear(sf::Color::Black);
 	mapView.setCenter(player.getSprite().getPosition());
 	// Essayez d'�tre le plus court possible ici, juste des appels de fonctions
