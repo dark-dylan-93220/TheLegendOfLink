@@ -1,4 +1,4 @@
-#pragma one
+#pragma once
 #include "Entity.h"
 
 class HeartContainer : public Entity {

@@ -2,8 +2,11 @@
 
 #include "SFML/Graphics.hpp"
 
-
 class Shared {
+//
+public:
+	static sf::Texture playerSwordTexture;
+
 // HomePage
 public:
 	// Fonts
@@ -67,4 +70,22 @@ public:
 	static sf::RectangleShape saveTimePlayTimeBar;      // -> sf::Color(150,100,0);
 	static sf::RectangleShape confirmChoiceRect;        // -> sf::Color::Black;
 	static sf::RectangleShape cancelChoiceRect;         // -> sf::Color::Black;
+
+// SettingsScene
+public:
+	// Texts
+	static sf::Text settingsLanguageText;
+	static sf::Text frenchLanguageText;
+	static sf::Text englishLanguageText;
+	static sf::Text settingsVolumeText;
+	static sf::Text settingsFPSText;
+	static sf::Text settingsFPS60Text;
+	static sf::Text settingsFPSVSyncText;
+	static sf::Text settingsPlusText;
+	static sf::Text settingsMinusText;
+
+	// RectangleShape
+	static sf::RectangleShape settingsBox;
+	static sf::RectangleShape settingsVolumeSlider;
+	static sf::RectangleShape settingsSFXSlider;
 };

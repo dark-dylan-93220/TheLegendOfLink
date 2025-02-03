@@ -12,6 +12,16 @@ Assets::Assets(sf::RenderWindow& window)
 	loadAssetsFromFiles();
 	initHomePage(window);
 	initSaveSelection(window);
+	initSettingsPage(window);
+}
+
+void Assets::changeLanguage(const char& language) {
+	switch (language) {
+	case 'F': // French
+		break;
+	case 'E': // English
+		break;
+	}
 }
 
 void Assets::loadAssetsFromFiles() {
@@ -36,6 +46,7 @@ void Assets::loadAssetsFromFiles() {
 	Shared::saveSlotNumberTwo.loadFromFile("assets/saveSelection/saveSlotTwoNumber.png");
 	Shared::saveSlotNumberThree.loadFromFile("assets/saveSelection/saveSlotThreeNumber.png");
 	Shared::heartTexture.loadFromFile("assets/saveSelection/heart.png");
+	Shared::playerSwordTexture.loadFromFile("assets/playerSprites/sword.png");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -182,6 +193,55 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectOne.getPosition().y + Shared::saveNumberRectOne.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
 }
 
+void Assets::initSettingsPage(sf::RenderWindow& window) {
+	Shared::settingsBox.setSize(sf::Vector2f(window.getSize().y * (45.f / 78.f), window.getSize().y * (45.f / 78.f)));
+	Shared::settingsBox.setPosition(window.getSize().y * (17.f / 78.f) + ((window.getSize().x - Shared::savePageBackground.getSize().x) / 2.f), (17.f / 78.f) * window.getSize().y);
+	Shared::settingsBox.setFillColor(sf::Color::Black);
+	Shared::settingsBox.setOutlineColor(sf::Color::White);
+	Shared::settingsBox.setOutlineThickness(2.f);
+
+	Shared::settingsFPSText.setFont(Shared::pixelNes);
+	Shared::settingsFPSText.setCharacterSize(30);
+	Shared::settingsFPSText.setFillColor(sf::Color::White);
+	Shared::settingsFPSText.setString("FPS");
+	Shared::settingsFPSText.setPosition(Shared::settingsBox.getPosition().x + Shared::settingsBox.getSize().x * 0.10f, Shared::settingsBox.getPosition().y + Shared::settingsBox.getSize().y / 2.f - Shared::settingsFPSText.getLocalBounds().height / 2.f - Shared::settingsFPSText.getLocalBounds().top - Shared::settingsBox.getSize().y / 3.f);
+
+	Shared::settingsVolumeText = Shared::settingsFPSText;
+	Shared::settingsVolumeText.setString("Volume");
+	Shared::settingsVolumeText.setPosition(Shared::settingsFPSText.getPosition().x, window.getSize().y / 2.f - Shared::settingsVolumeText.getLocalBounds().height / 2.f - Shared::settingsVolumeText.getLocalBounds().top);
+
+	Shared::settingsLanguageText = Shared::settingsFPSText;
+	Shared::settingsLanguageText.setString("Language");
+	Shared::settingsLanguageText.setPosition(Shared::settingsFPSText.getPosition().x, Shared::settingsBox.getPosition().y + Shared::settingsBox.getSize().y / 2.f - Shared::settingsLanguageText.getLocalBounds().height / 2.f - Shared::settingsLanguageText.getLocalBounds().top + Shared::settingsBox.getSize().y / 3.f);
+
+	Shared::frenchLanguageText = Shared::settingsLanguageText;
+	Shared::frenchLanguageText.setString("< FRANCAIS >");
+	Shared::frenchLanguageText.setPosition(Shared::settingsBox.getPosition().x + Shared::settingsBox.getSize().x - Shared::frenchLanguageText.getLocalBounds().width - Shared::settingsBox.getSize().x * 0.10f, Shared::settingsLanguageText.getPosition().y);
+
+	Shared::englishLanguageText = Shared::frenchLanguageText;
+	Shared::englishLanguageText.setString("< ENGLISH >");
+	Shared::englishLanguageText.setPosition(Shared::settingsBox.getPosition().x + Shared::settingsBox.getSize().x - Shared::englishLanguageText.getLocalBounds().width - Shared::settingsBox.getSize().x * 0.10f, Shared::settingsLanguageText.getPosition().y);Shared::englishLanguageText.setPosition(Shared::settingsBox.getPosition().x + Shared::settingsBox.getSize().x - Shared::englishLanguageText.getLocalBounds().width - Shared::settingsBox.getSize().x * 0.10f, Shared::settingsLanguageText.getPosition().y);
+
+	Shared::settingsVolumeSlider.setSize(sf::Vector2f(Shared::settingsBox.getSize().x / 3.f, Shared::settingsVolumeText.getLocalBounds().height));
+	Shared::settingsVolumeSlider.setPosition(Shared::settingsBox.getSize().x + Shared::settingsBox.getPosition().x - Shared::settingsVolumeSlider.getSize().x - Shared::settingsBox.getSize().x * 0.15f, Shared::settingsVolumeText.getPosition().y + Shared::settingsVolumeText.getLocalBounds().top);
+	Shared::settingsVolumeSlider.setOutlineThickness(2.f);
+	Shared::settingsVolumeSlider.setOutlineColor(sf::Color::White);
+	Shared::settingsVolumeSlider.setFillColor(sf::Color(150,150,150));
+
+	Shared::settingsPlusText = Shared::settingsVolumeText;
+	Shared::settingsPlusText.setString("+");
+	Shared::settingsPlusText.setPosition(Shared::settingsBox.getSize().x + Shared::settingsBox.getPosition().x - Shared::settingsBox.getSize().x * 0.10f - Shared::settingsPlusText.getLocalBounds().width, Shared::settingsVolumeText.getPosition().y);
+
+	Shared::settingsMinusText = Shared::settingsPlusText;
+	Shared::settingsMinusText.setString("-");
+	Shared::settingsMinusText.setPosition(Shared::settingsVolumeSlider.getPosition().x + ((Shared::settingsVolumeSlider.getPosition().x + Shared::settingsVolumeSlider.getSize().x) - Shared::settingsPlusText.getPosition().x) - 0.02f * Shared::settingsBox.getSize().x, Shared::settingsPlusText.getPosition().y);
+
+	Shared::settingsFPS60Text = Shared::frenchLanguageText;
+	Shared::settingsFPS60Text.setString("< 60 FPS >");
+	Shared::settingsFPS60Text.setPosition(Shared::settingsBox.getPosition().x + Shared::settingsBox.getSize().x - Shared::settingsFPS60Text.getLocalBounds().width - Shared::settingsBox.getSize().x * 0.10f, Shared::settingsFPSText.getPosition().y);
+
+}
+
 void Assets::drawHomePage(sf::RenderWindow& window) {
 
 	window.draw(Shared::homePageBackground);
@@ -238,4 +298,21 @@ void Assets::drawSavePage(sf::RenderWindow& window) {
 	window.draw(Shared::nonCreatedSaveText);
 	Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotTwo.getSize().x * 0.10f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotTwo.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
 
+}
+
+void Assets::drawSettingsPage(sf::RenderWindow& window) {
+	window.draw(Shared::savePageBackground);
+
+	window.draw(Shared::settingsBox);
+
+	window.draw(Shared::settingsFPSText);
+	window.draw(Shared::settingsFPS60Text);
+
+	window.draw(Shared::settingsVolumeText);
+	window.draw(Shared::settingsVolumeSlider);
+	window.draw(Shared::settingsPlusText);
+	window.draw(Shared::settingsMinusText);
+
+	window.draw(Shared::settingsLanguageText);
+	window.draw(Shared::englishLanguageText);
 }

@@ -138,20 +138,25 @@
     <ClCompile Include="Bokoblin.cpp" />
     <ClCompile Include="Ennemies.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Eprojectiles.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Potion.cpp" />
     <ClCompile Include="SharedVariables.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bokoblin.h" />
+    <ClInclude Include="Potion.hpp" />
     <ClInclude Include="Ennemies.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="AssetLoader.hpp" />
+    <ClInclude Include="Eprojectiles.h" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="HearthContainer.hpp" />
     <ClInclude Include="Map.hpp" />
+    <ClInclude Include="Objet.hpp" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SharedVariables.h" />
   </ItemGroup>
