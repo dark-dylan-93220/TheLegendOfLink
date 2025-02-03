@@ -154,6 +154,7 @@
     <ClInclude Include="AssetLoader.hpp" />
     <ClInclude Include="Eprojectiles.h" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="HearthContainer.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Objet.hpp" />
     <ClInclude Include="Player.h" />
