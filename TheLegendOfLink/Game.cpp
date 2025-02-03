@@ -30,6 +30,7 @@ Game::Game() :
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
+	isHomePageOn = false;
 	isRunning = true;
 	isGameOver = false;
 	// Scenes
@@ -39,6 +40,8 @@ Game::Game() :
 	isGameplayOn = false;
 	lockClick = false;
 	map.addVector();
+	isRunning = true;
+	isGameOver = true;
 }
 
 Game::~Game() {
@@ -104,6 +107,16 @@ void Game::pollEvents() {
 				else
 					Shared::leaveButton.setFillColor(sf::Color(155, 155, 155));
 			}
+			if (isGameOver) {
+				if (Shared::retryButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::retryButton.setFillColor(sf::Color(200, 200, 200));
+				else
+					Shared::retryButton.setFillColor(sf::Color(155, 155, 155));
+				if (Shared::homeButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::homeButton.setFillColor(sf::Color(200, 200, 200));
+				else
+					Shared::homeButton.setFillColor(sf::Color(155, 155, 155));
+			}
 			break;
 
 		case sf::Event::MouseButtonPressed:
@@ -129,6 +142,18 @@ void Game::pollEvents() {
 					else if (isSaveSceneOn) {
 						isSaveSceneOn = false;
 						isGameplayOn = true;
+					}
+					else if (isGameOver) {
+						if (Shared::homeButton.getGlobalBounds().contains(mouseButtonPosition)) {
+							// Retourne au menu principal
+							isHomePageOn = true;
+							isGameOver = false;
+						}
+						else if (Shared::retryButton.getGlobalBounds().contains(mouseButtonPosition)) {
+							// recharge une save pour relancer le jeu
+							isSaveSceneOn = true;
+							isGameOver = false;
+						}
 					}
 				}
 			}
@@ -195,6 +220,10 @@ void Game::draw(Assets& assets) {
 		// La save scene est statique pour le moment
 		window.setView(window.getDefaultView());
 		assets.drawSavePage(window);
+	}
+	else if (isGameOver) {
+		window.setView(window.getDefaultView());
+		assets.drawGameOver(window);
 	}
 
 	window.display();

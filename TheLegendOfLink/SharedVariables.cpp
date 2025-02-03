@@ -79,3 +79,12 @@ sf::Texture Shared::playerSwordTexture;
 // Player
 	std::vector<sf::Texture> Shared::playerTextures;
 	std::vector<sf::Texture> Shared::playerTexturesBack;
+ // Fonts
+sf::Text Shared::homeButtonText;
+sf::Text Shared::retryButtonText;
+// Textures
+sf::Texture Shared::gameOverBackgroundTexture;
+// RectangleShape
+sf::RectangleShape Shared::gameOverBackground;
+sf::RectangleShape Shared::retryButton;
+sf::RectangleShape Shared::homeButton;
