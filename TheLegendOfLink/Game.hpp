@@ -1,6 +1,7 @@
 #pragma once
 // STD library
 #include <iostream>
+#include <thread>
 
 // SFML
 #include "SFML/Audio.hpp"
@@ -22,6 +23,7 @@ private:
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
+	std::thread renderer;
 
 private:
 	sf::Vector2f spawnPos;
