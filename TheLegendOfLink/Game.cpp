@@ -16,7 +16,7 @@ float deltaTime = 1.0f;
 sf::Clock cloc;
 
 Game::Game() : 
-	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode(sf::VideoMode::getFullscreenModes().at(0)), "The Legend Of Link", sf::Style::Fullscreen)
 {
 	spawnPos = {960,540};
 	event = {};
@@ -26,6 +26,7 @@ Game::Game() :
 	// 1 / (1920 / ((1920 - 1080) / 2)) = 0.21875f ~ 21.875%
 	mapView.setViewport(sf::FloatRect(spacingBetweenMapAndBorder, 0.0f, 1.0f - 2 * spacingBetweenMapAndBorder , 1.0f));
 	window.setFramerateLimit(60);
+	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
 	isRunning = true;
@@ -67,6 +68,21 @@ void Game::pollEvents() {
 			isRunning = false;
 			break;
 
+		case sf::Event::KeyPressed:
+			switch (event.key.code) {
+			case sf::Keyboard::Escape:
+				if (isGameplayOn) {
+					isGameplayOn = false;
+					isSettingsSceneOn = true;
+				}
+				else if (isSettingsSceneOn) {
+					isSettingsSceneOn = false;
+					isGameplayOn = true;
+				}
+				break;
+			}
+			break;
+
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
 			if (isHomePageOn) {
@@ -97,6 +113,8 @@ void Game::pollEvents() {
 						}
 						else if (Shared::settingsButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Ouvrir le menu settings
+							isHomePageOn = false;
+							isSettingsSceneOn = true;
 						}
 						else if (Shared::leaveButton.getGlobalBounds().contains(mouseButtonPosition)) {
 							// Sauvegarder la progression et quitter le jeu
@@ -154,6 +172,10 @@ void Game::draw(Assets& assets) {
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
 		assets.drawHomePage(window);
+	}
+	else if (isSettingsSceneOn) {
+		window.setView(window.getDefaultView());
+		assets.drawSettingsPage(window);
 	}
 	else if (isSaveSceneOn) {
 		// La save scene est statique pour le moment
