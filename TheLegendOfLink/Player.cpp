@@ -27,25 +27,26 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
     {
         isAttacking = true;
     }
-    std::cout << "collide\n";
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
     {
-        spriteEntity.move(speed * 1.5 * deltaTime, 0);
+        spriteEntity.move(speed * deltaTime, 0);
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                spriteEntity.move(-speed * 1.5 * deltaTime, 0);
+                std::cout << "collide\n";
+                spriteEntity.move(-speed * deltaTime, 0);
                 moving = false;
             }
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !moving)
     {
-        spriteEntity.move(-speed * 1.5 * deltaTime, 0);
+        spriteEntity.move(-speed * deltaTime, 0);
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                spriteEntity.move(speed * 1.5 * deltaTime, 0);
+                std::cout << "collide\n";
+                spriteEntity.move(speed * deltaTime, 0);
                 moving = false;
             }
         }
@@ -57,6 +58,7 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                std::cout << "collide\n";
                 spriteEntity.move(0, speed * deltaTime);
                 moving = false;
             }
@@ -69,6 +71,7 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                std::cout << "collide\n";
                 spriteEntity.move(0, -speed * deltaTime);
                 moving = false;
             }

@@ -2,6 +2,8 @@
 // STD library
 #include <iostream>
 #include <thread>
+#include <iomanip>
+#include <sstream>
 
 // SFML
 #include "SFML/Audio.hpp"
@@ -44,6 +46,7 @@ public:
 	void run();
 
 private:
+	void update();
 	void pollEvents();
 	void draw(Assets& assets);
 
