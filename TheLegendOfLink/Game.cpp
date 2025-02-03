@@ -32,6 +32,7 @@ Game::Game() :
 	isRunning = true;
 	// Scenes
 	isHomePageOn = true;
+	isSettingsSceneOn = false;
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
@@ -45,6 +46,7 @@ Game::~Game() {
 void Game::run() {
 	
 	Assets assets(window);
+	renderer = std::thread(&Game::draw, this, std::ref(assets));
 	player.init(Shared::playerSprite, spawnPos);
 	Bokoblin bok;
 	bok.init(Shared::playerSprite, spawnPos);
@@ -57,6 +59,7 @@ void Game::run() {
 
 	}
 
+	renderer.join();
 	std::cout << "Programme termine" << '\n';
 	window.close();
 }
