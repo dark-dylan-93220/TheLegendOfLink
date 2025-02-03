@@ -20,7 +20,7 @@ sf::Vector2f normalizeVector(const sf::Vector2f& vector)
     return sf::Vector2f(vector.x / length, vector.y / length);
 }
 
-void Eprojectiles::update(float& deltaTime, sf::Event& event)
+void Eprojectiles::update(float& deltaTime, sf::Event& event, Map& map)
 {
     lifetime += deltaTime;
     spriteEntity.move(normalizeVector(targetPosition - selfPos)* 100.0f * deltaTime);

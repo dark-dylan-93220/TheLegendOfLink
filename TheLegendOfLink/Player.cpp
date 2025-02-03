@@ -9,7 +9,7 @@ void Player::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
     spawnPos = position;
     spriteEntity = sprite;
-    spriteEntity.setScale(0.4f, 0.2f);
+    spriteEntity.setScale(0.35f, 0.15f);
     spriteEntity.setPosition(spawnPos);
 }
 
@@ -21,31 +21,32 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         isAttacking = true;
     }
     std::cout << "collide\n";
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
     {
-        spriteEntity.move(speed * deltaTime, 0);
+        spriteEntity.move(speed * 1.5 * deltaTime, 0);
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                spriteEntity.move(-speed * deltaTime, 0);
+                spriteEntity.move(-speed * 1.5 * deltaTime, 0);
                 moving = false;
             }
         }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !moving)
     {
-        spriteEntity.move(-speed * deltaTime, 0);
+        spriteEntity.move(-speed * 1.5 * deltaTime, 0);
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                spriteEntity.move(speed * deltaTime, 0);
+                spriteEntity.move(speed * 1.5 * deltaTime, 0);
                 moving = false;
             }
         }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !moving)
     {
         spriteEntity.move(0, -speed * deltaTime);
+        back = true;
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
@@ -54,15 +55,35 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
             }
         }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !moving)
     {
         spriteEntity.move(0, speed * deltaTime);
+        back = false;
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
                 spriteEntity.move(0, -speed * deltaTime);
                 moving = false;
             }
+        }
+    }
+    if (moving)
+    {
+        if (frame > 5)
+        {
+            frame = 0;
+        }
+        if (clo.getElapsedTime().asSeconds() > 0.15f && !back)
+        {
+            spriteEntity.setTexture(Shared::playerTextures.at(frame));
+            clo.restart();
+            frame++;
+        }
+        else if (clo.getElapsedTime().asSeconds() > 0.15f && back)
+        {
+            spriteEntity.setTexture(Shared::playerTexturesBack.at(frame));
+            clo.restart();
+            frame++;
         }
     }
     moving = false;

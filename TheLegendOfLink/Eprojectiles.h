@@ -10,7 +10,7 @@ public:
 public:
     Eprojectiles(sf::Vector2f playerPos);
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;
-    void update(float& deltaTime, sf::Event& event) override;
+    void update(float& deltaTime, sf::Event& event, Map& map) override;
     void draw(sf::RenderWindow& window) override;
     ~Eprojectiles();
 };
