@@ -2,6 +2,7 @@
 #include "AssetLoader.hpp"
 #include "SharedVariables.h"
 #include "Bokoblin.h"
+#include "HearthContainer.hpp"
 
 namespace {
 	// Utilis� pour les variables souvent utilis�es dans ce fichier, pour �viter les copies
@@ -156,4 +157,33 @@ void Game::draw(Assets& assets) {
 	}
 
 	window.display();
+}
+
+void Game::update() {
+	// Vérification des collisions avec les ennemis
+	for (auto& enemy : ennemies) {
+		if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
+			player.takeDamage(1);
+		}
+	}
+
+	// Vérification des collisions avec les objets récupérables
+	for (auto it = objects.begin(); it != objects.end(); ) {
+		if (player.intersects(**it)) {
+			HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
+			if (heart) {
+				player.heal(heart->getHealAmount());  // Soigne le joueur
+				delete* it;  // Libère la mémoire
+				it = objects.erase(it);  // Supprime l’objet de la liste
+				continue;
+			}
+		}
+		++it;
+	}
+
+	// Vérification du Game Over
+	if (player.isDead()) {
+		isGameplayOn = false;
+		isGameOver = true;
+	}
 }

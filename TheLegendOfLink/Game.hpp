@@ -21,6 +21,8 @@ private:
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
+	std::vector<Ennemies> ennemies;  // Liste des ennemis
+	std::vector<Entity*> objects;  // Liste des objets (genre coffres, receptacles de coeurs...)
 
 private:
 	sf::Vector2f spawnPos;
@@ -42,5 +44,5 @@ public:
 private:
 	void pollEvents();
 	void draw(Assets& assets);
-
+	void update();
 };

@@ -12,6 +12,16 @@ private:
     bool moving = false;
     bool isAttacking = false;
     bool back = false;
+    float health;
+    bool isInvincible;
+    sf::Clock invincibilityTimer;
+public:
+    void takeDamage(float damage);
+    void heal(float amount);
+    bool isDead() const;
+    float getHealth() const;
+    void updateInvincibility();
+    bool isCurrentlyInvincible() const;
 public:
     Player();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;

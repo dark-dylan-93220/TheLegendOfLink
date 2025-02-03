@@ -150,6 +150,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="AssetLoader.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="HearthContainer.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SharedVariables.h" />
