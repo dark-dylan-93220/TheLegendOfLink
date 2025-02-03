@@ -128,6 +128,7 @@ void Game::draw(Assets& assets) {
 		//window.draw(whiteBackground);
 		player.update(deltaTime,event, map);
 		player.draw(window);
+		player.attaquer(window, map);
 		
 		for (auto& bok : ennemies) {
 			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))

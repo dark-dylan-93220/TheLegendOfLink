@@ -1,4 +1,5 @@
 #include "Map.hpp"
+#include <iostream>
 
 void Map::resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY) {
     sprite.setTexture(texture);
@@ -14,7 +15,9 @@ void Map::loadFromFile(const std::string& filename) {
         mapData.push_back(line);
     }
     murTexture.loadFromFile("assets/tiles/wall.png");
-    grassTexture.loadFromFile("assets/tiles/grass.png");
+    grassTexture.loadFromFile("assets/tiles/grass.png"); 
+    herbeTexture.loadFromFile("assets/tiles/herbe.png");
+    korogusTexture.loadFromFile("assets/tiles/korogus.png");
 }
 
 void Map::addVector() {
@@ -32,12 +35,30 @@ void Map::addVector() {
                 grassSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesGrass.push_back(grassSprite);
             }
+            if (mapData[y][x] == 'h') {
+                sf::Sprite herbeSprite;
+                resize(herbeTexture, herbeSprite, SIZEX, SIZEY);
+                herbeSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesHerbes.push_back(herbeSprite);
+            }
+            if (mapData[y][x] == 'K') {
+                sf::Sprite korogusSprite;
+                resize(korogusTexture, korogusSprite, SIZEX, SIZEY);
+                korogusSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesKorogus.push_back(korogusSprite);
+            }
         }
     }
 }
 
 void Map::draw(sf::RenderWindow& window) {
     for (auto elem : spritesGrass) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesKorogus) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesHerbes) {
         window.draw(elem);
     }
     for (auto elem : spritesWall) {

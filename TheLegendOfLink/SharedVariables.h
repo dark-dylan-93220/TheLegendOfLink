@@ -4,6 +4,10 @@
 
 
 class Shared {
+//
+public:
+	static sf::Texture playerSwordTexture;
+
 // HomePage
 public:
 	// Fonts

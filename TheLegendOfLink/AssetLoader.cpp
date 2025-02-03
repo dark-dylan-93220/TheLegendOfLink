@@ -36,6 +36,7 @@ void Assets::loadAssetsFromFiles() {
 	Shared::saveSlotNumberTwo.loadFromFile("assets/saveSelection/saveSlotTwoNumber.png");
 	Shared::saveSlotNumberThree.loadFromFile("assets/saveSelection/saveSlotThreeNumber.png");
 	Shared::heartTexture.loadFromFile("assets/saveSelection/heart.png");
+	Shared::playerSwordTexture.loadFromFile("assets/playerSprites/sword.png");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {

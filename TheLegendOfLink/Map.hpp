@@ -7,7 +7,7 @@
 
 class Map {
 private:
-    sf::Texture murTexture, grassTexture;
+    sf::Texture murTexture, grassTexture, korogusTexture, herbeTexture;
 
 public:
     bool doorLocked = true;
@@ -16,6 +16,8 @@ public:
     std::vector<std::string> mapData;
     std::vector<sf::Sprite> spritesWall;
     std::vector<sf::Sprite> spritesGrass;
+    std::vector<sf::Sprite> spritesHerbes;
+    std::vector<sf::Sprite> spritesKorogus;
 
 public:
     bool isObstacle(double x, double y);
