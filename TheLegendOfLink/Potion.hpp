@@ -1,4 +1,4 @@
-#pragma one
+#pragma once
 #include "Objet.hpp"
 
 class Potion : public Objet<int>

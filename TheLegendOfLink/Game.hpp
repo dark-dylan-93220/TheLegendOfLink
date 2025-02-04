@@ -26,12 +26,14 @@ private:
 	sf::View mapView;
 	sf::Event event;
 	std::thread renderer;
+	std::vector<Entity*> objects;  // Liste des objets (genre coffres, receptacles de coeurs...)
 
 private:
 	sf::Vector2f spawnPos;
 	std::vector<Bokoblin> ennemies;
 	float spacingBetweenMapAndBorder;
 	bool isRunning;
+	bool isGameOver;
 	bool lockClick;
 	bool isHomePageOn;
 	bool isSettingsSceneOn;
@@ -46,8 +48,8 @@ public:
 	void run();
 
 private:
-	void update();
+	void updateGame();
 	void pollEvents();
 	void draw(Assets& assets);
-
+	void update();
 };

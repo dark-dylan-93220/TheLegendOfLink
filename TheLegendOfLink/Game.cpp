@@ -2,6 +2,7 @@
 #include "AssetLoader.hpp"
 #include "SharedVariables.h"
 #include "Bokoblin.h"
+#include "HearthContainer.hpp"
 
 
 sf::Vector2f pos = sf::Vector2f(200.0f,200.0f);
@@ -29,7 +30,9 @@ Game::Game() :
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	// Boolean members
+	isHomePageOn = false;
 	isRunning = true;
+	isGameOver = false;
 	// Scenes
 	isHomePageOn = true;
 	isSettingsSceneOn = false;
@@ -37,6 +40,7 @@ Game::Game() :
 	isGameplayOn = false;
 	lockClick = false;
 	map.addVector();
+	isRunning = true;
 }
 
 Game::~Game() {
@@ -51,7 +55,7 @@ void Game::run() {
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
-	renderer = std::thread(&Game::update, this);
+	renderer = std::thread(&Game::updateGame, this);
 
 	while (window.isOpen() && isRunning) {
 
@@ -102,6 +106,16 @@ void Game::pollEvents() {
 				else
 					Shared::leaveButton.setFillColor(sf::Color(155, 155, 155));
 			}
+			if (isGameOver) {
+				if (Shared::retryButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::retryButton.setFillColor(sf::Color(200, 200, 200));
+				else
+					Shared::retryButton.setFillColor(sf::Color(155, 155, 155));
+				if (Shared::homeButton.getGlobalBounds().contains(mouseMovePosition))
+					Shared::homeButton.setFillColor(sf::Color(200, 200, 200));
+				else
+					Shared::homeButton.setFillColor(sf::Color(155, 155, 155));
+			}
 			break;
 
 		case sf::Event::MouseButtonPressed:
@@ -127,6 +141,18 @@ void Game::pollEvents() {
 					else if (isSaveSceneOn) {
 						isSaveSceneOn = false;
 						isGameplayOn = true;
+					}
+					else if (isGameOver) {
+						if (Shared::homeButton.getGlobalBounds().contains(mouseButtonPosition)) {
+							// Retourne au menu principal
+							isHomePageOn = true;
+							isGameOver = false;
+						}
+						else if (Shared::retryButton.getGlobalBounds().contains(mouseButtonPosition)) {
+							// recharge une save pour relancer le jeu
+							isSaveSceneOn = true;
+							isGameOver = false;
+						}
 					}
 				}
 			}
@@ -194,5 +220,39 @@ void Game::draw(Assets& assets) {
 		window.setView(window.getDefaultView());
 		assets.drawSavePage(window);
 	}
+	else if (isGameOver) {
+		window.setView(window.getDefaultView());
+		assets.drawGameOver(window);
+	}
+
 	window.display();
+}
+
+void Game::update() {
+	// Vérification des collisions avec les ennemis
+	for (auto& enemy : ennemies) {
+		if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
+			player.takeDamage(1);
+		}
+	}
+
+	// Vérification des collisions avec les objets récupérables
+	for (auto it = objects.begin(); it != objects.end(); ) {
+		if (player.intersects(**it)) {
+			HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
+			if (heart) {
+				player.heal(heart->getHealAmount());  // Soigne le joueur
+				delete* it;  // Libère la mémoire
+				it = objects.erase(it);  // Supprime l’objet de la liste
+				continue;
+			}
+		}
+		++it;
+	}
+
+	// Vérification du Game Over
+	if (player.isDead()) {
+		isGameplayOn = false;
+		isGameOver = true;
+	}
 }
