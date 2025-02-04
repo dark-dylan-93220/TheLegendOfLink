@@ -168,24 +168,6 @@ void Game::pollEvents() {
 	}
 }
 
-void Game::update() {
-	while (window.isOpen() && isRunning) {
-		deltaTime = cloc.restart().asSeconds();
-
-		player.update(deltaTime, event, map);
-
-		for (auto& bok : ennemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
-			{
-				bok.followUpdate(deltaTime, player);
-			}
-			else
-			{
-				bok.update(deltaTime, event, map);
-			}
-		}
-	}
-}
 
 void Game::draw(Assets& assets) {
 
@@ -228,31 +210,50 @@ void Game::draw(Assets& assets) {
 	window.display();
 }
 
-void Game::update() {
-	// Vérification des collisions avec les ennemis
-	for (auto& enemy : ennemies) {
-		if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
-			player.takeDamage(1);
-		}
-	}
+void Game::updateGame() {
+	while (window.isOpen() && isRunning) {
+		deltaTime = cloc.restart().asSeconds();
 
-	// Vérification des collisions avec les objets récupérables
-	for (auto it = objects.begin(); it != objects.end(); ) {
-		if (player.intersects(**it)) {
-			HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
-			if (heart) {
-				player.heal(heart->getHealAmount());  // Soigne le joueur
-				delete* it;  // Libère la mémoire
-				it = objects.erase(it);  // Supprime l’objet de la liste
-				continue;
+		player.update(deltaTime, event, map);
+
+		for (auto& bok : ennemies) {
+			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
+			{
+				bok.followUpdate(deltaTime, player);
+			}
+			else
+			{
+				bok.update(deltaTime, event, map);
 			}
 		}
-		++it;
+		// Vérification des collisions avec les ennemis
+		for (auto& enemy : ennemies) {
+			if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
+				player.takeDamage(1);
+			}
+		}
+
+		// Vérification des collisions avec les objets récupérables
+		for (auto it = objects.begin(); it != objects.end(); ) {
+			if (player.intersects(**it)) {
+				HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
+				if (heart) {
+					player.heal(heart->getHealAmount());  // Soigne le joueur
+					delete* it;  // Libère la mémoire
+					it = objects.erase(it);  // Supprime l’objet de la liste
+					continue;
+				}
+			}
+			++it;
+		}
+
+		// Vérification du Game Over
+		if (player.isDead()) {
+			isGameplayOn = false;
+			isGameOver = true;
+		}
+		
 	}
 
-	// Vérification du Game Over
-	if (player.isDead()) {
-		isGameplayOn = false;
-		isGameOver = true;
-	}
+	
 }

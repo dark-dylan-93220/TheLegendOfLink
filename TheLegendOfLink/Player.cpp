@@ -10,7 +10,7 @@ void Player::takeDamage(float damage) {
     if (health <= 0) health = 0;
     // Active l'invincibilité pendant 2 secondes
     isInvincible = true;
-    invincibilityTimer.restart();
+    invincibilityTimer = 0.f;
 }
 
 void Player::heal(float amount) {
@@ -26,11 +26,6 @@ float Player::getHealth() const {
     return health;
 }
 
-void Player::updateInvincibility() {
-    if (isInvincible && invincibilityTimer.getElapsedTime().asSeconds() >= 2.0f) {
-        isInvincible = false;  // Fin de l’invincibilité après 2 secondes
-    }
-}
 
 bool Player::isCurrentlyInvincible() const {
     return isInvincible;
@@ -53,7 +48,11 @@ void Player::init(sf::Sprite& sprite, sf::Vector2f& position)
 
 void Player::update(float& deltaTime, sf::Event& event, Map& map)
 {
+    invincibilityTimer += deltaTime;
     hitBox.setPosition(spriteEntity.getPosition());
+    if (isInvincible && invincibilityTimer >= 2.0f) {
+        isInvincible = false;  // Fin de l’invincibilité après 2 secondes
+    }
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
         isAttacking = true;
@@ -157,7 +156,7 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
 void Player::draw(sf::RenderWindow& window)
 {
     if (isInvincible) {
-        int alpha = (invincibilityTimer.getElapsedTime().asMilliseconds() / 100) % 2 == 0 ? 255 : 100;
+        int alpha = (std::fmod(invincibilityTimer / 100.0f, 2.0f)) == 0.0f ? 255 : 100;
         spriteEntity.setColor(sf::Color(255, 255, 255, alpha));  // Clignotement
     }
     else {

@@ -51,5 +51,4 @@ private:
 	void updateGame();
 	void pollEvents();
 	void draw(Assets& assets);
-	void update();
 };

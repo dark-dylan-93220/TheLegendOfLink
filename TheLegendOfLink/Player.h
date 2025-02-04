@@ -18,7 +18,7 @@ private:
     bool back = false;
     float health;
     bool isInvincible;
-    sf::Clock invincibilityTimer;
+    float invincibilityTimer;
     int korogus;
     int rubis;
 public:
