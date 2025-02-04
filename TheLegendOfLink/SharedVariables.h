@@ -24,6 +24,8 @@ public:
 	static std::vector<sf::Texture> playerTexturesBack;
 	static sf::Sprite playerSprite;
 	static sf::Texture gameOverBackgroundTexture;
+	static sf::Texture projectileTexture;
+	static sf::Sprite projectileSprite;
 	// RectangleShape
 	static sf::RectangleShape homePageBackground;
 	static sf::RectangleShape playButton;
@@ -39,7 +41,7 @@ public:
 	// STD Data
 	//static int numberOfHearts;
 	//static float playTime;
-	// Un autre pour le moment de la dernière sauvegarde
+	// Un autre pour le moment de la derniï¿½re sauvegarde
 
 	// Texts
 	static sf::Text saveTitleText;
@@ -60,7 +62,7 @@ public:
 	static sf::Texture saveSlotNumberTwo;
 	static sf::Texture saveSlotNumberThree;
 
-	// RectangleShape (commentaire -> &texture ou sf::Color associée)
+	// RectangleShape (commentaire -> &texture ou sf::Color associï¿½e)
 	static sf::RectangleShape heartSprite;              // -> &heartTexture
 	static sf::RectangleShape savePageBackground;       // -> &saveBackground
 	static sf::RectangleShape saveSlotOne;              // -> sf::Color(255,255,255,20);

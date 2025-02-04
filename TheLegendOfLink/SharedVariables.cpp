@@ -18,6 +18,8 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::Texture Shared::backgroundTexture;
 	sf::Texture Shared::playerTexture;
 	sf::Sprite Shared::playerSprite;
+	sf::Texture Shared::projectileTexture;
+	sf::Sprite Shared::projectileSprite;
 	// RectangleShape
 	sf::RectangleShape Shared::homePageBackground;
 	sf::RectangleShape Shared::playButton;
