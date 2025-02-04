@@ -8,20 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/AssetLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/AssetLoader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Eprojectiles.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Eprojectiles.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Eprojectiles.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Eprojectiles.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/SharedVariables.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Debug/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/TheLegendOfLink.exe" afterDir="false" />
     </list>
@@ -90,7 +82,7 @@
     "C/C++ Project.TheLegendOfLink.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "arc",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
