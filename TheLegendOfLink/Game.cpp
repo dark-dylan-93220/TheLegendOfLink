@@ -55,7 +55,7 @@ void Game::run() {
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
-	renderer = std::thread(&Game::updateGame, this);
+	renderer = std::thread(&Game::updateGame, this,std::ref(event));
 
 	while (window.isOpen() && isRunning) {
 
@@ -121,6 +121,10 @@ void Game::pollEvents() {
 
 		case sf::Event::MouseButtonPressed:
 			mouseButtonPosition = { (float)event.mouseButton.x, (float)event.mouseButton.y };
+			if (event.mouseButton.button == sf::Mouse::Right)
+			{
+				lockClick = true;
+			}
 			if (event.mouseButton.button == sf::Mouse::Left) {
 				if (!lockClick) { // Pour �viter la r�p�tition en boucle d'une action avec un seul clic
 					lockClick = true;
@@ -184,17 +188,11 @@ void Game::draw(Assets& assets) {
 		
 
 		for (auto& bok : ennemies) {
-			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100)) {
-				bok.followUpdate(deltaTime, player);
-			}
-			else {
-				bok.update(deltaTime, event, map);
-			}
 			bok.draw(window);
 		}
 
 		//std::cout << deltaTime << '\n';
-		std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
+		//std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
 		for (int i = 0; i < map.spritesCailloux.size(); i++) {
 			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
 			{
@@ -227,10 +225,10 @@ void Game::draw(Assets& assets) {
 	window.display();
 }
 
-void Game::updateGame() {
+void Game::updateGame(sf::Event& event) {
 	while (window.isOpen() && isRunning) {
 		deltaTime = cloc.restart().asSeconds();
-
+		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);
 
 		for (auto& bok : ennemies) {

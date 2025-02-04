@@ -2,6 +2,7 @@
 
 #include "SharedVariables.h"
 #include "Entity.h"
+#include "Eprojectiles.h"
 #include <iostream>
 
 class Player : public Entity
@@ -20,8 +21,11 @@ private:
     bool isInvincible;
     float invincibilityTimer;
     int rubis = 0;
-
-
+    
+public:
+    std::vector<std::unique_ptr<Eprojectiles>> projectiles;
+    sf::Clock playerLockClick;
+    sf::Vector2f tampon;
 
 public:
     Player();

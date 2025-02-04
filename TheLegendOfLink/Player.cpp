@@ -42,7 +42,7 @@ void Player::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
     spawnPos = position;
     spriteEntity = sprite;
-    spriteEntity.setScale(0.35f, 0.15f);
+    spriteEntity.setScale(0.15f * (16.0f/9.0f), 0.15f);
     spriteEntity.setPosition(spawnPos);
 }
 
@@ -56,6 +56,33 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
         isAttacking = true;
+    }
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && playerLockClick.getElapsedTime().asSeconds() >= 1.5f)
+    {
+        projectiles.push_back(std::make_unique<Eprojectiles>((tampon)));
+        tampon = spriteEntity.getPosition();
+        projectiles.back()->init(Shared::projectileSprite,tampon);
+        playerLockClick.restart();
+    }
+    for (auto& projectile : projectiles)
+    {
+        if (projectile == nullptr){}
+        
+        else if (projectile->lifetime >= 5.f)
+        {
+            projectiles.erase(std::find(projectiles.begin(), projectiles.end(),projectile));
+        }
+        else
+        {
+            projectile->update(deltaTime,event,map);
+            for (int i = 0; i < map.spritesWall.size(); i++) {
+                if (map.spritesWall[i].getGlobalBounds().intersects(projectile->getSprite().getGlobalBounds())) {
+                    projectile->isColliding = true;
+                }
+            }
+            projectile->lifetime += deltaTime;
+        }
+        
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !moving)
     {
@@ -169,7 +196,11 @@ void Player::draw(sf::RenderWindow& window)
     else {
         spriteEntity.setColor(sf::Color(255, 255, 255, 255));  // Normal
     }
-
+    for (auto& projectile : projectiles)
+    {
+        if (projectile == nullptr){}
+        projectile->draw(window);
+    }
     window.draw(spriteEntity);
 }
 

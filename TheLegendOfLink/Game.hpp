@@ -49,7 +49,7 @@ public:
 	void run();
 
 private:
-	void updateGame();
+	void updateGame(sf::Event& event);
 	void pollEvents();
 	void draw(Assets& assets);
 };

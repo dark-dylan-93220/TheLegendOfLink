@@ -50,6 +50,7 @@ void Assets::loadAssetsFromFiles() {
 	Shared::playerSwordTexture.loadFromFile("assets/playerSprites/sword.png");
 	Shared::gameOverBackgroundTexture.loadFromFile("assets/images/GameOverBackground.jpg");
 	Shared::caillouxEnMietteTexture.loadFromFile("assets/tiles/caillouxEnMiette.png");
+	Shared::projectileTexture.loadFromFile("assets/ennemies/projectile/rock.png");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -58,6 +59,7 @@ void Assets::initHomePage(sf::RenderWindow& window) {
 	Shared::homePageBackground.setFillColor(sf::Color::White);
 	Shared::homePageBackground.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::homePageBackground.getSize().x / 2.f, 0.f));
 	Shared::playerSprite.setTexture(Shared::playerTextures.at(0));
+	Shared::projectileSprite.setTexture(Shared::projectileTexture);
 	Shared::homePageBackground.setTexture(&Shared::backgroundTexture);
 
 	// Boutons menu home

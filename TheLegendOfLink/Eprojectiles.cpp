@@ -8,6 +8,7 @@ void Eprojectiles::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
     spriteEntity = sprite;
     spriteEntity.setPosition(position);
+    spriteEntity.setScale((16.0f/9.0f), 1);
     selfPos = position;
 }
 
@@ -17,18 +18,24 @@ sf::Vector2f normalizeVector(const sf::Vector2f& vector)
     
     if (length == 0.0f)
         return sf::Vector2f(0.0f, 0.0f);
-    return sf::Vector2f(vector.x / length, vector.y / length);
+    return sf::Vector2f(vector.x / length * (16.0f/9.0f), vector.y / length);
 }
 
 void Eprojectiles::update(float& deltaTime, sf::Event& event, Map& map)
 {
     lifetime += deltaTime;
-    spriteEntity.move(normalizeVector(targetPosition - selfPos)* 100.0f * deltaTime);
+    if (!isColliding)
+        spriteEntity.move(normalizeVector(targetPosition - selfPos)* 300.0f * deltaTime);
 }
 
 void Eprojectiles::draw(sf::RenderWindow& window)
 {
     window.draw(spriteEntity);
+}
+
+sf::Sprite Eprojectiles::getSprite()
+{
+    return spriteEntity;
 }
 
 Eprojectiles::~Eprojectiles() {}
