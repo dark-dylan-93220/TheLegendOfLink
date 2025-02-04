@@ -41,7 +41,6 @@ Game::Game() :
 	lockClick = false;
 	map.addVector();
 	isRunning = true;
-	isGameOver = true;
 }
 
 Game::~Game() {
@@ -93,6 +92,7 @@ void Game::pollEvents() {
 
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
+			std::cout << mouseMovePosition.x << ", " << mouseMovePosition.y << '\n';
 			if (isHomePageOn) {
 				if (Shared::playButton.getGlobalBounds().contains(mouseMovePosition))
 					Shared::playButton.setFillColor(sf::Color(200,200,200));
@@ -117,6 +117,33 @@ void Game::pollEvents() {
 				else
 					Shared::homeButton.setFillColor(sf::Color(155, 155, 155));
 			}
+			if(isSaveSceneOn) {
+				if (Shared::saveSlotOne.getGlobalBounds().contains(mouseMovePosition)) {
+					Shared::saveIntSlotOne.setFillColor(sf::Color(255, 255, 255));
+					Shared::saveNumberRectOne.setFillColor(sf::Color(255, 255, 255));
+				}
+				else {
+					Shared::saveIntSlotOne.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveNumberRectOne.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveRectOneText.setFillColor(sf::Color(255, 255, 255));
+				}
+				if (Shared::saveSlotTwo.getGlobalBounds().contains(mouseMovePosition)) {
+					Shared::saveIntSlotTwo.setFillColor(sf::Color(255, 255, 255));
+					Shared::saveNumberRectTwo.setFillColor(sf::Color(255, 255, 255));
+				}
+				else {
+					Shared::saveIntSlotTwo.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveNumberRectTwo.setFillColor(sf::Color(50, 50, 50));
+				}
+				if (Shared::saveSlotThree.getGlobalBounds().contains(mouseMovePosition)) {
+					Shared::saveIntSlotThree.setFillColor(sf::Color(255, 255, 255));
+					Shared::saveNumberRectThree.setFillColor(sf::Color(255, 255, 255));
+				}
+				else {
+					Shared::saveIntSlotThree.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveNumberRectThree.setFillColor(sf::Color(50, 50, 50));
+				}
+			}
 			break;
 
 		case sf::Event::MouseButtonPressed:
@@ -140,8 +167,10 @@ void Game::pollEvents() {
 						}
 					}
 					else if (isSaveSceneOn) {
-						isSaveSceneOn = false;
-						isGameplayOn = true;
+						if (Shared::saveSlotOne.getGlobalBounds().contains(mouseButtonPosition)) {
+							isSaveSceneOn = false;
+							isGameplayOn = true;
+						}
 					}
 					else if (isGameOver) {
 						if (Shared::homeButton.getGlobalBounds().contains(mouseButtonPosition)) {

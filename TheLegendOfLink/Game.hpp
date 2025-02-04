@@ -32,6 +32,8 @@ private:
 	sf::Vector2f spawnPos;
 	std::vector<Bokoblin> ennemies;
 	float spacingBetweenMapAndBorder;
+	float totalPlayTime = 0.f;
+	float saveTime = 0.f;
 	bool isRunning;
 	bool isGameOver;
 	bool lockClick;

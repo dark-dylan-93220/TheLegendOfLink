@@ -31,6 +31,9 @@ sf::Texture Shared::playerSwordTexture;
 	sf::Text Shared::cancelChoiceText;
 	sf::Text Shared::saveTimeText;
 	sf::Text Shared::totalPlayTimeText;
+	sf::Text Shared::saveRectOneText;
+	sf::Text Shared::saveRectTwoText;
+	sf::Text Shared::saveRectThreeText;
 
 	// Textures & Sprites
 	sf::Texture Shared::heartTexture;

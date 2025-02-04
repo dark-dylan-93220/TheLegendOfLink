@@ -49,6 +49,9 @@ public:
 	static sf::Text cancelChoiceText;
 	static sf::Text saveTimeText;
 	static sf::Text totalPlayTimeText;
+	static sf::Text saveRectOneText;
+	static sf::Text saveRectTwoText;
+	static sf::Text saveRectThreeText;
 
 	// Textures & Sprites
 	static sf::Texture heartTexture;
