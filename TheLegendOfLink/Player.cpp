@@ -15,7 +15,8 @@ void Player::takeDamage(float damage) {
 
 void Player::heal(float amount) {
     health += amount;
-    if (health > 10) health = 10;  // (à modifier si jamais)
+    if (health > 10) health = 10; // (à modifier si jamais)
+    if (health > maxHealth) { health = maxHealth; }
 }
 
 bool Player::isDead() const {
@@ -124,6 +125,28 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         }
     }
     moving = false;
+    for (int i = 0; i < map.spritesBocaux.size(); i++)
+    {
+        if (map.spritesBocaux[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+            map.spritesBocaux.erase(map.spritesBocaux.begin() + i);
+            possedeBocal = true;
+        }
+    }
+    for (int i = 0; i < map.spritesFairy.size(); i++)
+    {
+        if (map.spritesFairy[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds()) && possedeBocal) {
+            map.spritesFairy.erase(map.spritesFairy.begin() + i);
+            possedeFairy = true;
+        }
+    }
+    for (int i = 0; i < map.spritesReceptacles.size(); i++)
+    {
+        if (map.spritesReceptacles[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+            map.spritesReceptacles.erase(map.spritesReceptacles.begin() + i);
+            maxHealth++;
+            heal(1);
+        }
+    }
 }
 
 void Player::attaquer(sf::RenderWindow& window, Map& map) {
@@ -157,7 +180,6 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
             std::cout << "rubis : " << rubis << std::endl;
         }
     }
-    
 }
 
 void Player::draw(sf::RenderWindow& window)

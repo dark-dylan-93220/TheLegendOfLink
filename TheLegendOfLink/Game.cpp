@@ -238,17 +238,16 @@ void Game::updateGame() {
 			{
 				bok.followUpdate(deltaTime, player);
 			}
-			else
-			{
+			else {
 				bok.update(deltaTime, event, map);
 			}
 		}
 		// Vérification des collisions avec les ennemis
-		for (auto& enemy : ennemies) {
+		/*for (auto& enemy : ennemies) {
 			if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
 				player.takeDamage(1);
 			}
-		}
+		}*/
 
 		// Vérification des collisions avec les objets récupérables
 		for (auto it = objects.begin(); it != objects.end(); ) {
@@ -266,6 +265,11 @@ void Game::updateGame() {
 
 		// Vérification du Game Over
 		if (player.isDead()) {
+			if (player.possedeFairy) { // sauve de la mort si t'as une fee
+				player.heal(player.maxHealth);
+				player.possedeFairy = false;
+				//peut etre donner 1s d'invincibilité ?
+			}
 			isGameplayOn = false;
 			isGameOver = true;
 		}

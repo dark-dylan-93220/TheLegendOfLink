@@ -19,6 +19,9 @@ void Map::loadFromFile(const std::string& filename) {
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
     korogusTexture.loadFromFile("assets/tiles/korogus.png");
     caillouxTexture.loadFromFile("assets/tiles/caillou.png");
+    bocauxTexture.loadFromFile("assets/tiles/bocaux.png");
+    fairyTexture.loadFromFile("assets/tiles/fairy.png");
+    receptacleTexture.loadFromFile("assets/tiles/receptacle.png");
 }
 
 void Map::addVector() {
@@ -54,6 +57,24 @@ void Map::addVector() {
                 caillouxSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesCailloux.push_back(caillouxSprite);
             }
+            if (mapData[y][x] == 'B') {
+                sf::Sprite bocauxSprite;
+                resize(bocauxTexture, bocauxSprite, SIZEX, SIZEY);
+                bocauxSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesBocaux.push_back(bocauxSprite);
+            }
+            if (mapData[y][x] == 'F') {
+                sf::Sprite fairySprite;
+                resize(fairyTexture, fairySprite, SIZEX, SIZEY);
+                fairySprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesFairy.push_back(fairySprite);
+            }
+            if (mapData[y][x] == 'R') {
+                sf::Sprite receptacleSprite;
+                resize(receptacleTexture, receptacleSprite, SIZEX, SIZEY);
+                receptacleSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesReceptacles.push_back(receptacleSprite);
+            }
         }
     }
 }
@@ -75,6 +96,15 @@ void Map::draw(sf::RenderWindow& window) {
         window.draw(elem);
     }
     for (auto elem : spritesCaillouxEnMiette) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesBocaux) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesFairy) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesReceptacles) {
         window.draw(elem);
     }
 }

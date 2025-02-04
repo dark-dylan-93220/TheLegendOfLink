@@ -20,10 +20,12 @@ private:
     bool isInvincible;
     float invincibilityTimer;
     int rubis = 0;
-
-
+    
 
 public:
+    int maxHealth = 6;
+    bool possedeBocal = false;
+    bool possedeFairy = false;
     Player();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;
     void update(float& deltaTime,sf::Event& event, Map& map) override;

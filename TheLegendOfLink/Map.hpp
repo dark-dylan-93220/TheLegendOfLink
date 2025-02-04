@@ -7,7 +7,7 @@
 
 class Map {
 private:
-    sf::Texture murTexture, grassTexture, korogusTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture;
+    sf::Texture murTexture, grassTexture, korogusTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture;
 
 public:
     bool doorLocked = true;
@@ -20,6 +20,9 @@ public:
     std::vector<sf::Sprite> spritesKorogus;
     std::vector<sf::Sprite> spritesCailloux;
     std::vector<sf::Sprite> spritesCaillouxEnMiette;
+    std::vector<sf::Sprite> spritesBocaux;
+    std::vector<sf::Sprite> spritesFairy;
+    std::vector<sf::Sprite> spritesReceptacles;
 
     bool isObstacle(double x, double y);
     void loadFromFile(const std::string& filename);
