@@ -7,21 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="egalisation vitesse player">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheLegendOfLink/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Player.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" afterDir="false" />
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="invincibility fix">
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Debug/TheLegendOfLink.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/TheLegendOfLink.exe" afterDir="false" />
     </list>
@@ -55,16 +45,24 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/AssetLoader.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/AssetLoader.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/AssetLoader.hpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Game.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Player.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Player.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/main.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -140,7 +138,7 @@
       <workItem from="1738340392021" duration="1988000" />
       <workItem from="1738408055577" duration="2754000" />
       <workItem from="1738617602618" duration="358000" />
-      <workItem from="1738656346952" duration="4437000" />
+      <workItem from="1738656346952" duration="4954000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -270,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738661041161</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="invincibility fix">
+      <option name="closed" value="true" />
+      <created>1738662493427</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1738662493427</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +316,7 @@
     <MESSAGE value="rock" />
     <MESSAGE value="merge" />
     <MESSAGE value="egalisation vitesse player" />
-    <option name="LAST_COMMIT_MESSAGE" value="egalisation vitesse player" />
+    <MESSAGE value="invincibility fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="invincibility fix" />
   </component>
 </project>

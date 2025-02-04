@@ -75,7 +75,6 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                std::cout << "collide\n";
                 spriteEntity.move(speed * (16.f/9.f) * deltaTime, 0);
                 moving = false;
             }
@@ -88,7 +87,6 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                std::cout << "collide\n";
                 spriteEntity.move(0, speed * deltaTime);
                 moving = false;
             }
@@ -101,7 +99,6 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         moving = true;
         for (int i = 0; i < map.spritesWall.size(); i++) {
             if (map.spritesWall[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
-                std::cout << "collide\n";
                 spriteEntity.move(0, -speed * deltaTime);
                 moving = false;
             }
