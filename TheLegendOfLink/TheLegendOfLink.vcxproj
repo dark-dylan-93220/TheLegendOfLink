@@ -144,6 +144,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="SaveFileManager.cpp" />
     <ClCompile Include="SharedVariables.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Objet.hpp" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SaveFileManager.h" />
     <ClInclude Include="SharedVariables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

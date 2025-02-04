@@ -4,6 +4,7 @@
 #include <thread>
 #include <iomanip>
 #include <sstream>
+#include <ctime>
 
 // SFML
 #include "SFML/Audio.hpp"
@@ -26,7 +27,7 @@ private:
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
-	std::thread renderer;
+	std::thread updateThread;
 	std::vector<Entity*> objects;  // Liste des objets (genre coffres, receptacles de coeurs...)
 
 private:
