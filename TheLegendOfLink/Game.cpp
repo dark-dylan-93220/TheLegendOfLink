@@ -3,6 +3,7 @@
 #include "SharedVariables.h"
 #include "Bokoblin.h"
 #include "HearthContainer.hpp"
+#include "SaveFileManager.h"
 
 
 sf::Vector2f pos = sf::Vector2f(200.0f,200.0f);
@@ -49,14 +50,31 @@ Game::~Game() {
 }
 
 void Game::run() {
+
+	time_t currentTime = std::time(nullptr);
+	std::tm timeInfo;
+
+	if (localtime_s(&timeInfo, &currentTime) != 0) {
+		std::cerr << "Invalid time!" << '\n';; // Handle error
+	}
+
+	std::stringstream ss;
+	ss << std::put_time(&timeInfo, "%d/%m/%Y %H:%M");
+	std::string current = ss.str();
+	std::cout << "Current time : " << current << '\n';
+
+	SaveFileManager saveFileOne("Saves/saveSlotOne.txt");
+	SaveFileManager saveFileTwo("Saves/saveSlotTwo.txt");
+	SaveFileManager saveFileThree("Saves/saveSlotThree.txt");
 	
 	Assets assets(window);
+
 	player.init(Shared::playerSprite, spawnPos);
 	Bokoblin bok;
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
-	renderer = std::thread(&Game::updateGame, this);
+	updateThread = std::thread(&Game::updateGame, this);
 
 	while (window.isOpen() && isRunning) {
 
@@ -64,9 +82,10 @@ void Game::run() {
 		draw(assets);
 	}
 
-	renderer.join();
-	std::cout << "Programme termine" << '\n';
+	updateThread.join();
 	window.close();
+
+	std::cout << "Programme termine" << '\n';
 }
 
 void Game::pollEvents() {

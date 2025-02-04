@@ -171,7 +171,7 @@ sf::Sprite Player::getSprite()
 {
     return spriteEntity;
 }
-int Player::getKorogus() { return korogus; }
+int Player::getKorogus() const { return korogus; }
 void Player::setKorogus(int nb) { korogus = nb; }
 
 Player::~Player()

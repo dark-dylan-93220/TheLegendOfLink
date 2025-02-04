@@ -35,7 +35,7 @@ public:
     void update(float& deltaTime,sf::Event& event, Map& map) override;
     void draw(sf::RenderWindow& window) override;
     sf::Sprite getSprite();
-    int getKorogus();
+    int getKorogus() const;
     void setKorogus(int nb);
     void attaquer(sf::RenderWindow& window, Map& map);
     void resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY);

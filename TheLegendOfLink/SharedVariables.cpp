@@ -15,8 +15,6 @@ sf::Texture Shared::playerSwordTexture;
 	sf::Text Shared::leaveButtonText;
 	// Textures & Sprites
 	sf::Texture Shared::backgroundTexture;
-	sf::Texture Shared::playerTexture;
-	sf::Sprite Shared::playerSprite;
 	// RectangleShape
 	sf::RectangleShape Shared::homePageBackground;
 	sf::RectangleShape Shared::playButton;
@@ -24,6 +22,38 @@ sf::Texture Shared::playerSwordTexture;
 	sf::RectangleShape Shared::leaveButton;
 
 // SavePage
+
+	// STD Data
+	// Nom du joueur
+	std::string Shared::saveNameOne;
+	std::string Shared::saveNameTwo;
+	std::string Shared::saveNameThree;
+	// Nombre de coeurs
+	int Shared::numberOfHeartsOne;
+	int Shared::numberOfHeartsTwo;
+	int Shared::numberOfHeartsThree;
+	// Nombre de rubis
+	int Shared::numberOfRubisOne;
+	int Shared::numberOfRubisTwo;
+	int Shared::numberOfRubisThree;
+	// Présence du bocal
+	int Shared::hasBocalOne;
+	int Shared::hasBocalTwo;
+	int Shared::hasBocalThree;
+	// Play time
+	float Shared::playTimeOne;
+	float Shared::playTimeTwo;
+	float Shared::playTimeThree;
+	// Dernière position
+	sf::Vector2f Shared::savedPosOne;
+	sf::Vector2f Shared::savedPosTwo;
+	sf::Vector2f Shared::savedPosThree;
+	// Dernière save
+	time_t Shared::lastSaveTimeOne;
+	time_t Shared::lastSaveTimeTwo;
+	time_t Shared::lastSaveTimeThree;
+	
+	// Texts
 	sf::Text Shared::saveTitleText;
 	sf::Text Shared::nonCreatedSaveText;
 	sf::Text Shared::savePlayerNameText;
@@ -76,15 +106,19 @@ sf::Texture Shared::playerSwordTexture;
 	sf::RectangleShape Shared::settingsVolumeSlider;
 	sf::RectangleShape Shared::settingsSFXSlider;
 
-// Player
+	// Player
 	std::vector<sf::Texture> Shared::playerTextures;
 	std::vector<sf::Texture> Shared::playerTexturesBack;
- // Fonts
-sf::Text Shared::homeButtonText;
-sf::Text Shared::retryButtonText;
-// Textures
-sf::Texture Shared::gameOverBackgroundTexture;
-// RectangleShape
-sf::RectangleShape Shared::gameOverBackground;
-sf::RectangleShape Shared::retryButton;
-sf::RectangleShape Shared::homeButton;
+	sf::Texture Shared::playerTexture;
+	sf::Sprite Shared::playerSprite;
+
+// GameOverScreen
+	// Fonts
+	sf::Text Shared::homeButtonText;
+	sf::Text Shared::retryButtonText;
+	// Textures
+	sf::Texture Shared::gameOverBackgroundTexture;
+	// RectangleShape
+	sf::RectangleShape Shared::gameOverBackground;
+	sf::RectangleShape Shared::retryButton;
+	sf::RectangleShape Shared::homeButton;

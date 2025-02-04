@@ -1,6 +1,8 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
+#include <ctime>
+#include <optional>
 
 class Shared {
 //
@@ -37,9 +39,34 @@ public:
 // SaveScene / inspiration : https://maplequeensaku.weebly.com/uploads/9/5/7/9/95792838/twilight-princess-rel-loader-save-screen-no-file_orig.png
 public:
 	// STD Data
-	//static int numberOfHearts;
-	//static float playTime;
-	// Un autre pour le moment de la dernière sauvegarde
+	// Nombre de coeurs
+	static int numberOfHeartsOne;
+	static int numberOfHeartsTwo;
+	static int numberOfHeartsThree;
+	// Play time
+	static float playTimeOne;
+	static float playTimeTwo;
+	static float playTimeThree;
+	// Nombre de rubis
+	static int numberOfRubisOne;
+	static int numberOfRubisTwo;
+	static int numberOfRubisThree;
+	// Dernière position
+	static sf::Vector2f savedPosOne;
+	static sf::Vector2f savedPosTwo;
+	static sf::Vector2f savedPosThree;
+	// Nom du joueur
+	static std::string saveNameOne;
+	static std::string saveNameTwo;
+	static std::string saveNameThree;
+	// Dernière save
+	static time_t lastSaveTimeOne;
+	static time_t lastSaveTimeTwo;
+	static time_t lastSaveTimeThree;
+	// Présence du bocal
+	static int hasBocalOne;
+	static int hasBocalTwo;
+	static int hasBocalThree;
 
 	// Texts
 	static sf::Text saveTitleText;
