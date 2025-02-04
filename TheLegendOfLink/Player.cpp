@@ -149,7 +149,7 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
     }
     for (int i = 0; i < map.spritesCailloux.size(); i++) {
         if(&map.spritesCailloux[i] && swordPlayerSprite.getGlobalBounds().intersects(map.spritesCailloux[i].getGlobalBounds())) {
-            caillouxEnMietteSprite.setPosition(map.spritesCailloux[i].getPosition()); // --------------
+            caillouxEnMietteSprite.setPosition(map.spritesCailloux[i].getPosition());
             map.spritesCailloux[i].setScale(0, 0);
             map.spritesCaillouxEnMiette.push_back(caillouxEnMietteSprite);
 
