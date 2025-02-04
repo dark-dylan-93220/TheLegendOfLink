@@ -194,6 +194,5 @@ void Game::draw(Assets& assets) {
 		window.setView(window.getDefaultView());
 		assets.drawSavePage(window);
 	}
-
 	window.display();
 }
