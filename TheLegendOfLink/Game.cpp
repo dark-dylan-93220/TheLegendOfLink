@@ -4,6 +4,7 @@
 #include "Bokoblin.h"
 #include "HearthContainer.hpp"
 #include "SaveFileManager.h"
+#include "Map.hpp"
 
 
 sf::Vector2f pos = sf::Vector2f(200.0f,200.0f);
@@ -30,6 +31,7 @@ Game::Game() :
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
+	mapDonjon.loadFromFile("assets/tiles/map_donjon.txt");
 	// Boolean members
 	isHomePageOn = false;
 	isRunning = true;
@@ -42,7 +44,7 @@ Game::Game() :
 	lockClick = false;
 	map.addVector();
 	isRunning = true;
-	isGameOver = true;
+	inDonjon = false;
 }
 
 Game::~Game() {
@@ -74,18 +76,18 @@ void Game::run() {
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
-	updateThread = std::thread(&Game::updateGame, this);
+	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
 
 	while (window.isOpen() && isRunning) {
 
 		pollEvents();
 		draw(assets);
+
 	}
 
 	updateThread.join();
-	window.close();
-
 	std::cout << "Programme termine" << '\n';
+	window.close();
 }
 
 void Game::pollEvents() {
@@ -112,6 +114,7 @@ void Game::pollEvents() {
 
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
+			std::cout << mouseMovePosition.x << ", " << mouseMovePosition.y << '\n';
 			if (isHomePageOn) {
 				if (Shared::playButton.getGlobalBounds().contains(mouseMovePosition))
 					Shared::playButton.setFillColor(sf::Color(200,200,200));
@@ -136,10 +139,41 @@ void Game::pollEvents() {
 				else
 					Shared::homeButton.setFillColor(sf::Color(155, 155, 155));
 			}
+			if(isSaveSceneOn) {
+				if (Shared::saveSlotOne.getGlobalBounds().contains(mouseMovePosition)) {
+					Shared::saveIntSlotOne.setFillColor(sf::Color(255, 255, 255));
+					Shared::saveNumberRectOne.setFillColor(sf::Color(255, 255, 255));
+				}
+				else {
+					Shared::saveIntSlotOne.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveNumberRectOne.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveRectOneText.setFillColor(sf::Color(255, 255, 255));
+				}
+				if (Shared::saveSlotTwo.getGlobalBounds().contains(mouseMovePosition)) {
+					Shared::saveIntSlotTwo.setFillColor(sf::Color(255, 255, 255));
+					Shared::saveNumberRectTwo.setFillColor(sf::Color(255, 255, 255));
+				}
+				else {
+					Shared::saveIntSlotTwo.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveNumberRectTwo.setFillColor(sf::Color(50, 50, 50));
+				}
+				if (Shared::saveSlotThree.getGlobalBounds().contains(mouseMovePosition)) {
+					Shared::saveIntSlotThree.setFillColor(sf::Color(255, 255, 255));
+					Shared::saveNumberRectThree.setFillColor(sf::Color(255, 255, 255));
+				}
+				else {
+					Shared::saveIntSlotThree.setFillColor(sf::Color(50, 50, 50));
+					Shared::saveNumberRectThree.setFillColor(sf::Color(50, 50, 50));
+				}
+			}
 			break;
 
 		case sf::Event::MouseButtonPressed:
 			mouseButtonPosition = { (float)event.mouseButton.x, (float)event.mouseButton.y };
+			if (event.mouseButton.button == sf::Mouse::Right)
+			{
+				lockClick = true;
+			}
 			if (event.mouseButton.button == sf::Mouse::Left) {
 				if (!lockClick) { // Pour �viter la r�p�tition en boucle d'une action avec un seul clic
 					lockClick = true;
@@ -159,8 +193,10 @@ void Game::pollEvents() {
 						}
 					}
 					else if (isSaveSceneOn) {
-						isSaveSceneOn = false;
-						isGameplayOn = true;
+						if (Shared::saveSlotOne.getGlobalBounds().contains(mouseButtonPosition)) {
+							isSaveSceneOn = false;
+							isGameplayOn = true;
+						}
 					}
 					else if (isGameOver) {
 						if (Shared::homeButton.getGlobalBounds().contains(mouseButtonPosition)) {
@@ -188,24 +224,6 @@ void Game::pollEvents() {
 	}
 }
 
-void Game::updateGame() {
-	while (window.isOpen() && isRunning) {
-		deltaTime = cloc.restart().asSeconds();
-
-		player.update(deltaTime, event, map);
-
-		for (auto& bok : ennemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
-			{
-				bok.followUpdate(deltaTime, player);
-			}
-			else
-			{
-				bok.update(deltaTime, event, map);
-			}
-		}
-	}
-}
 
 void Game::draw(Assets& assets) {
 
@@ -218,14 +236,24 @@ void Game::draw(Assets& assets) {
 
 		player.draw(window);
 		player.attaquer(window, map);
-		
+
 
 		for (auto& bok : ennemies) {
 			bok.draw(window);
 		}
 
 		//std::cout << deltaTime << '\n';
-		std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
+		//std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
+		for (int i = 0; i < map.spritesCailloux.size(); i++) {
+			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
+			{
+				map.spritesCailloux.erase(map.spritesCailloux.begin() + i);
+				break;
+			}
+		}
+		
+		deltaTime = cloc.restart().asSeconds();
+		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
@@ -248,31 +276,54 @@ void Game::draw(Assets& assets) {
 	window.display();
 }
 
-void Game::update() {
-	// Vérification des collisions avec les ennemis
-	for (auto& enemy : ennemies) {
-		if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
-			player.takeDamage(1);
-		}
-	}
+void Game::updateGame(sf::Event& event) {
+	while (window.isOpen() && isRunning) {
+		deltaTime = cloc.restart().asSeconds();
+		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+		player.update(deltaTime, event, map);
 
-	// Vérification des collisions avec les objets récupérables
-	for (auto it = objects.begin(); it != objects.end(); ) {
-		if (player.intersects(**it)) {
-			HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
-			if (heart) {
-				player.heal(heart->getHealAmount());  // Soigne le joueur
-				delete* it;  // Libère la mémoire
-				it = objects.erase(it);  // Supprime l’objet de la liste
-				continue;
+		for (auto& bok : ennemies) {
+			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
+			{
+				bok.followUpdate(deltaTime, player);
+			}
+			else {
+				bok.update(deltaTime, event, map);
 			}
 		}
-		++it;
+		// Vérification des collisions avec les ennemis
+		/*for (auto& enemy : ennemies) {
+			if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
+				player.takeDamage(1);
+			}
+		}*/
+
+		// Vérification des collisions avec les objets récupérables
+		for (auto it = objects.begin(); it != objects.end(); ) {
+			if (player.intersects(**it)) {
+				HeartContainer* heart = dynamic_cast<HeartContainer*>(*it);
+				if (heart) {
+					player.heal(heart->getHealAmount());  // Soigne le joueur
+					delete* it;  // Libère la mémoire
+					it = objects.erase(it);  // Supprime l’objet de la liste
+					continue;
+				}
+			}
+			++it;
+		}
+
+		// Vérification du Game Over
+		if (player.isDead()) {
+			if (player.possedeFairy) { // sauve de la mort si t'as une fee
+				player.heal(player.maxHealth);
+				player.possedeFairy = false;
+				//peut etre donner 1s d'invincibilité ?
+			}
+			isGameplayOn = false;
+			isGameOver = true;
+		}
+		
 	}
 
-	// Vérification du Game Over
-	if (player.isDead()) {
-		isGameplayOn = false;
-		isGameOver = true;
-	}
+	
 }

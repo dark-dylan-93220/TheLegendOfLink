@@ -7,7 +7,7 @@
 class Shared {
 //
 public:
-	static sf::Texture playerSwordTexture;
+	static sf::Texture playerSwordTexture, caillouxEnMietteTexture;
 
 // HomePage
 public:
@@ -26,6 +26,8 @@ public:
 	static std::vector<sf::Texture> playerTexturesBack;
 	static sf::Sprite playerSprite;
 	static sf::Texture gameOverBackgroundTexture;
+	static sf::Texture projectileTexture;
+	static sf::Sprite projectileSprite;
 	// RectangleShape
 	static sf::RectangleShape homePageBackground;
 	static sf::RectangleShape playButton;
@@ -51,7 +53,7 @@ public:
 	static int numberOfRubisOne;
 	static int numberOfRubisTwo;
 	static int numberOfRubisThree;
-	// Dernière position
+	// DerniÃ¨re position
 	static sf::Vector2f savedPosOne;
 	static sf::Vector2f savedPosTwo;
 	static sf::Vector2f savedPosThree;
@@ -59,11 +61,11 @@ public:
 	static std::string saveNameOne;
 	static std::string saveNameTwo;
 	static std::string saveNameThree;
-	// Dernière save
+	// DerniÃ¨re save
 	static time_t lastSaveTimeOne;
 	static time_t lastSaveTimeTwo;
 	static time_t lastSaveTimeThree;
-	// Présence du bocal
+	// PrÃ©sence du bocal
 	static int hasBocalOne;
 	static int hasBocalTwo;
 	static int hasBocalThree;
@@ -76,6 +78,9 @@ public:
 	static sf::Text cancelChoiceText;
 	static sf::Text saveTimeText;
 	static sf::Text totalPlayTimeText;
+	static sf::Text saveRectOneText;
+	static sf::Text saveRectTwoText;
+	static sf::Text saveRectThreeText;
 
 	// Textures & Sprites
 	static sf::Texture heartTexture;
@@ -87,7 +92,7 @@ public:
 	static sf::Texture saveSlotNumberTwo;
 	static sf::Texture saveSlotNumberThree;
 
-	// RectangleShape (commentaire -> &texture ou sf::Color associée)
+	// RectangleShape (commentaire -> &texture ou sf::Color associï¿½e)
 	static sf::RectangleShape heartSprite;              // -> &heartTexture
 	static sf::RectangleShape savePageBackground;       // -> &saveBackground
 	static sf::RectangleShape saveSlotOne;              // -> sf::Color(255,255,255,20);

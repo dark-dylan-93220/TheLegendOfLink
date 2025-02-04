@@ -45,6 +45,8 @@ void Assets::loadAssetsFromFiles() {
 	Shared::heartTexture.loadFromFile("assets/saveSelection/heart.png");
 	Shared::playerSwordTexture.loadFromFile("assets/playerSprites/sword.png");
 	Shared::gameOverBackgroundTexture.loadFromFile("assets/images/GameOverBackground.jpg");
+	Shared::caillouxEnMietteTexture.loadFromFile("assets/tiles/caillouxEnMiette.png");
+	Shared::projectileTexture.loadFromFile("assets/ennemies/projectile/rock.png");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -53,6 +55,7 @@ void Assets::initHomePage(sf::RenderWindow& window) {
 	Shared::homePageBackground.setFillColor(sf::Color::White);
 	Shared::homePageBackground.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::homePageBackground.getSize().x / 2.f, 0.f));
 	Shared::playerSprite.setTexture(Shared::playerTextures.at(0));
+	Shared::projectileSprite.setTexture(Shared::projectileTexture);
 	Shared::homePageBackground.setTexture(&Shared::backgroundTexture);
 
 	// Boutons menu home
@@ -139,17 +142,20 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	Shared::savePageBackground.setSize(sf::Vector2f(window.getSize().y, window.getSize().y));
 	Shared::savePageBackground.setTexture(&Shared::saveBackground);
 	Shared::savePageBackground.setPosition(window.getSize().x / 2.f - window.getSize().y / 2.f, 0.f);
+	
 	Shared::saveSlotTwo.setSize(sf::Vector2f(window.getSize().y * 0.589743f, window.getSize().y / 6.f));
 	Shared::saveSlotTwo.setFillColor(sf::Color(255, 255, 200, 128));
 	Shared::saveSlotTwo.setPosition(sf::Vector2f(window.getSize().x / 2.f - Shared::saveSlotTwo.getSize().x / 2.f, window.getSize().y / 2.f - Shared::saveSlotTwo.getSize().y / 2.f + window.getSize().y * 0.005f));
+	
 	Shared::saveSlotOne = Shared::saveSlotTwo;
 	Shared::saveSlotOne.setSize(sf::Vector2f(Shared::saveSlotTwo.getSize().x, window.getSize().y * 0.153846f));
 	Shared::saveSlotOne.move(sf::Vector2f(0.f, window.getSize().y * -0.1925f));
+	
 	Shared::saveSlotThree = Shared::saveSlotTwo;
 	Shared::saveSlotThree.setSize(Shared::saveSlotOne.getSize());
 	Shared::saveSlotThree.move(sf::Vector2f(0.f, window.getSize().y * 0.204f));
 
-	// Dimensions des saves slots de 46x12 pixels, variables qui m'aident à faire des mesures.
+	// Dimensions des saves slots de 46x12 pixels, variables qui m'aident ï¿½ faire des mesures.
 	float saveSlotXPixel = Shared::saveSlotOne.getSize().x / 46.f;
 	float saveSlotYPixel = Shared::saveSlotOne.getSize().y / 12.f;
 	float saveSlotCenterY = Shared::saveSlotTwo.getSize().y / 13.f; // Exception, saveSlotTwo est en 46x13 pixels :(
@@ -158,7 +164,7 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	Shared::saveIntSlotOne.setSize(sf::Vector2f(42.f * saveSlotXPixel, 8.f * saveSlotYPixel));
 	Shared::saveIntSlotOne.setPosition(Shared::saveSlotOne.getPosition().x + 2.f * saveSlotXPixel, Shared::saveSlotOne.getPosition().y + 2.f * saveSlotYPixel);
 	Shared::saveIntSlotOne.setTexture(&Shared::saveIntSlot);
-	Shared::saveIntSlotOne.setFillColor(sf::Color(50,50,50));
+	Shared::saveIntSlotOne.setFillColor(sf::Color(50, 50, 50));
 
 	// Slot 2 Int
 	Shared::saveIntSlotTwo.setSize(sf::Vector2f(42.f * saveSlotXPixel, 9.f * saveSlotCenterY));
@@ -186,15 +192,36 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	// Save slot numbers
 	Shared::saveNumberRectOne.setSize(sf::Vector2f(Shared::saveIntSlotOne.getSize().y * 0.80f, Shared::saveIntSlotOne.getSize().y * 0.80f));
 	Shared::saveNumberRectOne.setTexture(&Shared::saveSlotNumberOne);
+	Shared::saveNumberRectOne.setFillColor(sf::Color(50, 50, 50));
 	Shared::saveNumberRectOne.setPosition(Shared::saveIntSlotOne.getPosition().x + (13.f / 280.f) * Shared::saveIntSlotOne.getSize().x, Shared::saveIntSlotOne.getPosition().y + 0.10f * Shared::saveIntSlotOne.getSize().y);
 
 	Shared::saveNumberRectTwo.setSize(sf::Vector2f(Shared::saveIntSlotOne.getSize().y * 0.80f, Shared::saveIntSlotTwo.getSize().y * 0.80f));
 	Shared::saveNumberRectTwo.setTexture(&Shared::saveSlotNumberTwo);
+	Shared::saveNumberRectTwo.setFillColor(sf::Color(50, 50, 50));
 	Shared::saveNumberRectTwo.setPosition(Shared::saveIntSlotOne.getPosition().x + (13.f / 280.f) * Shared::saveIntSlotOne.getSize().x, Shared::saveIntSlotTwo.getPosition().y + 0.10f * Shared::saveIntSlotTwo.getSize().y);
 
 	Shared::saveNumberRectThree.setSize(sf::Vector2f(Shared::saveIntSlotThree.getSize().y * 0.80f, Shared::saveIntSlotThree.getSize().y * 0.80f));
 	Shared::saveNumberRectThree.setTexture(&Shared::saveSlotNumberThree);
+	Shared::saveNumberRectThree.setFillColor(sf::Color(50, 50, 50));
 	Shared::saveNumberRectThree.setPosition(Shared::saveIntSlotThree.getPosition().x + (13.f / 280.f)* Shared::saveIntSlotThree.getSize().x, Shared::saveIntSlotThree.getPosition().y + 0.10f * Shared::saveIntSlotThree.getSize().y);
+
+	Shared::saveRectOneText.setFont(Shared::pixelNes);
+	Shared::saveRectOneText.setCharacterSize(45);
+	Shared::saveRectOneText.setFillColor(sf::Color::White);
+	Shared::saveRectOneText.setString("1");
+	Shared::saveRectOneText.setPosition(Shared::saveNumberRectOne.getPosition().x + Shared::saveNumberRectOne.getSize().x / 2.f - Shared::saveRectOneText.getLocalBounds().width / 2.f, Shared::saveNumberRectOne.getPosition().y + Shared::saveNumberRectOne.getSize().y / 2.f - Shared::saveRectOneText.getLocalBounds().height / 2.f - Shared::saveRectOneText.getLocalBounds().top);
+
+	Shared::saveRectTwoText.setFont(Shared::pixelNes);
+	Shared::saveRectTwoText.setCharacterSize(45);
+	Shared::saveRectTwoText.setFillColor(sf::Color::White);
+	Shared::saveRectTwoText.setString("2");
+	Shared::saveRectTwoText.setPosition(Shared::saveNumberRectTwo.getPosition().x + Shared::saveNumberRectTwo.getSize().x / 2.f - Shared::saveRectTwoText.getLocalBounds().width / 2.f, Shared::saveNumberRectTwo.getPosition().y + Shared::saveNumberRectTwo.getSize().y / 2.f - Shared::saveRectTwoText.getLocalBounds().height / 2.f - Shared::saveRectTwoText.getLocalBounds().top);
+
+	Shared::saveRectThreeText.setFont(Shared::pixelNes);
+	Shared::saveRectThreeText.setCharacterSize(45);
+	Shared::saveRectThreeText.setFillColor(sf::Color::White);
+	Shared::saveRectThreeText.setString("3");
+	Shared::saveRectThreeText.setPosition(Shared::saveNumberRectThree.getPosition().x + Shared::saveNumberRectThree.getSize().x / 2.f - Shared::saveRectThreeText.getLocalBounds().width / 2.f, Shared::saveNumberRectThree.getPosition().y + Shared::saveNumberRectThree.getSize().y / 2.f - Shared::saveRectThreeText.getLocalBounds().height / 2.f - Shared::saveRectThreeText.getLocalBounds().top);
 
 	// Save non existant
 	Shared::nonCreatedSaveText.setFont(Shared::pixelNes);
@@ -318,6 +345,7 @@ void Assets::drawSavePage(sf::RenderWindow& window) {
 	window.draw(Shared::saveIntSlotOne);
 	window.draw(Shared::saveNumberRectOne);
 	window.draw(Shared::savePlayerNameText);
+	window.draw(Shared::saveRectOneText);
 
 	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
 	for (int i = 0; i < Shared::numberOfHeartsOne; ++i) {
@@ -362,6 +390,8 @@ void Assets::drawSavePage(sf::RenderWindow& window) {
 	window.draw(Shared::saveTimePlayTimeBar);
 
 	Shared::savePlayerNameText.move(0, -betweenSaveOneAndTwo);
+	//window.draw(Shared::nonCreatedSaveText);
+	window.draw(Shared::saveRectTwoText);
 
 	// Slot 3
 
@@ -372,6 +402,11 @@ void Assets::drawSavePage(sf::RenderWindow& window) {
 	window.draw(Shared::saveSlotThree);
 	window.draw(Shared::saveIntSlotThree);
 	window.draw(Shared::saveNumberRectThree);
+	//Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotThree.getSize().x * 0.10f, Shared::saveIntSlotThree.getPosition().y + Shared::saveIntSlotThree.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
+	//window.draw(Shared::nonCreatedSaveText);
+	//Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotTwo.getSize().x * 0.10f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotTwo.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
+	window.draw(Shared::saveRectThreeText);
+
 
 	Shared::savePlayerNameText.setString(Shared::saveNameThree);
 	window.draw(Shared::savePlayerNameText);

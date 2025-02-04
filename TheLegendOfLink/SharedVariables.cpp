@@ -7,6 +7,7 @@
 
 // HomePage
 sf::Texture Shared::playerSwordTexture;
+sf::Texture Shared::caillouxEnMietteTexture;
 	 // Fonts
 	sf::Font Shared::pixelNes;
 	// Texts
@@ -15,6 +16,10 @@ sf::Texture Shared::playerSwordTexture;
 	sf::Text Shared::leaveButtonText;
 	// Textures & Sprites
 	sf::Texture Shared::backgroundTexture;
+	sf::Texture Shared::playerTexture;
+	sf::Sprite Shared::playerSprite;
+	sf::Texture Shared::projectileTexture;
+	sf::Sprite Shared::projectileSprite;
 	// RectangleShape
 	sf::RectangleShape Shared::homePageBackground;
 	sf::RectangleShape Shared::playButton;
@@ -61,6 +66,9 @@ sf::Texture Shared::playerSwordTexture;
 	sf::Text Shared::cancelChoiceText;
 	sf::Text Shared::saveTimeText;
 	sf::Text Shared::totalPlayTimeText;
+	sf::Text Shared::saveRectOneText;
+	sf::Text Shared::saveRectTwoText;
+	sf::Text Shared::saveRectThreeText;
 
 	// Textures & Sprites
 	sf::Texture Shared::heartTexture;
@@ -109,8 +117,6 @@ sf::Texture Shared::playerSwordTexture;
 	// Player
 	std::vector<sf::Texture> Shared::playerTextures;
 	std::vector<sf::Texture> Shared::playerTexturesBack;
-	sf::Texture Shared::playerTexture;
-	sf::Sprite Shared::playerSprite;
 
 // GameOverScreen
 	// Fonts

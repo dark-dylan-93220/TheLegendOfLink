@@ -23,6 +23,7 @@ class Game {
 private:
 	Player player;
 	Map map;
+	Map mapDonjon;
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
@@ -32,7 +33,10 @@ private:
 private:
 	sf::Vector2f spawnPos;
 	std::vector<Bokoblin> ennemies;
+	std::vector<std::unique_ptr<sf::Sprite>> toDelete;
 	float spacingBetweenMapAndBorder;
+	float totalPlayTime = 0.f;
+	float saveTime = 0.f;
 	bool isRunning;
 	bool isGameOver;
 	bool lockClick;
@@ -40,6 +44,7 @@ private:
 	bool isSettingsSceneOn;
 	bool isGameplayOn;
 	bool isSaveSceneOn;
+	bool inDonjon;
 
 public:
 	Game();
@@ -49,8 +54,7 @@ public:
 	void run();
 
 private:
-	void updateGame();
+	void updateGame(sf::Event& event);
 	void pollEvents();
 	void draw(Assets& assets);
-	void update();
 };

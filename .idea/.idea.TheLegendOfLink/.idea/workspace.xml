@@ -7,13 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.command.1.tlog" afterDir="false" />
+    <list default="true" id="a1438538-7863-46ca-8c53-837101719fa4" name="Changes" comment="merge">
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.exe.recipe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/CL.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/Cl.items.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/TheLegendOfLink.lastbuildstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.secondary.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/link.write.1.tlog" afterDir="false" />
@@ -31,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="collisions" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,14 +48,33 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/AssetLoader.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/AssetLoader.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/AssetLoader.hpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Entity.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Game.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Map.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Map.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Map.hpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Map.hpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Player.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/Player.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/cleme/RiderProjects/TheLegendOfLink/TheLegendOfLink/Player.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TheLegendOfLink/main.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -131,6 +149,8 @@
       <workItem from="1738230226259" duration="1507000" />
       <workItem from="1738340392021" duration="1988000" />
       <workItem from="1738408055577" duration="2754000" />
+      <workItem from="1738617602618" duration="358000" />
+      <workItem from="1738656346952" duration="11498000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -244,7 +264,47 @@
       <option name="project" value="LOCAL" />
       <updated>1738342082245</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="merge">
+      <option name="closed" value="true" />
+      <created>1738617742824</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738617742824</updated>
+    </task>
+    <task id="LOCAL-00016" summary="egalisation vitesse player">
+      <option name="closed" value="true" />
+      <created>1738661041161</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1738661041161</updated>
+    </task>
+    <task id="LOCAL-00017" summary="invincibility fix">
+      <option name="closed" value="true" />
+      <created>1738662493427</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1738662493427</updated>
+    </task>
+    <task id="LOCAL-00018" summary="merge">
+      <option name="closed" value="true" />
+      <created>1738662941386</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1738662941386</updated>
+    </task>
+    <task id="LOCAL-00019" summary="merge">
+      <option name="closed" value="true" />
+      <created>1738669853396</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1738669853396</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +342,9 @@
     <MESSAGE value="projectiles" />
     <MESSAGE value="correction sprite zelda (la taille du cotée invisible)" />
     <MESSAGE value="rock" />
-    <option name="LAST_COMMIT_MESSAGE" value="rock" />
+    <MESSAGE value="egalisation vitesse player" />
+    <MESSAGE value="invincibility fix" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
 </project>
