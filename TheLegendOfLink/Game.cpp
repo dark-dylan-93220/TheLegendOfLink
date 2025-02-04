@@ -61,6 +61,7 @@ void Game::run() {
 
 		pollEvents();
 		draw(assets);
+
 	}
 
 	renderer.join();
@@ -183,11 +184,27 @@ void Game::draw(Assets& assets) {
 		
 
 		for (auto& bok : ennemies) {
+			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100)) {
+				bok.followUpdate(deltaTime, player);
+			}
+			else {
+				bok.update(deltaTime, event, map);
+			}
 			bok.draw(window);
 		}
 
 		//std::cout << deltaTime << '\n';
 		std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
+		for (int i = 0; i < map.spritesCailloux.size(); i++) {
+			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
+			{
+				map.spritesCailloux.erase(map.spritesCailloux.begin() + i);
+				break;
+			}
+		}
+		
+		deltaTime = cloc.restart().asSeconds();
+		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());

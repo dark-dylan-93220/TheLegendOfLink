@@ -5,7 +5,7 @@
 class Shared {
 //
 public:
-	static sf::Texture playerSwordTexture;
+	static sf::Texture playerSwordTexture, caillouxEnMietteTexture;
 
 // HomePage
 public:

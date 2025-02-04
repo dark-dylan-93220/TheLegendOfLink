@@ -49,6 +49,7 @@ void Assets::loadAssetsFromFiles() {
 	Shared::heartTexture.loadFromFile("assets/saveSelection/heart.png");
 	Shared::playerSwordTexture.loadFromFile("assets/playerSprites/sword.png");
 	Shared::gameOverBackgroundTexture.loadFromFile("assets/images/GameOverBackground.jpg");
+	Shared::caillouxEnMietteTexture.loadFromFile("assets/tiles/caillouxEnMiette.png");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {
@@ -153,7 +154,7 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	Shared::saveSlotThree.setSize(Shared::saveSlotOne.getSize());
 	Shared::saveSlotThree.move(sf::Vector2f(0.f, window.getSize().y * 0.204f));
 
-	// Dimensions des saves slots de 46x12 pixels, variables qui m'aident à faire des mesures.
+	// Dimensions des saves slots de 46x12 pixels, variables qui m'aident ï¿½ faire des mesures.
 	float saveSlotXPixel = Shared::saveSlotOne.getSize().x / 46.f;
 	float saveSlotYPixel = Shared::saveSlotOne.getSize().y / 12.f;
 	float saveSlotCenterY = Shared::saveSlotTwo.getSize().y / 13.f; // Exception, saveSlotTwo est en 46x13 pixels :(

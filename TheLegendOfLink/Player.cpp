@@ -131,6 +131,7 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
 
 void Player::attaquer(sf::RenderWindow& window, Map& map) {
     resize(Shared::playerSwordTexture, swordPlayerSprite, 120, 120);
+    resize(Shared::caillouxEnMietteTexture, caillouxEnMietteSprite, 32, 32);
     if (isAttacking) { incrAttack++; }
     if (incrAttack > 18) {
         incrAttack = 0;
@@ -141,16 +142,25 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
         swordPlayerSprite.setRotation(incrAttack * 20);
         window.draw(swordPlayerSprite);
     }
-    for (int i = 0; i < map.spritesHerbes.size(); i++)
-    {
+    for (int i = 0; i < map.spritesHerbes.size(); i++) {
         if (swordPlayerSprite.getGlobalBounds().intersects(map.spritesHerbes[i].getGlobalBounds()))
         {
             map.spritesHerbes.erase(map.spritesHerbes.begin() + i);
             rubis++;
+            std::cout << "rubis : " << rubis << std::endl;
         }
-        
+    }
+    for (int i = 0; i < map.spritesCailloux.size(); i++) {
+        if(&map.spritesCailloux[i] && swordPlayerSprite.getGlobalBounds().intersects(map.spritesCailloux[i].getGlobalBounds())) {
+            caillouxEnMietteSprite.setPosition(map.spritesCailloux[i].getPosition()); // --------------
+            map.spritesCailloux[i].setScale(0, 0);
+            map.spritesCaillouxEnMiette.push_back(caillouxEnMietteSprite);
 
-    } 
+            rubis++;
+            std::cout << "rubis : " << rubis << std::endl;
+        }
+    }
+    
 }
 
 void Player::draw(sf::RenderWindow& window)
@@ -170,8 +180,8 @@ sf::Sprite Player::getSprite()
 {
     return spriteEntity;
 }
-int Player::getKorogus() { return korogus; }
-void Player::setKorogus(int nb) { korogus = nb; }
+int Player::getRubis() { return rubis; }
+void Player::setRubis(int nb) { rubis = nb; }
 
 Player::~Player()
 {

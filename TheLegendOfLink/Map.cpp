@@ -18,6 +18,7 @@ void Map::loadFromFile(const std::string& filename) {
     grassTexture.loadFromFile("assets/tiles/grass.png"); 
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
     korogusTexture.loadFromFile("assets/tiles/korogus.png");
+    caillouxTexture.loadFromFile("assets/tiles/caillou.png");
 }
 
 void Map::addVector() {
@@ -47,6 +48,12 @@ void Map::addVector() {
                 korogusSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesKorogus.push_back(korogusSprite);
             }
+            if (mapData[y][x] == 'C') {
+                sf::Sprite caillouxSprite;
+                resize(caillouxTexture, caillouxSprite, SIZEX, SIZEY);
+                caillouxSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesCailloux.push_back(caillouxSprite);
+            }
         }
     }
 }
@@ -64,13 +71,19 @@ void Map::draw(sf::RenderWindow& window) {
     for (auto elem : spritesWall) {
         window.draw(elem);
     }
+    for (auto elem : spritesCailloux) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesCaillouxEnMiette) {
+        window.draw(elem);
+    }
 }
 
 bool Map::isObstacle(double x, double y) {
     int tileX = x / (double)SIZEX;
     int tileY = y / (double)SIZEY;
 
-    if (mapData[tileY][tileX] == '#' || mapData[tileY][tileX] == 'D' || mapData[tileY][tileX] == 'd') {
+    if (mapData[tileY][tileX] == '#' || mapData[tileY][tileX] == 'C') {
         return true;
     }
     return false;
