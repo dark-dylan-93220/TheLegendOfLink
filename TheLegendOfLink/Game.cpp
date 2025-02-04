@@ -3,6 +3,7 @@
 #include "SharedVariables.h"
 #include "Bokoblin.h"
 #include "HearthContainer.hpp"
+#include "Map.hpp"
 
 
 sf::Vector2f pos = sf::Vector2f(200.0f,200.0f);
@@ -29,6 +30,7 @@ Game::Game() :
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
+	mapDonjon.loadFromFile("assets/tiles/map_donjon.txt");
 	// Boolean members
 	isHomePageOn = false;
 	isRunning = true;
@@ -41,6 +43,7 @@ Game::Game() :
 	lockClick = false;
 	map.addVector();
 	isRunning = true;
+	inDonjon = false;
 }
 
 Game::~Game() {
@@ -215,7 +218,7 @@ void Game::draw(Assets& assets) {
 
 		player.draw(window);
 		player.attaquer(window, map);
-		
+
 
 		for (auto& bok : ennemies) {
 			bok.draw(window);

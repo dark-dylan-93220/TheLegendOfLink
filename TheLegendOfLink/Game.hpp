@@ -22,6 +22,7 @@ class Game {
 private:
 	Player player;
 	Map map;
+	Map mapDonjon;
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;
@@ -42,6 +43,7 @@ private:
 	bool isSettingsSceneOn;
 	bool isGameplayOn;
 	bool isSaveSceneOn;
+	bool inDonjon;
 
 public:
 	Game();

@@ -7,13 +7,14 @@
 
 class Map {
 private:
-    sf::Texture murTexture, grassTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture;
+    sf::Texture murTexture, grassTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture, wallDonjonTexture, floorDonjonTexture, porteTexture;
 
 public:
     bool doorLocked = true;
     const float SIZEX = sf::VideoMode::getDesktopMode().height / 13.5f;
     const float SIZEY = sf::VideoMode::getDesktopMode().height / 27.0f;
     std::vector<std::string> mapData;
+    std::vector<std::string> mapDonjonData;
     std::vector<sf::Sprite> spritesWall;
     std::vector<sf::Sprite> spritesGrass;
     std::vector<sf::Sprite> spritesHerbes;
@@ -24,6 +25,10 @@ public:
     std::vector<sf::Sprite> spritesFairy;
     std::vector<sf::Sprite> spritesReceptacles;
 
+    std::vector<sf::Sprite> spritesWallDonjon;
+    std::vector<sf::Sprite> spritesFloorDonjon;
+    std::vector<sf::Sprite> spritesPorte;
+public:
     bool isObstacle(double x, double y);
     void loadFromFile(const std::string& filename);
     void draw(sf::RenderWindow& window);
