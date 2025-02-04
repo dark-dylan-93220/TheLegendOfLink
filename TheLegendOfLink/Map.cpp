@@ -17,7 +17,6 @@ void Map::loadFromFile(const std::string& filename) {
     murTexture.loadFromFile("assets/tiles/wall.png");
     grassTexture.loadFromFile("assets/tiles/grass.png"); 
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
-    korogusTexture.loadFromFile("assets/tiles/korogus.png");
     caillouxTexture.loadFromFile("assets/tiles/caillou.png");
     bocauxTexture.loadFromFile("assets/tiles/bocaux.png");
     fairyTexture.loadFromFile("assets/tiles/fairy.png");
@@ -44,12 +43,6 @@ void Map::addVector() {
                 resize(herbeTexture, herbeSprite, SIZEX, SIZEY);
                 herbeSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesHerbes.push_back(herbeSprite);
-            }
-            if (mapData[y][x] == 'K') {
-                sf::Sprite korogusSprite;
-                resize(korogusTexture, korogusSprite, SIZEX, SIZEY);
-                korogusSprite.setPosition(x * SIZEX, y * SIZEY);
-                spritesKorogus.push_back(korogusSprite);
             }
             if (mapData[y][x] == 'C') {
                 sf::Sprite caillouxSprite;
@@ -81,9 +74,6 @@ void Map::addVector() {
 
 void Map::draw(sf::RenderWindow& window) {
     for (auto elem : spritesGrass) {
-        window.draw(elem);
-    }
-    for (auto elem : spritesKorogus) {
         window.draw(elem);
     }
     for (auto elem : spritesHerbes) {

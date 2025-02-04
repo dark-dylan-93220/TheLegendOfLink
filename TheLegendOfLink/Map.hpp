@@ -7,7 +7,7 @@
 
 class Map {
 private:
-    sf::Texture murTexture, grassTexture, korogusTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture;
+    sf::Texture murTexture, grassTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture;
 
 public:
     bool doorLocked = true;

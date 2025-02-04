@@ -151,7 +151,7 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
 
 void Player::attaquer(sf::RenderWindow& window, Map& map) {
     resize(Shared::playerSwordTexture, swordPlayerSprite, 120, 120);
-    resize(Shared::caillouxEnMietteTexture, caillouxEnMietteSprite, 32, 32);
+    resize(Shared::caillouxEnMietteTexture, caillouxEnMietteSprite, 80, 40);
     if (isAttacking) { incrAttack++; }
     if (incrAttack > 18) {
         incrAttack = 0;
@@ -163,8 +163,7 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
         window.draw(swordPlayerSprite);
     }
     for (int i = 0; i < map.spritesHerbes.size(); i++) {
-        if (swordPlayerSprite.getGlobalBounds().intersects(map.spritesHerbes[i].getGlobalBounds()))
-        {
+        if (swordPlayerSprite.getGlobalBounds().intersects(map.spritesHerbes[i].getGlobalBounds())) {
             map.spritesHerbes.erase(map.spritesHerbes.begin() + i);
             rubis++;
             std::cout << "rubis : " << rubis << std::endl;
