@@ -12,7 +12,7 @@ void Potion::init(sf::Sprite& sprite, sf::Vector2f& position) {
 
 void Potion::update(float& deltaTime, sf::Event& event) {
 	if (recolte) {
-
+		
 	}
 }
 

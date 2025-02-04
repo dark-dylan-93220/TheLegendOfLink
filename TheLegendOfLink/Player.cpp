@@ -1,6 +1,7 @@
 ﻿#include "Player.h"
 #include "SharedVariables.h"
 #include "Entity.h"
+#include "Game.hpp"
 Player::Player(): health(3) {}
 
 sf::Clock clo;

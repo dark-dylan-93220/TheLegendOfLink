@@ -1,4 +1,5 @@
 #include "Map.hpp"
+#include "Game.hpp"
 #include <iostream>
 
 void Map::resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY) {
@@ -11,13 +12,20 @@ void Map::resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, 
 void Map::loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
     std::string line;
+
     while (getline(file, line)) {
         mapData.push_back(line);
+    }
+    while (getline(file, line)) {
+        mapDonjonData.push_back(line);
     }
     murTexture.loadFromFile("assets/tiles/wall.png");
     grassTexture.loadFromFile("assets/tiles/grass.png"); 
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
     korogusTexture.loadFromFile("assets/tiles/korogus.png");
+    wallDonjonTexture.loadFromFile("assets/tiles/wall_donjon.png");
+    floorDonjonTexture.loadFromFile("assets/tiles/floor_donjon.png");
+    porteTexture.loadFromFile("assets/tiles/porte.png");
 }
 
 void Map::addVector() {
@@ -47,6 +55,29 @@ void Map::addVector() {
                 korogusSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesKorogus.push_back(korogusSprite);
             }
+            if (mapData[y][x] == 'P') {
+                sf::Sprite porteSprite;
+                resize(porteTexture, porteSprite, SIZEX, SIZEY);
+                porteSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesPorte.push_back(porteSprite);
+            }
+
+        }
+    }
+    for (size_t y = 0; y < mapDonjonData.size(); ++y) {
+        for (size_t x = 0; x < mapDonjonData[y].size(); ++x) {
+            if (mapDonjonData[y][x] == 'w') {
+                sf::Sprite wallDonjonSprite;
+                resize(wallDonjonTexture, wallDonjonSprite, SIZEX, SIZEY);
+                wallDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesWallDonjon.push_back(wallDonjonSprite);
+            }
+            if (mapDonjonData[y][x] == 'f') {
+                sf::Sprite floorDonjonSprite;
+                resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
+                floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesFloorDonjon.push_back(floorDonjonSprite);
+            }
         }
     }
 }
@@ -64,6 +95,15 @@ void Map::draw(sf::RenderWindow& window) {
     for (auto elem : spritesWall) {
         window.draw(elem);
     }
+    for (auto elem : spritesWallDonjon) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesFloorDonjon) {
+        window.draw(elem);
+    }
+    for (auto elem : spritesPorte) {
+        window.draw(elem);
+    }
 }
 
 bool Map::isObstacle(double x, double y) {
@@ -71,6 +111,9 @@ bool Map::isObstacle(double x, double y) {
     int tileY = y / (double)SIZEY;
 
     if (mapData[tileY][tileX] == '#' || mapData[tileY][tileX] == 'D' || mapData[tileY][tileX] == 'd') {
+        return true;
+    }
+    if (mapDonjonData[tileY][tileX] == 'w') {
         return true;
     }
     return false;
