@@ -25,6 +25,7 @@ private:
 private:
 	sf::Vector2f spawnPos;
 	std::vector<Bokoblin> ennemies;
+	std::vector<std::unique_ptr<sf::Sprite>> toDelete;
 	float spacingBetweenMapAndBorder;
 	bool isRunning;
 	bool lockClick;

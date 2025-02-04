@@ -13,7 +13,7 @@ float deltaTime = 1.0f;
 sf::Clock cloc;
 
 Game::Game() : 
-	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link", sf::Style::Fullscreen)
+	window(sf::VideoMode(sf::VideoMode::getDesktopMode().height,sf::VideoMode::getDesktopMode().height), "The Legend Of Link"/*, sf::Style::Fullscreen*/)
 {
 	spawnPos = {960,540};
 	event = {};
@@ -131,19 +131,23 @@ void Game::draw(Assets& assets) {
 		player.attaquer(window, map);
 		
 		for (auto& bok : ennemies) {
-			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100))
-			{
+			if ((std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x), std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y)) < (100, 100)) {
 				bok.followUpdate(deltaTime, player);
 			}
-			else
-			{
+			else {
 				bok.update(deltaTime, event, map);
 			}
 			bok.draw(window);
 		}
+		for (int i = 0; i < map.spritesCailloux.size(); i++) {
+			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
+			{
+				map.spritesCailloux.erase(map.spritesCailloux.begin() + i);
+				break;
+			}
+		}
 		
 		deltaTime = cloc.restart().asSeconds();
-		std::cout << deltaTime << '\n';
 		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {

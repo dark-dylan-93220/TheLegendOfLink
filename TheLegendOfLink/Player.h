@@ -9,23 +9,23 @@ class Player : public Entity
 private:
     sf::Vector2f spawnPos;
     sf::RectangleShape hitBox;
-    sf::Sprite swordPlayerSprite;
+    sf::Sprite swordPlayerSprite, caillouxEnMietteSprite;
     float speed = 200;
     int frame = 0;
     bool moving = false;
     bool isAttacking = false;
     int incrAttack = 0;
     bool back = false;
-    int korogus;
-    int rubis; 
+    int rubis = 0; 
+
 public:
     Player();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;
     void update(float& deltaTime,sf::Event& event, Map& map) override;
     void draw(sf::RenderWindow& window) override;
     sf::Sprite getSprite();
-    int getKorogus();
-    void setKorogus(int nb);
+    int getRubis();
+    void setRubis(int nb);
     void attaquer(sf::RenderWindow& window, Map& map);
     void resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY);
     ~Player();
