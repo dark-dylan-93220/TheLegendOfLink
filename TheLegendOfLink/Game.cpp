@@ -32,18 +32,14 @@ Game::Game() :
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	mapDonjon.loadFromFile("assets/tiles/map_donjon.txt");
-	// Boolean members
-	isHomePageOn = false;
+	// Scenes
 	isRunning = true;
 	isGameOver = false;
-	// Scenes
 	isHomePageOn = true;
 	isSettingsSceneOn = false;
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
-	map.addVector();
-	isRunning = true;
 	inDonjon = false;
 }
 
@@ -71,10 +67,9 @@ void Game::run() {
 	
 	Assets assets(window);
 
+	map.addVector();
+
 	player.init(Shared::playerSprite, spawnPos);
-	Bokoblin bok;
-	bok.init(Shared::playerSprite, spawnPos);
-	ennemies.push_back(bok);
 	
 	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
 
@@ -114,7 +109,6 @@ void Game::pollEvents() {
 
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
-			std::cout << mouseMovePosition.x << ", " << mouseMovePosition.y << '\n';
 			if (isHomePageOn) {
 				if (Shared::playButton.getGlobalBounds().contains(mouseMovePosition))
 					Shared::playButton.setFillColor(sf::Color(200,200,200));
@@ -228,28 +222,25 @@ void Game::pollEvents() {
 void Game::draw(Assets& assets) {
 
 	window.clear(sf::Color::Black);
-	mapView.setCenter(player.getSprite().getPosition());
-
+	
 	if (isGameplayOn) {
+		mapView.setCenter(player.getSprite().getPosition());
 		window.setView(mapView);
 		map.draw(window);
 
 		player.draw(window);
 		player.attaquer(window, map);
 
-
-		for (auto& bok : ennemies) {
-			bok.draw(window);
-		}
-
-		//std::cout << deltaTime << '\n';
-		//std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
 		for (int i = 0; i < map.spritesCailloux.size(); i++) {
 			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
 			{
 				map.spritesCailloux.erase(map.spritesCailloux.begin() + i);
 				break;
 			}
+		}
+
+		for (auto& bok : Shared::enemies) {
+			bok->draw(window);
 		}
 		
 		deltaTime = cloc.restart().asSeconds();
@@ -281,14 +272,13 @@ void Game::updateGame(sf::Event& event) {
 		deltaTime = cloc.restart().asSeconds();
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);
-
-		for (auto& bok : ennemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
+		for (auto& bok : Shared::enemies) {
+			if (std::abs(player.getSprite().getPosition().x - bok->getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok->getSprite().getPosition().y) < 100)
 			{
-				bok.followUpdate(deltaTime, player);
+				bok->followUpdate(deltaTime, player);
 			}
 			else {
-				bok.update(deltaTime, event, map);
+				bok->update(deltaTime, event, map);
 			}
 		}
 		// Vérification des collisions avec les ennemis

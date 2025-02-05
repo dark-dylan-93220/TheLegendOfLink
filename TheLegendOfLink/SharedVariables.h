@@ -4,6 +4,8 @@
 #include <ctime>
 #include <optional>
 
+class Bokoblin;
+
 class Shared {
 //
 public:
@@ -36,7 +38,8 @@ public:
 	static sf::RectangleShape gameOverBackground;
 	static sf::RectangleShape retryButton;
 	static sf::RectangleShape homeButton;
-
+	//Ennemies
+	static std::vector<std::unique_ptr<Bokoblin>> enemies;
 
 // SaveScene / inspiration : https://maplequeensaku.weebly.com/uploads/9/5/7/9/95792838/twilight-princess-rel-loader-save-screen-no-file_orig.png
 public:
