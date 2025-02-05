@@ -81,6 +81,13 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
                     projectile->isColliding = true;
                 }
             }
+            for (auto& wall : map.spritesWallDonjon)
+            {
+                if (wall.getGlobalBounds().intersects(projectile->getSprite().getGlobalBounds()))
+                {
+                    projectile->isColliding = true;
+                }
+            }
             projectile->lifetime += deltaTime;
         }
         
@@ -228,6 +235,11 @@ void Player::draw(sf::RenderWindow& window)
 sf::Sprite Player::getSprite()
 {
     return spriteEntity;
+}
+
+void Player::setPositionPlayer(sf::Vector2f newPos)
+{
+    spriteEntity.setPosition(newPos);
 }
 int Player::getRubis() { return rubis; }
 void Player::setRubis(int nb) { rubis = nb; }

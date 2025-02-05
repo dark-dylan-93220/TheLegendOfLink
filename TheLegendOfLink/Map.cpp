@@ -16,9 +16,6 @@ void Map::loadFromFile(const std::string& filename) {
     while (getline(file, line)) {
         mapData.push_back(line);
     }
-    while (getline(file, line)) {
-        mapDonjonData.push_back(line);
-    }
     murTexture.loadFromFile("assets/tiles/wall.png");
     grassTexture.loadFromFile("assets/tiles/grass.png"); 
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
@@ -80,7 +77,7 @@ void Map::addVector() {
                 sf::Sprite porteSprite;
                 resize(porteTexture, porteSprite, SIZEX, SIZEY);
                 porteSprite.setPosition(x * SIZEX, y * SIZEY);
-                spritesPorte.push_back(porteSprite);
+                doors.push_back(porteSprite);
             }
             if (mapData[y][x] == 'E')
             {
@@ -90,24 +87,39 @@ void Map::addVector() {
                 Shared::enemies.push_back(std::move(bok));
             }
 
-        }
-    }
-    for (size_t y = 0; y < mapDonjonData.size(); ++y) {
-        for (size_t x = 0; x < mapDonjonData[y].size(); ++x) {
-            if (mapDonjonData[y][x] == 'w') {
+            if (mapData[y][x] == 'w') {
                 sf::Sprite wallDonjonSprite;
                 resize(wallDonjonTexture, wallDonjonSprite, SIZEX, SIZEY);
                 wallDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesWallDonjon.push_back(wallDonjonSprite);
             }
-            if (mapDonjonData[y][x] == 'f') {
+            if (mapData[y][x] == 'f') {
                 sf::Sprite floorDonjonSprite;
                 resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
                 floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesFloorDonjon.push_back(floorDonjonSprite);
             }
+
         }
     }
+
+}
+
+void Map::clearVector()
+{
+    mapData.clear();
+    spritesWall.clear();
+    spritesGrass.clear();
+    spritesHerbes.clear();
+    spritesKorogus.clear();
+    spritesCailloux.clear();
+    spritesCaillouxEnMiette.clear();
+    spritesBocaux.clear();
+    spritesFairy.clear();
+    spritesReceptacles.clear();
+    spritesWallDonjon.clear();
+    spritesFloorDonjon.clear();
+    doors.clear();
 }
 
 void Map::draw(sf::RenderWindow& window) {
@@ -141,7 +153,7 @@ void Map::draw(sf::RenderWindow& window) {
     for (auto& elem : spritesFloorDonjon) {
         window.draw(elem);
     }
-    for (auto& elem : spritesPorte) {
+    for (auto& elem : doors) {
         window.draw(elem);
     }
 }

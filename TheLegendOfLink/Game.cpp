@@ -31,16 +31,20 @@ Game::Game() :
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
-	mapDonjon.loadFromFile("assets/tiles/map_donjon.txt");
-	// Scenes
+	// Boolean members
+	isHomePageOn = false;
 	isRunning = true;
 	isGameOver = false;
+	// Scenes
 	isHomePageOn = true;
 	isSettingsSceneOn = false;
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
+	map.addVector();
+	isRunning = true;
 	inDonjon = false;
+	changeMap = false;
 }
 
 Game::~Game() {
@@ -59,7 +63,7 @@ void Game::run() {
 	std::stringstream ss;
 	ss << std::put_time(&timeInfo, "%d/%m/%Y %H:%M");
 	std::string current = ss.str();
-	std::cout << "Current time : " << current << '\n';
+	//std::cout << "Current time : " << current << '\n';
 
 	SaveFileManager saveFileOne("Saves/saveSlotOne.txt");
 	SaveFileManager saveFileTwo("Saves/saveSlotTwo.txt");
@@ -72,12 +76,12 @@ void Game::run() {
 	player.init(Shared::playerSprite, spawnPos);
 	
 	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
-
 	while (window.isOpen() && isRunning) {
-
+		
 		pollEvents();
 		draw(assets);
-
+		
+		
 	}
 
 	updateThread.join();
@@ -287,6 +291,36 @@ void Game::updateGame(sf::Event& event) {
 				player.takeDamage(1);
 			}
 		}*/
+
+		for (auto& door : map.doors)
+		{
+			if (door.getGlobalBounds().intersects(player.getSprite().getGlobalBounds()))
+			{
+
+				if (inDonjon)
+				{
+					inDonjon = false;
+					newMapFile = "assets/tiles/map.txt";
+				}
+				else
+				{
+					inDonjon = true;
+					newMapFile = "assets/tiles/map_donjon.txt";
+				}
+				changeMap = true;
+				break;
+			}
+			
+		}
+		if (changeMap)
+		{
+			changeMap = false;
+			map.clearVector();
+			map.loadFromFile(newMapFile);
+			map.addVector();
+			player.setPositionPlayer({ 10.f, 10.f });
+		}
+		
 
 		// Vérification des collisions avec les objets récupérables
 		for (auto it = objects.begin(); it != objects.end(); ) {
