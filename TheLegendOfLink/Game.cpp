@@ -53,19 +53,6 @@ Game::~Game() {
 }
 
 void Game::run() {
-
-	time_t currentTime = std::time(nullptr);
-	std::tm timeInfo;
-
-	if (localtime_s(&timeInfo, &currentTime) != 0) {
-		std::cerr << "Invalid time!" << '\n';; // Handle error
-	}
-
-	std::stringstream ss;
-	ss << std::put_time(&timeInfo, "%d/%m/%Y %H:%M");
-	std::string current = ss.str();
-	std::cout << "Current time : " << current << '\n';
-
 	SaveFileManager saveFileOne("Saves/saveSlotOne.txt");
 	SaveFileManager saveFileTwo("Saves/saveSlotTwo.txt");
 	SaveFileManager saveFileThree("Saves/saveSlotThree.txt");
@@ -77,7 +64,7 @@ void Game::run() {
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
 	
-	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
+	updateThread = std::thread(&Game::updateGame, this, std::ref(event));
 
 	while (window.isOpen() && isRunning) {
 
@@ -88,24 +75,34 @@ void Game::run() {
 
 	updateThread.join();
 
-	currentTime = std::time(nullptr);
+	std::tm timeInfo;
+	time_t currentTime = std::time(nullptr);
 
 	if (localtime_s(&timeInfo, &currentTime) != 0) {
-		std::cerr << "Invalid time!" << '\n';; // Handle error
+		std::cerr << "Invalid time!" << '\n';
 	}
+
 	std::stringstream st;
 	st << std::put_time(&timeInfo, "%d/%m/%Y %H:%M");
-	current = st.str();
+	std::string current = st.str();
 
-	Shared::lastSaveTimeOne = currentTime;
+	if (selectedSave == "One")
+		Shared::lastSaveTimeOne = currentTime;
+	else if (selectedSave == "Two")
+		Shared::lastSaveTimeTwo = currentTime;
+	else if (selectedSave == "Three")
+		Shared::lastSaveTimeThree = currentTime;
 
 	std::cout << "Closing time : " << current << '\n';
 
+	std::cout << totalPlayTime << std::endl;
+
 	std::string minutes = std::to_string((int)(totalPlayTime / 60.f));
 	std::string hours = std::to_string((int)(totalPlayTime / (60.f * 60.f)));
-	
-	if ((int)(totalPlayTime / 60.f) < 10)
+
+	if ((int)(totalPlayTime / 60.f) < 10) {
 		minutes = "0" + std::to_string((int)(totalPlayTime / 60.f));
+	}
 	else if ((int)(totalPlayTime / 60.f) >= 60) {
 		hours += std::to_string((int)(totalPlayTime / 60.f) / 60);
 		std::string totalHours = std::to_string(stoi(hours) * 60);
@@ -116,11 +113,20 @@ void Game::run() {
 	}
 
 	std::cout << "Total play time : " << hours << ":" << minutes << '\n';
-	if(selectedSave == "One")
-		Shared::playTimeOne = hours + ":" + minutes;
 
-	saveFileOne.write(1);
-	
+	if (selectedSave == "One") {
+		Shared::playTimeOne = hours + ":" + minutes;
+		saveFileOne.write(1);
+	}
+	else if (selectedSave == "Two") {
+		Shared::playTimeTwo = hours + ":" + minutes;
+		saveFileTwo.write(2);
+	}
+	else if (selectedSave == "Three") {
+		Shared::playTimeThree = hours + ":" + minutes;
+		saveFileThree.write(3);
+	}
+
 	std::cout << "Programme termine" << '\n';
 	window.close();
 }
@@ -149,7 +155,6 @@ void Game::pollEvents() {
 
 		case sf::Event::MouseMoved:
 			mouseMovePosition = { (float)event.mouseMove.x, (float)event.mouseMove.y };
-			std::cout << mouseMovePosition.x << ", " << mouseMovePosition.y << '\n';
 			if (isHomePageOn) {
 				if (Shared::playButton.getGlobalBounds().contains(mouseMovePosition))
 					Shared::playButton.setFillColor(sf::Color(200,200,200));
@@ -232,16 +237,28 @@ void Game::pollEvents() {
 							isSaveSceneOn = false;
 							isGameplayOn = true;
 							selectedSave = "One";
+							char hour = Shared::playTimeOne[0];
+							totalPlayTime += 3600 * (hour - '0');
+							std::string minutes = Shared::playTimeOne.substr(2);
+							totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
 						}
 						else if (Shared::saveSlotTwo.getGlobalBounds().contains(mouseButtonPosition)) {
 							isSaveSceneOn = false;
 							isGameplayOn = true;
 							selectedSave = "Two";
+							char hour = Shared::playTimeTwo[0];
+							totalPlayTime += 3600 * (hour - '0');
+							std::string minutes = Shared::playTimeTwo.substr(2);
+							totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
 						}
 						if (Shared::saveSlotThree.getGlobalBounds().contains(mouseButtonPosition)) {
 							isSaveSceneOn = false;
 							isGameplayOn = true;
 							selectedSave = "Three";
+							char hour = Shared::playTimeThree[0];
+							totalPlayTime += 3600 * (hour - '0');
+							std::string minutes = Shared::playTimeThree.substr(2);
+							totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
 						}
 					}
 					else if (isGameOver) {

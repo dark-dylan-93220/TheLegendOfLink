@@ -49,6 +49,9 @@ public:
 	static std::string playTimeOne;
 	static std::string playTimeTwo;
 	static std::string playTimeThree;
+	static sf::Text playTimeTextOne;
+	static sf::Text playTimeTextTwo;
+	static sf::Text playTimeTextThree;
 	// Nombre de rubis
 	static int numberOfRubisOne;
 	static int numberOfRubisTwo;
@@ -65,6 +68,12 @@ public:
 	static time_t lastSaveTimeOne;
 	static time_t lastSaveTimeTwo;
 	static time_t lastSaveTimeThree;
+	static std::string lastSaveTimeOneString;
+	static std::string lastSaveTimeTwoString;
+	static std::string lastSaveTimeThreeString;
+	static sf::Text lastSaveTimeTextOne;
+	static sf::Text lastSaveTimeTextTwo;
+	static sf::Text lastSaveTimeTextThree;
 	// Présence du bocal
 	static int hasBocalOne;
 	static int hasBocalTwo;

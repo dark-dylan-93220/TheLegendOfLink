@@ -46,6 +46,10 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	int Shared::hasBocalTwo;
 	int Shared::hasBocalThree;
 	// Play time
+	sf::Text Shared::playTimeTextOne;
+	sf::Text Shared::playTimeTextTwo;
+	sf::Text Shared::playTimeTextThree;
+
 	std::string Shared::playTimeOne;
 	std::string Shared::playTimeTwo;
 	std::string Shared::playTimeThree;
@@ -57,6 +61,10 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	time_t Shared::lastSaveTimeOne;
 	time_t Shared::lastSaveTimeTwo;
 	time_t Shared::lastSaveTimeThree;
+
+	std::string Shared::lastSaveTimeOneString;
+	std::string Shared::lastSaveTimeTwoString;
+	std::string Shared::lastSaveTimeThreeString;
 	
 	// Texts
 	sf::Text Shared::saveTitleText;
@@ -69,6 +77,10 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::Text Shared::saveRectOneText;
 	sf::Text Shared::saveRectTwoText;
 	sf::Text Shared::saveRectThreeText;
+
+	sf::Text Shared::lastSaveTimeTextOne;
+	sf::Text Shared::lastSaveTimeTextTwo;
+	sf::Text Shared::lastSaveTimeTextThree;
 
 	// Textures & Sprites
 	sf::Texture Shared::heartTexture;

@@ -83,29 +83,52 @@ void SaveFileManager::associateValue(std::string value, std::string category) {
 	}
 	else if (category == "BOCAL") {
 		if (name == "Saves/saveSlotOne.txt") {
-			if (value == "NONE")
+			if (value == "-1")
 				Shared::hasBocalOne = -1;
-			else if (value == "EMPTY")
+			else if (value == "0")
 				Shared::hasBocalOne = 0;
-			else if (value == "FULL")
+			else if (value == "1")
 				Shared::hasBocalOne = 1;
 		}
 		else if (name == "Saves/saveSlotTwo.txt") {
-			if (value == "NONE")
+			if (value == "-1")
 				Shared::hasBocalTwo = -1;
-			else if (value == "EMPTY")
+			else if (value == "0")
 				Shared::hasBocalTwo = 0;
-			else if (value == "FULL")
+			else if (value == "1")
 				Shared::hasBocalTwo = 1;
 		}
 		else if (name == "Saves/saveSlotThree.txt") {
-			if (value == "NONE")
+			if (value == "-1")
 				Shared::hasBocalThree = -1;
-			else if (value == "EMPTY")
+			else if (value == "0")
 				Shared::hasBocalThree = 0;
-			else if (value == "FULL")
+			else if (value == "1")
 				Shared::hasBocalThree = 1;
 		}
+	}
+	else if (category == "LAST SAVE") {
+		std::tm timeInfo;
+		time_t valueToDecrypt = stoi(value);
+		std::cout << value << std::endl;
+		localtime_s(&timeInfo, &valueToDecrypt);
+		std::stringstream st;
+		st << std::put_time(&timeInfo, "%d/%m/%Y %H:%M");
+		std::string current = st.str();
+		if (name == "Saves/saveSlotOne.txt")
+			Shared::lastSaveTimeOneString = current;
+		else if (name == "Saves/saveSlotTwo.txt")
+			Shared::lastSaveTimeTwoString = current;
+		else if (name == "Saves/saveSlotThree.txt")
+			Shared::lastSaveTimeThreeString = current;
+	}
+	else if (category == "PLAYTIME") {
+		if (name == "Saves/saveSlotOne.txt")
+			Shared::playTimeOne = value;
+		else if (name == "Saves/saveSlotTwo.txt")
+			Shared::playTimeTwo = value;
+		else if (name == "Saves/saveSlotThree.txt")
+			Shared::playTimeThree = value;
 	}
 }
 
@@ -139,17 +162,29 @@ void SaveFileManager::read() {
 		else if (lineContent.substr(0, 5) == "BOCAL" && lineContent.size() >= 10) {
 			associateValue(lineContent.substr(6), "BOCAL");
 		}
+
+		// Save time
+		else if (lineContent.substr(0, 9) == "LAST SAVE" && lineContent.size() >= 10) {
+			associateValue(lineContent.substr(10), "LAST SAVE");
+		}
+
+		// Play time
+		else if (lineContent.substr(0, 8) == "PLAYTIME" && lineContent.size() >= 13) {
+			associateValue(lineContent.substr(9), "PLAYTIME");
+		}
 	}
 }
 
 void SaveFileManager::write(int saveCode) {
 	if (saveCode == 0) { // Sauvagerde par défaut
-		file << "NAME Link"    << std::endl;
-		file << "HEARTS 3"     << std::endl;
-		file << "POSITION 0 0" << std::endl;
-		file << "RUBIS 0"      << std::endl;
-		file << "BOCAL NONE"   << std::endl;
-		file << "SAVE END"     << std::endl;
+		file << "NAME Link"     << std::endl;
+		file << "HEARTS 3"      << std::endl;
+		file << "POSITION 0 0"  << std::endl;
+		file << "RUBIS 0"       << std::endl;
+		file << "BOCAL NONE"    << std::endl;
+		file << "LAST SAVE 0"   << std::endl;
+		file << "PLAYTIME 0:00" << std::endl;
+		file << "SAVE END"      << std::endl;
 	}
 	else if(saveCode == 1) {
 		file.close();
