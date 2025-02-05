@@ -45,6 +45,7 @@ Game::Game() :
 	isGameplayOn = false;
 	lockClick = false;
 	inDonjon = false;
+	selectedSave = "None";
 }
 
 Game::~Game() {
@@ -115,7 +116,8 @@ void Game::run() {
 	}
 
 	std::cout << "Total play time : " << hours << ":" << minutes << '\n';
-	Shared::playTimeOne = hours + ":" + minutes;
+	if(selectedSave == "One")
+		Shared::playTimeOne = hours + ":" + minutes;
 
 	saveFileOne.write(1);
 	
@@ -229,6 +231,17 @@ void Game::pollEvents() {
 						if (Shared::saveSlotOne.getGlobalBounds().contains(mouseButtonPosition)) {
 							isSaveSceneOn = false;
 							isGameplayOn = true;
+							selectedSave = "One";
+						}
+						else if (Shared::saveSlotTwo.getGlobalBounds().contains(mouseButtonPosition)) {
+							isSaveSceneOn = false;
+							isGameplayOn = true;
+							selectedSave = "Two";
+						}
+						if (Shared::saveSlotThree.getGlobalBounds().contains(mouseButtonPosition)) {
+							isSaveSceneOn = false;
+							isGameplayOn = true;
+							selectedSave = "Three";
 						}
 					}
 					else if (isGameOver) {
@@ -313,7 +326,8 @@ void Game::updateGame(sf::Event& event) {
 	while (window.isOpen() && isRunning) {
 		deltaTime = cloc.restart().asSeconds();
 
-		totalPlayTime += deltaTime;
+		if(isGameplayOn)
+			totalPlayTime += deltaTime;
 
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);

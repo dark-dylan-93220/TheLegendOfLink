@@ -143,25 +143,51 @@ void SaveFileManager::read() {
 }
 
 void SaveFileManager::write(int saveCode) {
-	if (saveCode == 0) {
-		file << "NAME Link" << std::endl;
-		file << "HEARTS 3" << std::endl;
-		file << "POSITION 10 10" << std::endl;
-		file << "RUBIS 0" << std::endl;
-		file << "BOCAL NONE" << std::endl;
-		file << "SAVE END" << std::endl;
+	if (saveCode == 0) { // Sauvagerde par défaut
+		file << "NAME Link"    << std::endl;
+		file << "HEARTS 3"     << std::endl;
+		file << "POSITION 0 0" << std::endl;
+		file << "RUBIS 0"      << std::endl;
+		file << "BOCAL NONE"   << std::endl;
+		file << "SAVE END"     << std::endl;
 	}
-	else {
+	else if(saveCode == 1) {
 		file.close();
 		file.open("Saves/saveSlotOne.txt", std::ios::out | std::ios::trunc);
-		file << "NAME " << Shared::saveNameOne << std::endl;
-		file << "HEARTS " << Shared::numberOfHeartsOne << std::endl;
-		file << "POSITION " << (int)Shared::savedPosOne.x << " " << (int)Shared::savedPosOne.y << std::endl;
-		file << "RUBIS " << Shared::numberOfRubisOne << std::endl;
-		file << "BOCAL " << Shared::hasBocalOne << std::endl;
-		file << "LAST SAVE " << Shared::lastSaveTimeOne << std::endl;
-		file << "PLAYTIME " << Shared::playTimeOne << std::endl;
-		file << "SAVE END" << std::endl;
+		file << "NAME "      << Shared::saveNameOne        << std::endl;
+		file << "HEARTS "    << Shared::numberOfHeartsOne  << std::endl;
+		file << "POSITION "  << (int)Shared::savedPosOne.x << " " << (int)Shared::savedPosOne.y << std::endl;
+		file << "RUBIS "     << Shared::numberOfRubisOne   << std::endl;
+		file << "BOCAL "     << Shared::hasBocalOne        << std::endl;
+		file << "LAST SAVE " << Shared::lastSaveTimeOne    << std::endl;
+		file << "PLAYTIME "  << Shared::playTimeOne        << std::endl;
+		file << "SAVE END";
+		file.close();
+	}
+	else if (saveCode == 2) {
+		file.close();
+		file.open("Saves/saveSlotTwo.txt", std::ios::out | std::ios::trunc);
+		file << "NAME "      << Shared::saveNameTwo        << std::endl;
+		file << "HEARTS "    << Shared::numberOfHeartsTwo  << std::endl;
+		file << "POSITION "  << (int)Shared::savedPosTwo.x << " " << (int)Shared::savedPosTwo.y << std::endl;
+		file << "RUBIS "     << Shared::numberOfRubisTwo   << std::endl;
+		file << "BOCAL "     << Shared::hasBocalTwo        << std::endl;
+		file << "LAST SAVE " << Shared::lastSaveTimeTwo    << std::endl;
+		file << "PLAYTIME "  << Shared::playTimeTwo        << std::endl;
+		file << "SAVE END";
+		file.close();
+	}
+	else if (saveCode == 3) {
+		file.close();
+		file.open("Saves/saveSlotThree.txt", std::ios::out | std::ios::trunc);
+		file << "NAME "      << Shared::saveNameThree        << std::endl;
+		file << "HEARTS "    << Shared::numberOfHeartsThree  << std::endl;
+		file << "POSITION "  << (int)Shared::savedPosThree.x << " " << (int)Shared::savedPosThree.y << std::endl;
+		file << "RUBIS "     << Shared::numberOfRubisThree   << std::endl;
+		file << "BOCAL "     << Shared::hasBocalThree        << std::endl;
+		file << "LAST SAVE " << Shared::lastSaveTimeThree    << std::endl;
+		file << "PLAYTIME "  << Shared::playTimeThree        << std::endl;
+		file << "SAVE END";
 		file.close();
 	}
 }
