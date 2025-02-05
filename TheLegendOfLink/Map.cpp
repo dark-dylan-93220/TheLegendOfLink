@@ -84,10 +84,9 @@ void Map::addVector() {
             }
             if (mapData[y][x] == 'E')
             {
-                std::cout << "EEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
-                std::unique_ptr<Bokoblin> bok = std::make_unique<Bokoblin> ();
-                sf::Vector2f pos = {x * SIZEX, y * SIZEY};
-                bok->init(Shared::playerSprite,pos);
+                sf::Vector2f pos = { x * SIZEX, y * SIZEY };
+                std::unique_ptr<Bokoblin> bok = std::make_unique<Bokoblin>();
+                bok->init(Shared::playerSprite, pos);
                 Shared::enemies.push_back(std::move(bok));
             }
 
@@ -112,37 +111,37 @@ void Map::addVector() {
 }
 
 void Map::draw(sf::RenderWindow& window) {
-    for (auto elem : spritesGrass) {
+    for (auto& elem : spritesGrass) {
         window.draw(elem);
     }
-    for (auto elem : spritesHerbes) {
+    for (auto& elem : spritesHerbes) {
         window.draw(elem);
     }
-    for (auto elem : spritesWall) {
+    for (auto& elem : spritesWall) {
         window.draw(elem);
     }
-    for (auto elem : spritesCailloux) {
+    for (auto& elem : spritesCailloux) {
         window.draw(elem);
     }
-    for (auto elem : spritesCaillouxEnMiette) {
+    for (auto& elem : spritesCaillouxEnMiette) {
         window.draw(elem);
     }
-    for (auto elem : spritesBocaux) {
+    for (auto& elem : spritesBocaux) {
         window.draw(elem);
     }
-    for (auto elem : spritesFairy) {
+    for (auto& elem : spritesFairy) {
         window.draw(elem);
     }
-    for (auto elem : spritesReceptacles) {
+    for (auto& elem : spritesReceptacles) {
         window.draw(elem);
     }
-    for (auto elem : spritesWallDonjon) {
+    for (auto& elem : spritesWallDonjon) {
         window.draw(elem);
     }
-    for (auto elem : spritesFloorDonjon) {
+    for (auto& elem : spritesFloorDonjon) {
         window.draw(elem);
     }
-    for (auto elem : spritesPorte) {
+    for (auto& elem : spritesPorte) {
         window.draw(elem);
     }
 }
