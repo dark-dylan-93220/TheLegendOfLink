@@ -32,18 +32,18 @@ Game::Game() :
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
 	mapDonjon.loadFromFile("assets/tiles/map_donjon.txt");
-	// Boolean members
-	isHomePageOn = false;
-	isRunning = true;
-	isGameOver = false;
+	map.addVector();
+	// Save data
+	saveTime = 0.f;
+	totalPlayTime = 0.f;
 	// Scenes
+	isRunning = true;
 	isHomePageOn = true;
+	isGameOver = false;
 	isSettingsSceneOn = false;
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
-	map.addVector();
-	isRunning = true;
 	inDonjon = false;
 }
 
@@ -86,6 +86,39 @@ void Game::run() {
 	}
 
 	updateThread.join();
+
+	currentTime = std::time(nullptr);
+
+	if (localtime_s(&timeInfo, &currentTime) != 0) {
+		std::cerr << "Invalid time!" << '\n';; // Handle error
+	}
+	std::stringstream st;
+	st << std::put_time(&timeInfo, "%d/%m/%Y %H:%M");
+	current = st.str();
+
+	Shared::lastSaveTimeOne = currentTime;
+
+	std::cout << "Closing time : " << current << '\n';
+
+	std::string minutes = std::to_string((int)(totalPlayTime / 60.f));
+	std::string hours = std::to_string((int)(totalPlayTime / (60.f * 60.f)));
+	
+	if ((int)(totalPlayTime / 60.f) < 10)
+		minutes = "0" + std::to_string((int)(totalPlayTime / 60.f));
+	else if ((int)(totalPlayTime / 60.f) >= 60) {
+		hours += std::to_string((int)(totalPlayTime / 60.f) / 60);
+		std::string totalHours = std::to_string(stoi(hours) * 60);
+		minutes = std::to_string((int)(totalPlayTime / 60.f) - stoi(totalHours));
+		if (stoi(minutes) < 10) {
+			minutes = "0" + std::to_string((int)(totalPlayTime / 60.f) - stoi(totalHours));
+		}
+	}
+
+	std::cout << "Total play time : " << hours << ":" << minutes << '\n';
+	Shared::playTimeOne = hours + ":" + minutes;
+
+	saveFileOne.write(1);
+	
 	std::cout << "Programme termine" << '\n';
 	window.close();
 }
@@ -279,6 +312,9 @@ void Game::draw(Assets& assets) {
 void Game::updateGame(sf::Event& event) {
 	while (window.isOpen() && isRunning) {
 		deltaTime = cloc.restart().asSeconds();
+
+		totalPlayTime += deltaTime;
+
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);
 

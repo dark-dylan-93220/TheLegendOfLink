@@ -143,10 +143,25 @@ void SaveFileManager::read() {
 }
 
 void SaveFileManager::write(int saveCode) {
-	file << "NAME Link"      << std::endl;
-	file << "HEARTS 3"       << std::endl;
-	file << "POSITION 10 10" << std::endl;
-	file << "RUBIS 0"        << std::endl;
-	file << "BOCAL NONE"     << std::endl;
-	file << "SAVE END"       << std::endl;
+	if (saveCode == 0) {
+		file << "NAME Link" << std::endl;
+		file << "HEARTS 3" << std::endl;
+		file << "POSITION 10 10" << std::endl;
+		file << "RUBIS 0" << std::endl;
+		file << "BOCAL NONE" << std::endl;
+		file << "SAVE END" << std::endl;
+	}
+	else {
+		file.close();
+		file.open("Saves/saveSlotOne.txt", std::ios::out | std::ios::trunc);
+		file << "NAME " << Shared::saveNameOne << std::endl;
+		file << "HEARTS " << Shared::numberOfHeartsOne << std::endl;
+		file << "POSITION " << (int)Shared::savedPosOne.x << " " << (int)Shared::savedPosOne.y << std::endl;
+		file << "RUBIS " << Shared::numberOfRubisOne << std::endl;
+		file << "BOCAL " << Shared::hasBocalOne << std::endl;
+		file << "LAST SAVE " << Shared::lastSaveTimeOne << std::endl;
+		file << "PLAYTIME " << Shared::playTimeOne << std::endl;
+		file << "SAVE END" << std::endl;
+		file.close();
+	}
 }

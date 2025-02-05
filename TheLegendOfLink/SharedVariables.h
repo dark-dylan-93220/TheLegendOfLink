@@ -46,9 +46,9 @@ public:
 	static int numberOfHeartsTwo;
 	static int numberOfHeartsThree;
 	// Play time
-	static float playTimeOne;
-	static float playTimeTwo;
-	static float playTimeThree;
+	static std::string playTimeOne;
+	static std::string playTimeTwo;
+	static std::string playTimeThree;
 	// Nombre de rubis
 	static int numberOfRubisOne;
 	static int numberOfRubisTwo;

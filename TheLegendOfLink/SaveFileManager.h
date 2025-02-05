@@ -17,8 +17,8 @@ public:
 
 public:
 	void read();
+	void write(int saveCode);
 
 private:
-	void write(int saveCode);
 	void associateValue(std::string value, std::string category);
 };

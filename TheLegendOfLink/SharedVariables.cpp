@@ -46,9 +46,9 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	int Shared::hasBocalTwo;
 	int Shared::hasBocalThree;
 	// Play time
-	float Shared::playTimeOne;
-	float Shared::playTimeTwo;
-	float Shared::playTimeThree;
+	std::string Shared::playTimeOne;
+	std::string Shared::playTimeTwo;
+	std::string Shared::playTimeThree;
 	// Dernière position
 	sf::Vector2f Shared::savedPosOne;
 	sf::Vector2f Shared::savedPosTwo;
