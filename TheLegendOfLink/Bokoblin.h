@@ -8,7 +8,7 @@ private:
     float speed = 100;
     int i = 0;
     sf::Vector2f spawnPos;
-    sf::Vector2f position[4] = {{spawnPos.x,spawnPos.y},{spawnPos.x + 200,spawnPos.y},{spawnPos.x + 200,spawnPos.y + 200},{spawnPos.x,spawnPos.y + 200}};    
+    sf::Vector2f positionP[4];    
 public:
     Bokoblin();
     void init(sf::Sprite& sprite, sf::Vector2f& position) override;

@@ -6,6 +6,10 @@ void Bokoblin::init(sf::Sprite& sprite, sf::Vector2f& position)
 {
     spawnPos = position;
     spriteEntity = sprite;
+    positionP[0] = { spawnPos.x,spawnPos.y };
+    positionP[1] = { spawnPos.x + 200,spawnPos.y };
+    positionP[2] = { spawnPos.x + 200,spawnPos.y + 200 };
+    positionP[3] = { spawnPos.x,spawnPos.y + 200 };
     spriteEntity.setScale(0.2f, 0.2f);
     spriteEntity.setPosition(spawnPos);
 }
@@ -18,20 +22,20 @@ void Bokoblin::update(float& deltaTime, sf::Event& event, Map& map)
     }
 
     
-    if (std::abs(spriteEntity.getPosition().x - position[i].x) > 1.0f) {
-        float dirX = (position[i].x > spriteEntity.getPosition().x) ? 1.0f : -1.0f;
-        spriteEntity.move(dirX * speed * deltaTime, 0);
+    if (std::abs(spriteEntity.getPosition().x - positionP[i].x) > 1.0f) {
+        float dirX = (positionP[i].x > spriteEntity.getPosition().x) ? 1.0f : -1.0f;
+        spriteEntity.move(dirX * (16.f / 9.f) * speed * deltaTime, 0);
     }
 
     
-    if (std::abs(spriteEntity.getPosition().y - position[i].y) > 1.0f) {
-        float dirY = (position[i].y > spriteEntity.getPosition().y) ? 1.0f : -1.0f;
+    if (std::abs(spriteEntity.getPosition().y - positionP[i].y) > 1.0f) {
+        float dirY = (positionP[i].y > spriteEntity.getPosition().y) ? 1.0f : -1.0f;
         spriteEntity.move(0, dirY * speed * deltaTime);
     }
 
     
-    if (std::abs(spriteEntity.getPosition().x - position[i].x) <= 1.0f &&
-        std::abs(spriteEntity.getPosition().y - position[i].y) <= 1.0f) {
+    if (std::abs(spriteEntity.getPosition().x - positionP[i].x) <= 1.0f &&
+        std::abs(spriteEntity.getPosition().y - positionP[i].y) <= 1.0f) {
         i++;
         if (i >= 4)
             {
