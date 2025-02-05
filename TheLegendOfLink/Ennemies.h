@@ -5,6 +5,9 @@ class Player;
 
 class Ennemies : public Entity
 {
+
+public:
+    bool shouldBeDeleted = false;
 public:
     Ennemies();
     virtual void init(sf::Sprite& sprite, sf::Vector2f& position);

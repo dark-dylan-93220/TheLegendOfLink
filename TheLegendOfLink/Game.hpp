@@ -32,8 +32,6 @@ private:
 
 private:
 	sf::Vector2f spawnPos;
-	std::vector<Bokoblin> ennemies;
-	std::vector<std::unique_ptr<sf::Sprite>> toDelete;
 	float spacingBetweenMapAndBorder;
 	float totalPlayTime = 0.f;
 	float saveTime = 0.f;

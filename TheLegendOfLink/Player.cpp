@@ -88,6 +88,13 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
                     projectile->isColliding = true;
                 }
             }
+            for (auto& ennemie : Shared::enemies)
+            {
+                if (projectile->getSprite().getGlobalBounds().intersects(ennemie->getSprite().getGlobalBounds()))
+                {
+                    ennemie->shouldBeDeleted = true;
+                }
+            }
             projectile->lifetime += deltaTime;
         }
         

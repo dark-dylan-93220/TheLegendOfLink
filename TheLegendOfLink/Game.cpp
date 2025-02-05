@@ -346,6 +346,14 @@ void Game::updateGame(sf::Event& event) {
 			isGameplayOn = false;
 			isGameOver = true;
 		}
+
+		for (auto it = Shared::enemies.begin(); it != Shared::enemies.end(); ) {
+			if ((*it)->shouldBeDeleted) {
+				it = Shared::enemies.erase(it);
+			} else {
+				++it;
+			}
+		}
 		
 	}
 
