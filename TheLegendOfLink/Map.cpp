@@ -107,54 +107,80 @@ void Map::addVector() {
 
 void Map::clearVector()
 {
-    mapData.clear();
-    spritesWall.clear();
-    spritesGrass.clear();
-    spritesHerbes.clear();
-    spritesKorogus.clear();
-    spritesCailloux.clear();
-    spritesCaillouxEnMiette.clear();
-    spritesBocaux.clear();
-    spritesFairy.clear();
-    spritesReceptacles.clear();
-    spritesWallDonjon.clear();
-    spritesFloorDonjon.clear();
-    doors.clear();
+    if (!mapData.empty())
+        mapData.clear();
+    if (!spritesWall.empty())
+        spritesWall.clear();
+    if (!spritesGrass.empty())
+        spritesGrass.clear();
+    if (!spritesHerbes.empty())
+        spritesHerbes.clear();
+    if (!spritesKorogus.empty())
+        spritesKorogus.clear();
+    if (!spritesCailloux.empty())
+        spritesCailloux.clear();
+    if (!spritesCaillouxEnMiette.empty())
+        spritesCaillouxEnMiette.clear();
+    if (!spritesBocaux.empty())
+        spritesBocaux.clear();
+    if (!spritesFairy.empty())
+        spritesFairy.clear();
+    if (!spritesReceptacles.empty())
+        spritesReceptacles.clear();
+    if (!spritesWallDonjon.empty())
+        spritesWallDonjon.clear();
+    if (!spritesFloorDonjon.empty())
+        spritesFloorDonjon.clear();
+    if (!doors.empty())
+        doors.clear();
+    if (!Shared::enemies.empty())
+        Shared::enemies.clear();
 }
 
 void Map::draw(sf::RenderWindow& window) {
     for (auto& elem : spritesGrass) {
-        window.draw(elem);
+        if (!spritesGrass.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesHerbes) {
-        window.draw(elem);
+        if (!spritesHerbes.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesWall) {
-        window.draw(elem);
+        if (!spritesWall.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesCailloux) {
-        window.draw(elem);
+        if (!spritesCailloux.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesCaillouxEnMiette) {
-        window.draw(elem);
+        if (!spritesCaillouxEnMiette.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesBocaux) {
-        window.draw(elem);
+        if (!spritesBocaux.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesFairy) {
-        window.draw(elem);
+        if (!spritesFairy.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesReceptacles) {
-        window.draw(elem);
+        if (!spritesReceptacles.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesWallDonjon) {
-        window.draw(elem);
+        if (!spritesWallDonjon.empty())
+            window.draw(elem);
     }
     for (auto& elem : spritesFloorDonjon) {
-        window.draw(elem);
+        if (!spritesFloorDonjon.empty())
+            window.draw(elem);
     }
     for (auto& elem : doors) {
-        window.draw(elem);
+        if (!doors.empty())
+            window.draw(elem);
     }
 }
 
