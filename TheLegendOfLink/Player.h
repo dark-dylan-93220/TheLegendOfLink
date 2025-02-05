@@ -27,7 +27,6 @@ public:
     sf::Clock playerLockClick;
     sf::Vector2f tampon;
 
-
 public:
     int maxHealth = 6;
     bool possedeBocal = false;
@@ -46,6 +45,7 @@ public:
     bool isDead() const;
     float getHealth() const;
     void updateInvincibility();
+    void interact(Trader& trader);
     bool isCurrentlyInvincible() const;
     ~Player();
 };

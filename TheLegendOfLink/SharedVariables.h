@@ -27,6 +27,7 @@ public:
 	static sf::Sprite playerSprite;
 	static sf::Texture gameOverBackgroundTexture;
 	static sf::Texture projectileTexture;
+	static sf::Texture traderTexture;
 	static sf::Sprite projectileSprite;
 	// RectangleShape
 	static sf::RectangleShape homePageBackground;

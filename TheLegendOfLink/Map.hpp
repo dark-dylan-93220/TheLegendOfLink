@@ -4,10 +4,13 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "Trader.hpp"
 
 class Map {
 private:
-    sf::Texture murTexture, grassTexture, herbeTexture, caillouxTexture, caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture, wallDonjonTexture, floorDonjonTexture, porteTexture;
+    sf::Texture murTexture, grassTexture, herbeTexture, caillouxTexture, 
+        caillouxEnMietteTexture, bocauxTexture, fairyTexture, receptacleTexture, 
+        wallDonjonTexture, floorDonjonTexture, porteTexture;
 
 public:
     bool doorLocked = true;
@@ -28,10 +31,10 @@ public:
     std::vector<sf::Sprite> spritesWallDonjon;
     std::vector<sf::Sprite> spritesFloorDonjon;
     std::vector<sf::Sprite> spritesPorte;
-public:
+
     bool isObstacle(double x, double y);
     void loadFromFile(const std::string& filename);
     void draw(sf::RenderWindow& window);
     void resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY);
-    void addVector();
+    void addVector(Trader& trader);
 };

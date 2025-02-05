@@ -146,6 +146,7 @@
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="SaveFileManager.cpp" />
     <ClCompile Include="SharedVariables.cpp" />
+    <ClCompile Include="Trader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bokoblin.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SaveFileManager.h" />
     <ClInclude Include="SharedVariables.h" />
+    <ClInclude Include="Trader.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

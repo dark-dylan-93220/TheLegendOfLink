@@ -20,7 +20,7 @@ void Map::loadFromFile(const std::string& filename) {
         mapDonjonData.push_back(line);
     }
     murTexture.loadFromFile("assets/tiles/wall.png");
-    grassTexture.loadFromFile("assets/tiles/grass.png"); 
+    grassTexture.loadFromFile("assets/tiles/grass.png");
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
     wallDonjonTexture.loadFromFile("assets/tiles/wall_donjon.png");
     floorDonjonTexture.loadFromFile("assets/tiles/floor_donjon.png");
@@ -31,7 +31,7 @@ void Map::loadFromFile(const std::string& filename) {
     receptacleTexture.loadFromFile("assets/tiles/receptacle.png");
 }
 
-void Map::addVector() {
+void Map::addVector(Trader& trader) {
     for (size_t y = 0; y < mapData.size(); ++y) {
         for (size_t x = 0; x < mapData[y].size(); ++x) {
             if (mapData[y][x] == '#') {
@@ -82,7 +82,10 @@ void Map::addVector() {
                 porteSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesPorte.push_back(porteSprite);
             }
-
+            if (mapData[y][x] == 'T') { // la texture n'est pas appliquée
+                trader.setPosition(x * SIZEX, y * SIZEY);
+                std::cout << "tests" << std::endl;
+            }
         }
     }
     for (size_t y = 0; y < mapDonjonData.size(); ++y) {
@@ -137,6 +140,7 @@ void Map::draw(sf::RenderWindow& window) {
     for (auto elem : spritesPorte) {
         window.draw(elem);
     }
+    
 }
 
 bool Map::isObstacle(double x, double y) {

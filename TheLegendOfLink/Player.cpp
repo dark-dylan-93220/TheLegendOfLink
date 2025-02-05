@@ -209,6 +209,12 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
     }
 }
 
+void Player::interact(Trader& trader) {
+    sf::Vector2f posPlayer(spriteEntity.getPosition().x, spriteEntity.getPosition().y);
+    if (trader.isNear(posPlayer) && sf::Keyboard::isKeyPressed(sf::Keyboard::E)) { trader.openInventory(); }
+    if (trader.getInventoryStatus() && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) { trader.closeInventory(); }
+}
+
 void Player::draw(sf::RenderWindow& window)
 {
     if (isInvincible) {

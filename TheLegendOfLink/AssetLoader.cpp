@@ -47,6 +47,7 @@ void Assets::loadAssetsFromFiles() {
 	Shared::gameOverBackgroundTexture.loadFromFile("assets/images/GameOverBackground.jpg");
 	Shared::caillouxEnMietteTexture.loadFromFile("assets/tiles/caillouxEnMiette.png");
 	Shared::projectileTexture.loadFromFile("assets/ennemies/projectile/rock.png");
+	Shared::traderTexture.loadFromFile("assets/pnjSprites/Marchand.png");
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {

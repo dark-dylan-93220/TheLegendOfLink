@@ -18,12 +18,14 @@
 #include "Map.hpp"
 #include "AssetLoader.hpp"
 #include "Eprojectiles.h"
+#include "Trader.hpp"
 
 class Game {
 private:
 	Player player;
 	Map map;
 	Map mapDonjon;
+	Trader trader;
 	sf::RenderWindow window;
 	sf::View mapView;
 	sf::Event event;

@@ -19,8 +19,7 @@ float deltaTime = 1.0f;
 sf::Clock cloc;
 
 Game::Game() : 
-	window(sf::VideoMode(sf::VideoMode::getFullscreenModes().at(0)), "The Legend Of Link", sf::Style::Fullscreen)
-{
+	window(sf::VideoMode(sf::VideoMode::getFullscreenModes().at(0)), "The Legend Of Link", sf::Style::Fullscreen) {
 	spawnPos = {960,540};
 	event = {};
 	mapView = window.getDefaultView();
@@ -42,9 +41,10 @@ Game::Game() :
 	isSaveSceneOn = false;
 	isGameplayOn = false;
 	lockClick = false;
-	map.addVector();
+	map.addVector(trader);
 	isRunning = true;
 	inDonjon = false;
+	trader.init(Shared::traderTexture);
 }
 
 Game::~Game() {
@@ -233,7 +233,6 @@ void Game::draw(Assets& assets) {
 	if (isGameplayOn) {
 		window.setView(mapView);
 		map.draw(window);
-
 		player.draw(window);
 		player.attaquer(window, map);
 
