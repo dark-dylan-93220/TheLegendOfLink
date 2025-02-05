@@ -82,6 +82,13 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
                     projectile->isColliding = true;
                 }
             }
+            for (auto& wall : map.spritesWallDonjon)
+            {
+                if (wall.getGlobalBounds().intersects(projectile->getSprite().getGlobalBounds()))
+                {
+                    projectile->isColliding = true;
+                }
+            }
             projectile->lifetime += deltaTime;
         }
         

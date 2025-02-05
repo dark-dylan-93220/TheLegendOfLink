@@ -45,6 +45,8 @@ private:
 	bool isGameplayOn;
 	bool isSaveSceneOn;
 	bool inDonjon;
+	bool changeMap;
+	std::string newMapFile;
 
 public:
 	Game();

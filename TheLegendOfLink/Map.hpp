@@ -14,7 +14,6 @@ public:
     const float SIZEX = sf::VideoMode::getDesktopMode().height / 13.5f;
     const float SIZEY = sf::VideoMode::getDesktopMode().height / 27.0f;
     std::vector<std::string> mapData;
-    std::vector<std::string> mapDonjonData;
     std::vector<sf::Sprite> spritesWall;
     std::vector<sf::Sprite> spritesGrass;
     std::vector<sf::Sprite> spritesHerbes;
@@ -27,11 +26,12 @@ public:
 
     std::vector<sf::Sprite> spritesWallDonjon;
     std::vector<sf::Sprite> spritesFloorDonjon;
-    std::vector<sf::Sprite> spritesPorte;
+    std::vector<sf::Sprite> doors;
 public:
     bool isObstacle(double x, double y);
     void loadFromFile(const std::string& filename);
     void draw(sf::RenderWindow& window);
     void resize(sf::Texture& texture, sf::Sprite& sprite, const float& scaleX, const float& scaleY);
     void addVector();
+    void clearVector();
 };

@@ -16,9 +16,6 @@ void Map::loadFromFile(const std::string& filename) {
     while (getline(file, line)) {
         mapData.push_back(line);
     }
-    while (getline(file, line)) {
-        mapDonjonData.push_back(line);
-    }
     murTexture.loadFromFile("assets/tiles/wall.png");
     grassTexture.loadFromFile("assets/tiles/grass.png"); 
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
@@ -80,20 +77,15 @@ void Map::addVector() {
                 sf::Sprite porteSprite;
                 resize(porteTexture, porteSprite, SIZEX, SIZEY);
                 porteSprite.setPosition(x * SIZEX, y * SIZEY);
-                spritesPorte.push_back(porteSprite);
+                doors.push_back(porteSprite);
             }
-
-        }
-    }
-    for (size_t y = 0; y < mapDonjonData.size(); ++y) {
-        for (size_t x = 0; x < mapDonjonData[y].size(); ++x) {
-            if (mapDonjonData[y][x] == 'w') {
+            if (mapData[y][x] == 'w') {
                 sf::Sprite wallDonjonSprite;
                 resize(wallDonjonTexture, wallDonjonSprite, SIZEX, SIZEY);
                 wallDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesWallDonjon.push_back(wallDonjonSprite);
             }
-            if (mapDonjonData[y][x] == 'f') {
+            if (mapData[y][x] == 'f') {
                 sf::Sprite floorDonjonSprite;
                 resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
                 floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
@@ -103,38 +95,55 @@ void Map::addVector() {
     }
 }
 
+void Map::clearVector()
+{
+    mapData.clear();
+    spritesWall.clear();
+    spritesGrass.clear();
+    spritesHerbes.clear();
+    spritesKorogus.clear();
+    spritesCailloux.clear();
+    spritesCaillouxEnMiette.clear();
+    spritesBocaux.clear();
+    spritesFairy.clear();
+    spritesReceptacles.clear();
+    spritesWallDonjon.clear();
+    spritesFloorDonjon.clear();
+    doors.clear();
+}
+
 void Map::draw(sf::RenderWindow& window) {
-    for (auto elem : spritesGrass) {
+    for (auto& elem : spritesGrass) {
         window.draw(elem);
     }
-    for (auto elem : spritesHerbes) {
+    for (auto& elem : spritesHerbes) {
         window.draw(elem);
     }
-    for (auto elem : spritesWall) {
+    for (auto& elem : spritesWall) {
         window.draw(elem);
     }
-    for (auto elem : spritesCailloux) {
+    for (auto& elem : spritesCailloux) {
         window.draw(elem);
     }
-    for (auto elem : spritesCaillouxEnMiette) {
+    for (auto& elem : spritesCaillouxEnMiette) {
         window.draw(elem);
     }
-    for (auto elem : spritesBocaux) {
+    for (auto& elem : spritesBocaux) {
         window.draw(elem);
     }
-    for (auto elem : spritesFairy) {
+    for (auto& elem : spritesFairy) {
         window.draw(elem);
     }
-    for (auto elem : spritesReceptacles) {
+    for (auto& elem : spritesReceptacles) {
         window.draw(elem);
     }
-    for (auto elem : spritesWallDonjon) {
+    for (auto& elem : spritesWallDonjon) {
         window.draw(elem);
     }
-    for (auto elem : spritesFloorDonjon) {
+    for (auto& elem : spritesFloorDonjon) {
         window.draw(elem);
     }
-    for (auto elem : spritesPorte) {
+    for (auto& elem : doors) {
         window.draw(elem);
     }
 }
@@ -144,9 +153,6 @@ bool Map::isObstacle(double x, double y) {
     int tileY = y / (double)SIZEY;
 
     if (mapData[tileY][tileX] == '#' || mapData[tileY][tileX] == 'C') {
-        return true;
-    }
-    if (mapDonjonData[tileY][tileX] == 'w') {
         return true;
     }
     return false;
