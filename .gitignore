@@ -356,3 +356,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ah là là les .tlog qu'ils sont embêtants...
+/TheLegendOfLink/x64/Release/TheLegendOfLink.tlog/
+/TheLegendOfLink/x64/Debug/TheLegendOfLink.tlog/

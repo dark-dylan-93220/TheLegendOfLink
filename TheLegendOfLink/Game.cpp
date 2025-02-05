@@ -56,6 +56,13 @@ void Game::run() {
 	SaveFileManager saveFileOne("Saves/saveSlotOne.txt");
 	SaveFileManager saveFileTwo("Saves/saveSlotTwo.txt");
 	SaveFileManager saveFileThree("Saves/saveSlotThree.txt");
+
+	if (saveFileOne.exists)
+		Shared::saveOneExists = true;
+	if (saveFileTwo.exists)
+		Shared::saveTwoExists = true;
+	if (saveFileThree.exists)
+		Shared::saveThreeExists = true;
 	
 	Assets assets(window);
 
@@ -207,7 +214,57 @@ void Game::pollEvents() {
 				}
 			}
 			break;
-
+		case sf::Event::TextEntered:
+			if (isSaveSceneOn && nameChoosing) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+					if (nameChoice.size() == 0)
+						nameChoice = "Link"; // Nom par défaut, sans choix
+					if (selectedSave == "One") {
+						Shared::saveNameOne = nameChoice;
+						Shared::numberOfHeartsOne = 3;
+						Shared::savedPosOne = { 0.f, 0.f };
+						Shared::numberOfRubisOne = 0;
+						Shared::hasBocalOne = -1;
+						Shared::lastSaveTimeOne = std::time(nullptr);
+						Shared::playTimeOne = "0:00";
+						Shared::typingSaveOne = false;
+					}
+					else if (selectedSave == "Two") {
+						Shared::saveNameTwo = nameChoice;
+						Shared::numberOfHeartsTwo = 3;
+						Shared::savedPosTwo = { 0.f, 0.f };
+						Shared::numberOfRubisTwo = 0;
+						Shared::hasBocalTwo = -1;
+						Shared::lastSaveTimeTwo = std::time(nullptr);
+						Shared::playTimeTwo = "0:00";
+						Shared::typingSaveTwo = false;
+					}
+					else if (selectedSave == "Three") {
+						Shared::saveNameThree = nameChoice;
+						Shared::numberOfHeartsThree = 3;
+						Shared::savedPosThree = { 0.f, 0.f };
+						Shared::numberOfRubisThree = 0;
+						Shared::hasBocalThree = -1;
+						Shared::lastSaveTimeThree = std::time(nullptr);
+						Shared::playTimeThree = "0:00";
+						Shared::typingSaveThree = false;
+					}
+					nameChoosing = false;
+					isSaveSceneOn = false;
+					isGameplayOn = true;
+				}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Backspace)) {
+					if (nameChoice.length() > 0) {
+						nameChoice.pop_back();
+						Shared::nameCreationText.setString(nameChoice);
+					}
+				}
+				else if (event.text.unicode < 128 && nameChoice.length() < 9) {
+					nameChoice += static_cast<char>(event.text.unicode);
+					Shared::nameCreationText.setString(nameChoice);
+				}
+			}
+			break;
 		case sf::Event::MouseButtonPressed:
 			mouseButtonPosition = { (float)event.mouseButton.x, (float)event.mouseButton.y };
 			if (event.mouseButton.button == sf::Mouse::Right)
@@ -234,31 +291,64 @@ void Game::pollEvents() {
 					}
 					else if (isSaveSceneOn) {
 						if (Shared::saveSlotOne.getGlobalBounds().contains(mouseButtonPosition)) {
-							isSaveSceneOn = false;
-							isGameplayOn = true;
-							selectedSave = "One";
-							char hour = Shared::playTimeOne[0];
-							totalPlayTime += 3600 * (hour - '0');
-							std::string minutes = Shared::playTimeOne.substr(2);
-							totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
+							if(selectedSave == "None")
+								selectedSave = "One";
+							if (Shared::saveOneExists) {
+								isSaveSceneOn = false;
+								isGameplayOn = true;
+								char hour = Shared::playTimeOne[0];
+								totalPlayTime += 3600 * (hour - '0');
+								std::string minutes = Shared::playTimeOne.substr(2);
+								totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
+							}
+							else if (selectedSave == "One") {
+								Shared::typingSaveOne = true;
+								Shared::nameCreationText = Shared::savePlayerNameText;
+								Shared::nameCreationText.setPosition(Shared::saveIntSlotOne.getPosition().x + Shared::saveIntSlotOne.getSize().x * 0.25f, Shared::saveIntSlotOne.getPosition().y + Shared::saveIntSlotOne.getSize().y * 0.10f - Shared::savePlayerNameText.getLocalBounds().top);
+								nameChoice = "";
+								Shared::nameCreationText.setString(nameChoice);
+								nameChoosing = true;
+							}
 						}
 						else if (Shared::saveSlotTwo.getGlobalBounds().contains(mouseButtonPosition)) {
-							isSaveSceneOn = false;
-							isGameplayOn = true;
-							selectedSave = "Two";
-							char hour = Shared::playTimeTwo[0];
-							totalPlayTime += 3600 * (hour - '0');
-							std::string minutes = Shared::playTimeTwo.substr(2);
-							totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
+							if (selectedSave == "None")
+								selectedSave = "Two";
+							if (Shared::saveTwoExists) {
+								isSaveSceneOn = false;
+								isGameplayOn = true;
+								char hour = Shared::playTimeTwo[0];
+								totalPlayTime += 3600 * (hour - '0');
+								std::string minutes = Shared::playTimeTwo.substr(2);
+								totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
+							}
+							else if(selectedSave == "Two") {
+								Shared::typingSaveTwo = true;
+								Shared::nameCreationText = Shared::savePlayerNameText;
+								Shared::nameCreationText.setPosition(Shared::saveIntSlotTwo.getPosition().x + Shared::saveIntSlotTwo.getSize().x * 0.25f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotOne.getSize().y * 0.10f - Shared::savePlayerNameText.getLocalBounds().top);
+								nameChoice = "";
+								Shared::nameCreationText.setString(nameChoice);
+								nameChoosing = true;
+							}
 						}
 						if (Shared::saveSlotThree.getGlobalBounds().contains(mouseButtonPosition)) {
-							isSaveSceneOn = false;
-							isGameplayOn = true;
-							selectedSave = "Three";
-							char hour = Shared::playTimeThree[0];
-							totalPlayTime += 3600 * (hour - '0');
-							std::string minutes = Shared::playTimeThree.substr(2);
-							totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
+							if (selectedSave == "None")
+								selectedSave = "Three";
+							if (Shared::saveThreeExists) {
+								isSaveSceneOn = false;
+								isGameplayOn = true;
+								char hour = Shared::playTimeThree[0];
+								totalPlayTime += 3600 * (hour - '0');
+								std::string minutes = Shared::playTimeThree.substr(2);
+								totalPlayTime += 60 * stoi(minutes); // Arrondi à la minute, besoin de jouer une minute complète pour qu'elle soit comptée
+							}
+							else if(selectedSave == "Three") {
+								Shared::typingSaveThree = true;
+								Shared::nameCreationText = Shared::savePlayerNameText;
+								Shared::nameCreationText.setPosition(Shared::saveIntSlotThree.getPosition().x + Shared::saveIntSlotThree.getSize().x * 0.25f, Shared::saveIntSlotThree.getPosition().y + Shared::saveIntSlotOne.getSize().y * 0.10f - Shared::savePlayerNameText.getLocalBounds().top);
+								nameChoice = "";
+								Shared::nameCreationText.setString(nameChoice);
+								nameChoosing = true;
+							}
 						}
 					}
 					else if (isGameOver) {
@@ -330,6 +420,9 @@ void Game::draw(Assets& assets) {
 		// La save scene est statique pour le moment
 		window.setView(window.getDefaultView());
 		assets.drawSavePage(window);
+		if (nameChoosing) {
+			window.draw(Shared::nameCreationText);
+		}
 	}
 	else if (isGameOver) {
 		window.setView(window.getDefaultView());

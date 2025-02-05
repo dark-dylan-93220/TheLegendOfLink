@@ -287,6 +287,13 @@ void Assets::initSaveSelection(sf::RenderWindow& window) {
 	Shared::playTimeTextThree = Shared::playTimeTextOne;
 	Shared::playTimeTextThree.setString(Shared::playTimeThree);
 
+	// Utils
+	Shared::betweenSaveOneAndTwo = Shared::saveSlotTwo.getPosition().y - Shared::saveSlotOne.getPosition().y;
+	Shared::betweenSaveOneAndThree = Shared::saveSlotThree.getPosition().y - Shared::saveSlotOne.getPosition().y;
+	Shared::typingSaveOne = false;
+	Shared::typingSaveTwo = false;
+	Shared::typingSaveThree = false;
+
 }
 
 void Assets::initSettingsPage(sf::RenderWindow& window) {
@@ -363,9 +370,6 @@ void Assets::drawHomePage(sf::RenderWindow& window) {
 
 void Assets::drawSavePage(sf::RenderWindow& window) {
 
-	float betweenSaveOneAndTwo = Shared::saveSlotTwo.getPosition().y - Shared::saveSlotOne.getPosition().y;
-	float betweenSaveOneAndThree = Shared::saveSlotThree.getPosition().y - Shared::saveSlotOne.getPosition().y;
-
 	window.draw(Shared::savePageBackground);
 
 	window.draw(Shared::savePageTitle);
@@ -375,110 +379,129 @@ void Assets::drawSavePage(sf::RenderWindow& window) {
 	window.draw(Shared::saveSlotOne);
 	window.draw(Shared::saveIntSlotOne);
 	window.draw(Shared::saveNumberRectOne);
-	window.draw(Shared::savePlayerNameText);
 	window.draw(Shared::saveRectOneText);
 
-	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
-	for (int i = 0; i < Shared::numberOfHeartsOne; ++i) {
-		window.draw(Shared::heartSprite);
-		Shared::heartSprite.move(0.26f * Shared::saveIntSlotOne.getSize().y, 0.f);
-	}
-	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + Shared::savePlayerNameText.getLocalBounds().width + 0.04f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
+	if (Shared::saveOneExists) {
+		Shared::savePlayerNameText.setString(Shared::saveNameOne);
+		Shared::savePlayerNameText.setPosition(Shared::saveIntSlotOne.getPosition().x + Shared::saveIntSlotOne.getSize().x * 0.25f, Shared::saveIntSlotOne.getPosition().y + Shared::saveIntSlotOne.getSize().y * 0.10f - Shared::savePlayerNameText.getLocalBounds().top);
+		window.draw(Shared::savePlayerNameText);
+		Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
+		for (int i = 0; i < Shared::numberOfHeartsOne; ++i) {
+			window.draw(Shared::heartSprite);
+			Shared::heartSprite.move(0.26f * Shared::saveIntSlotOne.getSize().y, 0.f);
+		}
+		Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + Shared::savePlayerNameText.getLocalBounds().width + 0.04f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
 
-	window.draw(Shared::saveTimeText);
-	window.draw(Shared::lastSaveTimeTextOne);
-	Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height + Shared::saveIntSlotOne.getSize().y * 0.20f);
-	window.draw(Shared::saveTimePlayTimeBar);
-	window.draw(Shared::totalPlayTimeText);
-	window.draw(Shared::playTimeTextOne);
-	Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::saveTimeText.getPosition().y + Shared::saveTimeText.getLocalBounds().height + Shared::saveIntSlotOne.getSize().y * 0.13f);
-	window.draw(Shared::saveTimePlayTimeBar);
-	
+		Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotOne.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
+		window.draw(Shared::saveTimeText);
+		window.draw(Shared::lastSaveTimeTextOne);
+		Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height + Shared::saveIntSlotOne.getSize().y * 0.20f);
+		window.draw(Shared::saveTimePlayTimeBar);
+		Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectOne.getPosition().y + Shared::saveNumberRectOne.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
+		window.draw(Shared::totalPlayTimeText);
+		window.draw(Shared::playTimeTextOne);
+		Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::saveTimeText.getPosition().y + Shared::saveTimeText.getLocalBounds().height + Shared::saveIntSlotOne.getSize().y * 0.13f);
+		window.draw(Shared::saveTimePlayTimeBar);
+	}
+	else {
+		Shared::nonCreatedSaveText.move(0, -Shared::betweenSaveOneAndTwo - 1.f);
+		if(!Shared::typingSaveOne)
+			window.draw(Shared::nonCreatedSaveText);
+		Shared::nonCreatedSaveText.move(0, Shared::betweenSaveOneAndTwo + 1.f);
+	}
+
 	// Slot 2
 	window.draw(Shared::saveSlotTwo);
 	window.draw(Shared::saveIntSlotTwo);
 	window.draw(Shared::saveNumberRectTwo);
-
-	//window.draw(Shared::nonCreatedSaveText);
-
-	Shared::savePlayerNameText.move(0, betweenSaveOneAndTwo);
-	Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotTwo.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotTwo.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
-	Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotTwo.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectTwo.getPosition().y + Shared::saveNumberRectTwo.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
-
-	Shared::savePlayerNameText.setString(Shared::saveNameTwo);
-	window.draw(Shared::savePlayerNameText);
-
-	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotTwo.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotTwo.getSize().x, Shared::savePlayerNameText.getPosition().y);
-	for (int i = 0; i < Shared::numberOfHeartsTwo; ++i) {
-		window.draw(Shared::heartSprite);
-		Shared::heartSprite.move(0.26f * Shared::saveIntSlotOne.getSize().y, 0.f);
-	}
-	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + Shared::savePlayerNameText.getLocalBounds().width + 0.04f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
-	
-	window.draw(Shared::saveTimeText);
-	Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height + Shared::saveIntSlotTwo.getSize().y * 0.20f);
-	window.draw(Shared::saveTimePlayTimeBar);
-	
-	Shared::lastSaveTimeTextTwo.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::lastSaveTimeTextTwo.getLocalBounds().width, Shared::saveTimeText.getPosition().y);
-	window.draw(Shared::lastSaveTimeTextTwo);
-
-	window.draw(Shared::totalPlayTimeText);
-	Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::saveTimeText.getPosition().y + Shared::saveTimeText.getLocalBounds().height + Shared::saveIntSlotTwo.getSize().y * 0.13f + 0.5f);
-	window.draw(Shared::saveTimePlayTimeBar);
-
-	Shared::playTimeTextTwo.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::playTimeTextTwo.getLocalBounds().width, Shared::totalPlayTimeText.getPosition().y);
-	window.draw(Shared::playTimeTextTwo);
-
-	Shared::savePlayerNameText.move(0, -betweenSaveOneAndTwo);
-	//window.draw(Shared::nonCreatedSaveText);
 	window.draw(Shared::saveRectTwoText);
 
-	// Slot 3
+	if (Shared::saveTwoExists) {
+		Shared::savePlayerNameText.move(0, Shared::betweenSaveOneAndTwo);
+		Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotTwo.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotTwo.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
+		Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotTwo.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectTwo.getPosition().y + Shared::saveNumberRectTwo.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
 
-	Shared::savePlayerNameText.move(0.f, betweenSaveOneAndThree);
-	Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotThree.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotThree.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
-	Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotThree.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectThree.getPosition().y + Shared::saveNumberRectThree.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
+		Shared::savePlayerNameText.setString(Shared::saveNameTwo);
+		window.draw(Shared::savePlayerNameText);
+
+		Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotTwo.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotTwo.getSize().x, Shared::savePlayerNameText.getPosition().y);
+		for (int i = 0; i < Shared::numberOfHeartsTwo; ++i) {
+			window.draw(Shared::heartSprite);
+			Shared::heartSprite.move(0.26f * Shared::saveIntSlotOne.getSize().y, 0.f);
+		}
+		Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + Shared::savePlayerNameText.getLocalBounds().width + 0.04f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
+
+		window.draw(Shared::saveTimeText);
+		Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height + Shared::saveIntSlotTwo.getSize().y * 0.20f);
+		window.draw(Shared::saveTimePlayTimeBar);
+
+		Shared::lastSaveTimeTextTwo.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::lastSaveTimeTextTwo.getLocalBounds().width, Shared::saveTimeText.getPosition().y);
+		window.draw(Shared::lastSaveTimeTextTwo);
+
+		window.draw(Shared::totalPlayTimeText);
+		Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::saveTimeText.getPosition().y + Shared::saveTimeText.getLocalBounds().height + Shared::saveIntSlotTwo.getSize().y * 0.13f + 0.5f);
+		window.draw(Shared::saveTimePlayTimeBar);
+
+		Shared::playTimeTextTwo.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::playTimeTextTwo.getLocalBounds().width, Shared::totalPlayTimeText.getPosition().y);
+		window.draw(Shared::playTimeTextTwo);
+
+		Shared::savePlayerNameText.move(0, -Shared::betweenSaveOneAndTwo);
+	}
+	else {
+		if (!Shared::typingSaveTwo)
+			window.draw(Shared::nonCreatedSaveText);
+		Shared::nonCreatedSaveText.move(0, -Shared::betweenSaveOneAndTwo);
+		Shared::nonCreatedSaveText.move(0, Shared::betweenSaveOneAndThree);
+	}
+
+	// Slot 3
 
 	window.draw(Shared::saveSlotThree);
 	window.draw(Shared::saveIntSlotThree);
 	window.draw(Shared::saveNumberRectThree);
-	//Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotThree.getSize().x * 0.10f, Shared::saveIntSlotThree.getPosition().y + Shared::saveIntSlotThree.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
-	//window.draw(Shared::nonCreatedSaveText);
-	//Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotTwo.getSize().x * 0.10f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotTwo.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
 	window.draw(Shared::saveRectThreeText);
 
-	Shared::savePlayerNameText.setString(Shared::saveNameThree);
-	window.draw(Shared::savePlayerNameText);
+	if (Shared::saveThreeExists) {
 
-	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotThree.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotThree.getSize().x, Shared::savePlayerNameText.getPosition().y);
-	for (int i = 0; i < Shared::numberOfHeartsThree; ++i) {
-		window.draw(Shared::heartSprite);
-		Shared::heartSprite.move(0.26f * Shared::saveIntSlotThree.getSize().y, 0.f);
+		Shared::savePlayerNameText.move(0.f, Shared::betweenSaveOneAndThree);
+		Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotThree.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotThree.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
+		Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotThree.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectThree.getPosition().y + Shared::saveNumberRectThree.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
+
+		Shared::savePlayerNameText.setString(Shared::saveNameThree);
+		window.draw(Shared::savePlayerNameText);
+
+		Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotThree.getSize().x) * 0.45f + 0.05f * Shared::saveIntSlotThree.getSize().x, Shared::savePlayerNameText.getPosition().y);
+		for (int i = 0; i < Shared::numberOfHeartsThree; ++i) {
+			window.draw(Shared::heartSprite);
+			Shared::heartSprite.move(0.26f * Shared::saveIntSlotThree.getSize().y, 0.f);
+		}
+
+		window.draw(Shared::saveTimeText);
+		Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height + Shared::saveIntSlotThree.getSize().y * 0.20f - 0.5f);
+		window.draw(Shared::saveTimePlayTimeBar);
+
+		Shared::lastSaveTimeTextThree.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::lastSaveTimeTextThree.getLocalBounds().width, Shared::saveTimeText.getPosition().y);
+		window.draw(Shared::lastSaveTimeTextThree);
+
+		window.draw(Shared::totalPlayTimeText);
+		Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::saveTimeText.getPosition().y + Shared::saveTimeText.getLocalBounds().height + Shared::saveIntSlotThree.getSize().y * 0.13f);
+		window.draw(Shared::saveTimePlayTimeBar);
+
+		Shared::playTimeTextThree.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::playTimeTextThree.getLocalBounds().width, Shared::totalPlayTimeText.getPosition().y);
+		window.draw(Shared::playTimeTextThree);
+
+		Shared::savePlayerNameText.setString(Shared::saveNameOne);
+		Shared::savePlayerNameText.move(0.f, -Shared::betweenSaveOneAndThree);
+		Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotOne.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
+		Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + Shared::savePlayerNameText.getLocalBounds().width + 0.04f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
+		Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectOne.getPosition().y + Shared::saveNumberRectOne.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
 	}
-
-	window.draw(Shared::saveTimeText);
-	Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height + Shared::saveIntSlotThree.getSize().y * 0.20f - 0.5f);
-	window.draw(Shared::saveTimePlayTimeBar);
-
-	Shared::lastSaveTimeTextThree.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::lastSaveTimeTextThree.getLocalBounds().width, Shared::saveTimeText.getPosition().y);
-	window.draw(Shared::lastSaveTimeTextThree);
-
-	window.draw(Shared::totalPlayTimeText);
-	Shared::saveTimePlayTimeBar.setPosition(Shared::savePlayerNameText.getPosition().x, Shared::saveTimeText.getPosition().y + Shared::saveTimeText.getLocalBounds().height + Shared::saveIntSlotThree.getSize().y * 0.13f);
-	window.draw(Shared::saveTimePlayTimeBar);
-
-	Shared::playTimeTextThree.setPosition(Shared::saveTimePlayTimeBar.getPosition().x + Shared::saveTimePlayTimeBar.getSize().x - Shared::playTimeTextThree.getLocalBounds().width, Shared::totalPlayTimeText.getPosition().y);
-	window.draw(Shared::playTimeTextThree);
-
-	//Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotThree.getSize().x * 0.10f, Shared::saveIntSlotThree.getPosition().y + Shared::saveIntSlotThree.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
-	//window.draw(Shared::nonCreatedSaveText);
-	//Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotTwo.getSize().x * 0.10f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotTwo.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
-	
-	Shared::savePlayerNameText.setString(Shared::saveNameOne);
-	Shared::savePlayerNameText.move(0.f, -betweenSaveOneAndThree);
-	Shared::saveTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::saveTimeText.getLocalBounds().width, 0.3f * Shared::saveIntSlotOne.getSize().y + Shared::savePlayerNameText.getPosition().y + Shared::savePlayerNameText.getLocalBounds().height - Shared::saveTimeText.getLocalBounds().top);
-	Shared::heartSprite.setPosition(Shared::savePlayerNameText.getPosition().x + Shared::savePlayerNameText.getLocalBounds().width + 0.04f * Shared::saveIntSlotOne.getSize().x, Shared::savePlayerNameText.getPosition().y);
-	Shared::totalPlayTimeText.setPosition(Shared::savePlayerNameText.getPosition().x + (0.70f * Shared::saveIntSlotOne.getSize().x) * 0.45f - Shared::totalPlayTimeText.getLocalBounds().width, Shared::saveNumberRectOne.getPosition().y + Shared::saveNumberRectOne.getSize().y - Shared::totalPlayTimeText.getLocalBounds().height - Shared::totalPlayTimeText.getLocalBounds().top);
+	else {
+		Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotThree.getSize().x * 0.10f, Shared::saveIntSlotThree.getPosition().y + Shared::saveIntSlotThree.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
+		if (!Shared::typingSaveThree)
+			window.draw(Shared::nonCreatedSaveText);
+		Shared::nonCreatedSaveText.setPosition(window.getSize().x / 2.f - Shared::nonCreatedSaveText.getLocalBounds().width / 2.f + Shared::saveIntSlotTwo.getSize().x * 0.10f, Shared::saveIntSlotTwo.getPosition().y + Shared::saveIntSlotTwo.getSize().y / 2.f - Shared::nonCreatedSaveText.getLocalBounds().height / 2.f - Shared::nonCreatedSaveText.getLocalBounds().top);
+	}
 }
 
 void Assets::drawSettingsPage(sf::RenderWindow& window) {

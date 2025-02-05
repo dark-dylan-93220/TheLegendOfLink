@@ -27,8 +27,16 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::RectangleShape Shared::leaveButton;
 
 // SavePage
-
+	// Utils
+	float Shared::betweenSaveOneAndTwo;
+	float Shared::betweenSaveOneAndThree;
+	bool Shared::typingSaveOne;
+	bool Shared::typingSaveTwo;
+	bool Shared::typingSaveThree;
 	// STD Data
+	bool Shared::saveOneExists;
+	bool Shared::saveTwoExists;
+	bool Shared::saveThreeExists;
 	// Nom du joueur
 	std::string Shared::saveNameOne;
 	std::string Shared::saveNameTwo;
@@ -67,6 +75,7 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	std::string Shared::lastSaveTimeThreeString;
 	
 	// Texts
+	sf::Text Shared::nameCreationText;
 	sf::Text Shared::saveTitleText;
 	sf::Text Shared::nonCreatedSaveText;
 	sf::Text Shared::savePlayerNameText;

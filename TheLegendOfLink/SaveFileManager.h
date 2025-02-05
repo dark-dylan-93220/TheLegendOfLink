@@ -14,6 +14,9 @@ private:
 	std::string name;
 
 public:
+	bool exists;
+
+public:
 	SaveFileManager(const std::string& filename);
 	~SaveFileManager();
 

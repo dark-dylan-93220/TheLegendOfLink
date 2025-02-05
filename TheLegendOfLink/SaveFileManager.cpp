@@ -11,6 +11,7 @@ SaveFileManager::SaveFileManager(const std::string& filename) {
 			write(0);
 			file.close();
 			file.open(filename, std::ios::in | std::ios::out);
+			exists = false;
 		}
 		// Sinon, on vérifie si il est vide
 		else {
@@ -21,6 +22,10 @@ SaveFileManager::SaveFileManager(const std::string& filename) {
 				write(0);
 				file.close();
 				file.open(filename, std::ios::in | std::ios::out);
+				exists = false;
+			}
+			else {
+				exists = true;
 			}
 		}
 		// Enfin, on lit les valeurs
@@ -137,7 +142,7 @@ void SaveFileManager::read() {
 	file.seekg(0, std::ios::beg); // Move to the beginning of the file
 
 	while (std::getline(file, lineContent)) {
-		// Stop reading if we reach "SAVE END"
+		// Stop reading if we reach "SAVE END" or if the file is empty
 		if (lineContent == "SAVE END" || lineContent.empty()) {
 			break;
 		}
@@ -176,17 +181,41 @@ void SaveFileManager::read() {
 }
 
 void SaveFileManager::write(int saveCode) {
-	if (saveCode == 0) { // Sauvagerde par défaut
-		file << "NAME Link"     << std::endl;
-		file << "HEARTS 3"      << std::endl;
-		file << "POSITION 0 0"  << std::endl;
-		file << "RUBIS 0"       << std::endl;
-		file << "BOCAL NONE"    << std::endl;
-		file << "LAST SAVE 0"   << std::endl;
-		file << "PLAYTIME 0:00" << std::endl;
-		file << "SAVE END"      << std::endl;
+	if (saveCode == 0) { // Sauvagerde par défaut (vide)
+		file.close();
+		file.open(name, std::ios::out | std::ios::trunc);
+		file.close();
+		return;
 	}
-	else if(saveCode == 1) {
+	// Si Alt+F4 pendant la sélection du nom, sauvegarde par défaut crée quand même
+	if (Shared::saveNameOne == "") {
+		Shared::saveNameOne = "Link";
+		Shared::numberOfHeartsOne = 3;
+		Shared::savedPosOne = { 0, 0 };
+		Shared::numberOfRubisOne = 0;
+		Shared::hasBocalOne = -1;
+		Shared::lastSaveTimeOne = 0;
+		Shared::playTimeOne = "0:00";
+	}
+	if(Shared::saveNameTwo == "") {
+		Shared::saveNameTwo = "Link";
+		Shared::numberOfHeartsTwo = 3;
+		Shared::savedPosTwo = { 0, 0 };
+		Shared::numberOfRubisTwo = 0;
+		Shared::hasBocalTwo = -1;
+		Shared::lastSaveTimeTwo = 0;
+		Shared::playTimeTwo = "0:00";
+	}
+	if (Shared::saveNameThree == "") {
+		Shared::saveNameThree = "Link";
+		Shared::numberOfHeartsThree = 3;
+		Shared::savedPosThree = { 0, 0 };
+		Shared::numberOfRubisThree = 0;
+		Shared::hasBocalThree = -1;
+		Shared::lastSaveTimeThree = 0;
+		Shared::playTimeThree = "0:00";
+	}
+	if(saveCode == 1) {
 		file.close();
 		file.open("Saves/saveSlotOne.txt", std::ios::out | std::ios::trunc);
 		file << "NAME "      << Shared::saveNameOne        << std::endl;
