@@ -25,7 +25,8 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::RectangleShape Shared::playButton;
 	sf::RectangleShape Shared::settingsButton;
 	sf::RectangleShape Shared::leaveButton;
-
+	// Ennemies
+	std::vector<std::unique_ptr<Ennemies>> Shared::enemies;
 // SavePage
 
 	// STD Data

@@ -72,9 +72,6 @@ void Game::run() {
 	Assets assets(window);
 
 	player.init(Shared::playerSprite, spawnPos);
-	Bokoblin bok;
-	bok.init(Shared::playerSprite, spawnPos);
-	ennemies.push_back(bok);
 	
 	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
 
@@ -238,8 +235,8 @@ void Game::draw(Assets& assets) {
 		player.attaquer(window, map);
 
 
-		for (auto& bok : ennemies) {
-			bok.draw(window);
+		for (auto& bok : Shared::enemies) {
+			bok->draw(window);
 		}
 
 		//std::cout << deltaTime << '\n';
@@ -281,14 +278,14 @@ void Game::updateGame(sf::Event& event) {
 		deltaTime = cloc.restart().asSeconds();
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);
-
-		for (auto& bok : ennemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
+		for (auto& bok : Shared::enemies) {
+			std::cout << bok->getSprite().getPosition().x << bok->getSprite().getPosition().y << std::endl;
+			if (std::abs(player.getSprite().getPosition().x - bok->getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok->getSprite().getPosition().y) < 100)
 			{
-				bok.followUpdate(deltaTime, player);
+				bok->followUpdate(deltaTime, player);
 			}
 			else {
-				bok.update(deltaTime, event, map);
+				bok->update(deltaTime, event, map);
 			}
 		}
 		// Vérification des collisions avec les ennemis

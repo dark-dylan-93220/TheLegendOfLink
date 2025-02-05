@@ -82,6 +82,14 @@ void Map::addVector() {
                 porteSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesPorte.push_back(porteSprite);
             }
+            if (mapData[y][x] == 'E')
+            {
+                std::cout << "EEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
+                std::unique_ptr<Bokoblin> bok = std::make_unique<Bokoblin> ();
+                sf::Vector2f pos = {x * SIZEX, y * SIZEY};
+                bok->init(Shared::playerSprite,pos);
+                Shared::enemies.push_back(std::move(bok));
+            }
 
         }
     }
