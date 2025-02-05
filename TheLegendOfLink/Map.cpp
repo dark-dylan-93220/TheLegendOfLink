@@ -165,8 +165,5 @@ bool Map::isObstacle(double x, double y) {
     if (mapData[tileY][tileX] == '#' || mapData[tileY][tileX] == 'C') {
         return true;
     }
-    if (mapDonjonData[tileY][tileX] == 'w') {
-        return true;
-    }
     return false;
 }
