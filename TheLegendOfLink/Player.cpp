@@ -237,6 +237,11 @@ sf::Sprite Player::getSprite()
 {
     return spriteEntity;
 }
+
+void Player::setPositionPlayer(sf::Vector2f newPos)
+{
+    spriteEntity.setPosition(newPos);
+}
 int Player::getRubis() { return rubis; }
 void Player::setRubis(int nb) { rubis = nb; }
 

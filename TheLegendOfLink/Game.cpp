@@ -77,12 +77,12 @@ void Game::run() {
 	ennemies.push_back(bok);
 	
 	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
-
 	while (window.isOpen() && isRunning) {
-
+		
 		pollEvents();
 		draw(assets);
-
+		
+		
 	}
 
 	updateThread.join();
@@ -236,7 +236,10 @@ void Game::draw(Assets& assets) {
 
 	window.clear(sf::Color::Black);
 	mapView.setCenter(player.getSprite().getPosition());
-
+	if (changeMap)
+	{
+		player.getSprite().setPosition(200.f, 200.f);
+	}
 	if (isGameplayOn) {
 		window.setView(mapView);
 		map.draw(window);
@@ -309,6 +312,7 @@ void Game::updateGame(sf::Event& event) {
 		{
 			if (door.getGlobalBounds().intersects(player.getSprite().getGlobalBounds()))
 			{
+
 				if (inDonjon)
 				{
 					inDonjon = false;
@@ -330,7 +334,9 @@ void Game::updateGame(sf::Event& event) {
 			map.clearVector();
 			map.loadFromFile(newMapFile);
 			map.addVector();
+			player.setPositionPlayer({ 10.f, 10.f });
 		}
+		
 
 		// Vérification des collisions avec les objets récupérables
 		for (auto it = objects.begin(); it != objects.end(); ) {
