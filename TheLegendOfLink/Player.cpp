@@ -92,6 +92,7 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
             {
                 if (projectile->getSprite().getGlobalBounds().intersects(ennemie->getSprite().getGlobalBounds()))
                 {
+                    projectile->lifetime = 50.f;
                     ennemie->shouldBeDeleted = true;
                 }
             }
