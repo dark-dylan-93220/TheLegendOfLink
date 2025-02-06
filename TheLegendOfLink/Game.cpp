@@ -360,6 +360,7 @@ void Game::pollEvents() {
 							// recharge une save pour relancer le jeu
 							isSaveSceneOn = true;
 							isGameOver = false;
+							player.heal(3);
 						}
 					}
 				}
@@ -475,17 +476,22 @@ void Game::updateGame(sf::Event& event) {
 		}
 		for (auto& boss : Shared::bosses)
 		{
-			if (std::abs(player.getSprite().getPosition().x - boss->getSprite().getPosition().x) < 100 || std::abs(player.getSprite().getPosition().y - boss->getSprite().getPosition().y) < 100)
+			if (std::abs(player.getSprite().getPosition().x - boss->getSprite().getPosition().x) < 150 || std::abs(player.getSprite().getPosition().y - boss->getSprite().getPosition().y) < 150)
 			{
 				boss->followUpdate(deltaTime, player);
 			}
 		}
 		// Vérification des collisions avec les ennemis
-		/*for (auto& enemy : ennemies) {
-			if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {
+		for (auto& enemy : Shared::enemies) {
+			if (player.getSprite().getGlobalBounds().intersects(enemy->getSprite().getGlobalBounds()) && !player.isCurrentlyInvincible()) {
 				player.takeDamage(1);
 			}
-		}*/
+		}
+		for (auto& enemy : Shared::bosses) {
+			if (player.getSprite().getGlobalBounds().intersects(enemy->getSprite().getGlobalBounds()) && !player.isCurrentlyInvincible()) {
+				player.takeDamage(1);
+			}
+		}
 
 		for (auto& door : map.doors)
 		{

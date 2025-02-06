@@ -142,7 +142,7 @@ void Map::addVector() {
                 }
                 sf::Vector2f pos = { x * SIZEX, y * SIZEY };
                 std::unique_ptr<Boss> bok = std::make_unique<Boss>();
-                bok->init(Shared::bokoSprite, pos);
+                bok->init(Shared::bossSprite, pos);
                 Shared::bosses.push_back(std::move(bok));
             }
 

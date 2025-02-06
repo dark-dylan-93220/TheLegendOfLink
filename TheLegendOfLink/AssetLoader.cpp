@@ -36,6 +36,9 @@ void Assets::loadAssetsFromFiles() {
 	}
 	Shared::bokoTexture.loadFromFile("assets/ennemies/boko.png");
 	Shared::bokoSprite.setTexture(Shared::bokoTexture);
+	Shared::bossTexture.loadFromFile("assets/ennemies/boko.png");
+	Shared::bossSprite.setTexture(Shared::bossTexture);
+	Shared::bossSprite.setColor(sf::Color(78, 39, 183, 255));
 	Shared::backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
 	Shared::saveBackground.loadFromFile("assets/images/saveSelectionBackground.png");
 	Shared::saveTitle.loadFromFile("assets/saveSelection/saveTitlePlank.png");
