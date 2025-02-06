@@ -5,6 +5,7 @@
 #include <optional>
 
 class Bokoblin;
+class Boss;
 
 class Shared {
 //
@@ -24,6 +25,8 @@ public:
 	// Textures & Sprites
 	static sf::Texture backgroundTexture;
 	static sf::Texture playerTexture;
+	static sf::Texture bokoTexture;
+	static sf::Sprite bokoSprite;
 	static std::vector<sf::Texture> playerTextures;
 	static std::vector<sf::Texture> playerTexturesBack;
 	static sf::Sprite playerSprite;
@@ -40,6 +43,7 @@ public:
 	static sf::RectangleShape homeButton;
 	//Ennemies
 	static std::vector<std::unique_ptr<Bokoblin>> enemies;
+	static std::vector<std::unique_ptr<Boss>> bosses;
 
 // SaveScene / inspiration : https://maplequeensaku.weebly.com/uploads/9/5/7/9/95792838/twilight-princess-rel-loader-save-screen-no-file_orig.png
 public:
