@@ -10,7 +10,7 @@ void Boss::init(sf::Sprite& sprite, sf::Vector2f& position)
     positionP[1] = { spawnPos.x + 200,spawnPos.y };
     positionP[2] = { spawnPos.x + 200,spawnPos.y + 200 };
     positionP[3] = { spawnPos.x,spawnPos.y + 200 };
-    spriteEntity.setScale(2.f * (16.f / 9.f), 2.f);
+    spriteEntity.setScale(1.f * (16.f / 9.f), 1.f);
     spriteEntity.setOrigin(spriteEntity.getLocalBounds().width / 2, spriteEntity.getLocalBounds().height / 2);
     spriteEntity.setPosition(spawnPos);
 }

@@ -27,6 +27,8 @@ public:
 	static sf::Texture playerTexture;
 	static sf::Texture bokoTexture;
 	static sf::Sprite bokoSprite;
+	static sf::Texture bossTexture;
+	static sf::Sprite bossSprite;
 	static std::vector<sf::Texture> playerTextures;
 	static std::vector<sf::Texture> playerTexturesBack;
 	static sf::Sprite playerSprite;

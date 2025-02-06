@@ -22,6 +22,8 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::Sprite Shared::playerSprite;
 	sf::Texture Shared::bokoTexture;
 	sf::Sprite Shared::bokoSprite;
+	sf::Texture Shared::bossTexture;
+	sf::Sprite Shared::bossSprite;
 	sf::Texture Shared::projectileTexture;
 	sf::Sprite Shared::projectileSprite;
 	// RectangleShape
