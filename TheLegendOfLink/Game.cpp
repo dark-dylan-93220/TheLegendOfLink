@@ -402,34 +402,8 @@ void Game::draw(Assets& assets) {
 		}
 		
 		deltaTime = cloc.restart().asSeconds();
-		for (auto& door : map.doors)
-		{
-			if (door.getGlobalBounds().intersects(player.getSprite().getGlobalBounds()))
-			{
-
-				if (inDonjon)
-				{
-					inDonjon = false;
-					newMapFile = "assets/tiles/map.txt";
-				}
-				else
-				{
-					inDonjon = true;
-					newMapFile = "assets/tiles/map_donjon.txt";
-				}
-				changeMap = true;
-				break;
-			}
-			
-		}
-		if (changeMap)
-		{
-			changeMap = false;
-			map.clearVector();
-			map.loadFromFile(newMapFile);
-			map.addVector();
-			player.setPositionPlayer({ 10.f, 10.f });
-		}
+		
+	
 		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
@@ -481,7 +455,19 @@ void Game::updateGame(sf::Event& event) {
 			}
 		}*/
 
-		
+		for (auto& door : map.doors)
+		{
+			if (door.getGlobalBounds().intersects(player.getSprite().getGlobalBounds()))
+			{
+
+				map.clearVector();
+				map.loadFromFile("assets/tiles/map_donjon.txt");
+				map.addVector();
+				player.setPositionPlayer({ 960.f, 540.f });
+				break;
+			}
+
+		}
 		
 
 		// Vérification des collisions avec les objets récupérables
