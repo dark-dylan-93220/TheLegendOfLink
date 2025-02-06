@@ -37,12 +37,7 @@ void Map::addVector() {
                 murSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesWall.push_back(murSprite);
             }
-            else {
-                sf::Sprite grassSprite;
-                resize(grassTexture, grassSprite, SIZEX, SIZEY);
-                grassSprite.setPosition(x * SIZEX, y * SIZEY);
-                spritesGrass.push_back(grassSprite);
-            }
+            
             if (mapData[y][x] == 'h') {
                 sf::Sprite herbeSprite;
                 resize(herbeTexture, herbeSprite, SIZEX, SIZEY);
@@ -50,6 +45,19 @@ void Map::addVector() {
                 spritesHerbes.push_back(herbeSprite);
             }
             if (mapData[y][x] == 'C') {
+                if (spritesWall.empty()) {
+                    sf::Sprite floorDonjonSprite;
+                    resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
+                    floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
+                    spritesFloorDonjon.push_back(floorDonjonSprite);
+                }
+                else
+                {
+                    sf::Sprite grassSprite;
+                    resize(grassTexture, grassSprite, SIZEX, SIZEY);
+                    grassSprite.setPosition(x * SIZEX, y * SIZEY);
+                    spritesGrass.push_back(grassSprite);
+                }
                 sf::Sprite caillouxSprite;
                 resize(caillouxTexture, caillouxSprite, SIZEX, SIZEY);
                 caillouxSprite.setPosition(x * SIZEX, y * SIZEY);
@@ -80,13 +88,31 @@ void Map::addVector() {
                 doors.push_back(porteSprite);
             }
             if (mapData[y][x] == 'E')
-            {
+            {  
+                if (spritesWall.empty()) {
+                    sf::Sprite floorDonjonSprite;
+                    resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
+                    floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
+                    spritesFloorDonjon.push_back(floorDonjonSprite);
+                }
+                else
+                {
+                    sf::Sprite grassSprite;
+                    resize(grassTexture, grassSprite, SIZEX, SIZEY);
+                    grassSprite.setPosition(x * SIZEX, y * SIZEY);
+                    spritesGrass.push_back(grassSprite);
+                }
                 sf::Vector2f pos = { x * SIZEX, y * SIZEY };
                 std::unique_ptr<Bokoblin> bok = std::make_unique<Bokoblin>();
-                bok->init(Shared::playerSprite, pos);
+                bok->init(Shared::bokoSprite, pos);
                 Shared::enemies.push_back(std::move(bok));
             }
-
+            else {
+                sf::Sprite grassSprite;
+                resize(grassTexture, grassSprite, SIZEX, SIZEY);
+                grassSprite.setPosition(x * SIZEX, y * SIZEY);
+                spritesGrass.push_back(grassSprite);
+            }
             if (mapData[y][x] == 'w') {
                 sf::Sprite wallDonjonSprite;
                 resize(wallDonjonTexture, wallDonjonSprite, SIZEX, SIZEY);
@@ -98,6 +124,26 @@ void Map::addVector() {
                 resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
                 floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesFloorDonjon.push_back(floorDonjonSprite);
+            }
+            if (mapData[y][x] == 'L')
+            {
+                if (spritesWall.empty()) {
+                    sf::Sprite floorDonjonSprite;
+                    resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
+                    floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
+                    spritesFloorDonjon.push_back(floorDonjonSprite);
+                }
+                else
+                {
+                    sf::Sprite grassSprite;
+                    resize(grassTexture, grassSprite, SIZEX, SIZEY);
+                    grassSprite.setPosition(x * SIZEX, y * SIZEY);
+                    spritesGrass.push_back(grassSprite);
+                }
+                sf::Vector2f pos = { x * SIZEX, y * SIZEY };
+                std::unique_ptr<Boss> bok = std::make_unique<Boss>();
+                bok->init(Shared::bokoSprite, pos);
+                Shared::bosses.push_back(std::move(bok));
             }
 
         }
@@ -150,6 +196,14 @@ void Map::draw(sf::RenderWindow& window) {
         if (!spritesWall.empty())
             window.draw(elem);
     }
+    for (auto& elem : spritesWallDonjon) {
+        if (!spritesWallDonjon.empty())
+            window.draw(elem);
+    }
+    for (auto& elem : spritesFloorDonjon) {
+        if (!spritesFloorDonjon.empty())
+            window.draw(elem);
+    }
     for (auto& elem : spritesCailloux) {
         if (!spritesCailloux.empty())
             window.draw(elem);
@@ -170,14 +224,7 @@ void Map::draw(sf::RenderWindow& window) {
         if (!spritesReceptacles.empty())
             window.draw(elem);
     }
-    for (auto& elem : spritesWallDonjon) {
-        if (!spritesWallDonjon.empty())
-            window.draw(elem);
-    }
-    for (auto& elem : spritesFloorDonjon) {
-        if (!spritesFloorDonjon.empty())
-            window.draw(elem);
-    }
+    
     for (auto& elem : doors) {
         if (!doors.empty())
             window.draw(elem);

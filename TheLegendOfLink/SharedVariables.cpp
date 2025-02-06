@@ -1,5 +1,6 @@
 #include "SharedVariables.h"
 #include "Bokoblin.h"
+#include "Boss.hpp"
 
 /* Avantage des variables statiques :  
  - Elles ne sont initialis�es qu'une seule fois
@@ -19,6 +20,8 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::Texture Shared::backgroundTexture;
 	sf::Texture Shared::playerTexture;
 	sf::Sprite Shared::playerSprite;
+	sf::Texture Shared::bokoTexture;
+	sf::Sprite Shared::bokoSprite;
 	sf::Texture Shared::projectileTexture;
 	sf::Sprite Shared::projectileSprite;
 	// RectangleShape
@@ -28,6 +31,7 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::RectangleShape Shared::leaveButton;
 	// Ennemies
 	std::vector<std::unique_ptr<Bokoblin>> Shared::enemies;
+	std::vector<std::unique_ptr<Boss>> Shared::bosses;
 // SavePage
 	// Utils
 	float Shared::betweenSaveOneAndTwo;

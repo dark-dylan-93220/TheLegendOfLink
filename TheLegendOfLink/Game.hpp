@@ -19,6 +19,7 @@
 
 // Player / Ennemies related
 #include "Bokoblin.h"
+#include "Boss.hpp"
 #include "Player.h"
 #include "Eprojectiles.h"
 
@@ -47,7 +48,7 @@ private:
 	bool isSettingsSceneOn;
 	bool isGameplayOn;
 	bool isSaveSceneOn;
-	bool inDonjon;
+	
 	bool changeMap;
 	std::string newMapFile;
 	// Name choice
@@ -60,7 +61,7 @@ public:
 
 public:
 	void run();
-
+	bool inDonjon;
 private:
 	void updateGame(sf::Event& event);
 	void pollEvents();

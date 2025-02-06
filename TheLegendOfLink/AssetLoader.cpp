@@ -34,6 +34,8 @@ void Assets::loadAssetsFromFiles() {
 		player.loadFromFile("assets/playerSprites/zelda_back/sprite_" + std::to_string(i) + ".png");
 		Shared::playerTexturesBack.push_back(player);
 	}
+	Shared::bokoTexture.loadFromFile("assets/ennemies/boko.png");
+	Shared::bokoSprite.setTexture(Shared::bokoTexture);
 	Shared::backgroundTexture.loadFromFile("assets/images/mainMenuBackground.jpg");
 	Shared::saveBackground.loadFromFile("assets/images/saveSelectionBackground.png");
 	Shared::saveTitle.loadFromFile("assets/saveSelection/saveTitlePlank.png");

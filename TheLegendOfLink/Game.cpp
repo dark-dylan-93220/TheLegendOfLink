@@ -386,8 +386,7 @@ void Game::draw(Assets& assets) {
 		window.setView(mapView);
 		map.draw(window);
 
-		player.draw(window);
-		player.attaquer(window, map);
+		
 
 		for (int i = 0; i < map.spritesCailloux.size(); i++) {
 			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
@@ -400,7 +399,14 @@ void Game::draw(Assets& assets) {
 		for (auto& bok : Shared::enemies) {
 			bok->draw(window);
 		}
-		
+		for (auto& boss : Shared::bosses)
+		{
+			boss->draw(window);
+		}
+
+		player.draw(window);
+		player.attaquer(window, map);
+
 		deltaTime = cloc.restart().asSeconds();
 		
 	
@@ -446,6 +452,13 @@ void Game::updateGame(sf::Event& event) {
 			}
 			else {
 				bok->update(deltaTime, event, map);
+			}
+		}
+		for (auto& boss : Shared::bosses)
+		{
+			if (std::abs(player.getSprite().getPosition().x - boss->getSprite().getPosition().x) < 100 || std::abs(player.getSprite().getPosition().y - boss->getSprite().getPosition().y) < 100)
+			{
+				boss->followUpdate(deltaTime, player);
 			}
 		}
 		// Vérification des collisions avec les ennemis
