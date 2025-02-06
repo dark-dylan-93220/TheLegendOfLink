@@ -441,6 +441,14 @@ void Game::draw(Assets& assets) {
 			++it;
 		}
 	}
+	for (auto it = Shared::bosses.begin(); it != Shared::bosses.end(); ) {
+		if ((*it)->shouldBeDeleted) {
+			it = Shared::bosses.erase(it);
+		}
+		else {
+			++it;
+		}
+	}
 
 	window.display();
 }

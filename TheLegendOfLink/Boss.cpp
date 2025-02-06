@@ -72,6 +72,16 @@ void Boss::followUpdate(float& deltaTime, Player& player)
     }*/
 }
 
+int Boss::takeDamage()
+{
+    hp -= 1;
+    if (hp <= 0)
+    {
+        shouldBeDeleted = true;
+    }
+    return hp;
+}
+
 sf::Sprite Boss::getSprite()
 {
     return spriteEntity;

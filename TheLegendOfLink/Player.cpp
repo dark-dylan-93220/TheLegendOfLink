@@ -95,6 +95,14 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
                     ennemie->shouldBeDeleted = true;
                 }
             }
+            for (auto& boss : Shared::bosses)
+            {
+                if (projectile->getSprite().getGlobalBounds().intersects(boss->getSprite().getGlobalBounds()))
+                {
+                    projectile->lifetime = 50.f;
+                    boss->takeDamage();
+                }
+            }
             projectile->lifetime += deltaTime;
         }
         
