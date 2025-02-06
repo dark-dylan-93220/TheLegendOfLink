@@ -117,6 +117,13 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
                 moving = false;
             }
         }
+        for (int i = 0; i < map.spritesCailloux.size(); i++) {
+            if (map.spritesCailloux[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                std::cout << "collide\n";
+                spriteEntity.move(-speed * (16.f / 9.f) * deltaTime, 0);
+                moving = false;
+            }
+        }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !moving)
     {
@@ -130,6 +137,12 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         }
         for (int i = 0; i < map.spritesWallDonjon.size(); i++) {
             if (map.spritesWallDonjon[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(speed * (16.f / 9.f) * deltaTime, 0);
+                moving = false;
+            }
+        }
+        for (int i = 0; i < map.spritesCailloux.size(); i++) {
+            if (map.spritesCailloux[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
                 spriteEntity.move(speed * (16.f / 9.f) * deltaTime, 0);
                 moving = false;
             }
@@ -152,6 +165,12 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
                 moving = false;
             }
         }
+        for (int i = 0; i < map.spritesCailloux.size(); i++) {
+            if (map.spritesCailloux[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(0, speed * deltaTime);
+                moving = false;
+            }
+        }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !moving)
     {
@@ -166,6 +185,12 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
         }
         for (int i = 0; i < map.spritesWallDonjon.size(); i++) {
             if (map.spritesWallDonjon[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
+                spriteEntity.move(0, -speed * deltaTime);
+                moving = false;
+            }
+        }
+        for (int i = 0; i < map.spritesCailloux.size(); i++) {
+            if (map.spritesCailloux[i].getGlobalBounds().intersects(spriteEntity.getGlobalBounds())) {
                 spriteEntity.move(0, -speed * deltaTime);
                 moving = false;
             }
