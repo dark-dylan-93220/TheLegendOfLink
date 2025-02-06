@@ -16,9 +16,6 @@ void Map::loadFromFile(const std::string& filename) {
     while (getline(file, line)) {
         mapData.push_back(line);
     }
-    while (getline(file, line)) {
-        mapDonjonData.push_back(line);
-    }
     murTexture.loadFromFile("assets/tiles/wall.png");
     grassTexture.loadFromFile("assets/tiles/grass.png"); 
     herbeTexture.loadFromFile("assets/tiles/herbe.png");
@@ -80,62 +77,110 @@ void Map::addVector() {
                 sf::Sprite porteSprite;
                 resize(porteTexture, porteSprite, SIZEX, SIZEY);
                 porteSprite.setPosition(x * SIZEX, y * SIZEY);
-                spritesPorte.push_back(porteSprite);
+                doors.push_back(porteSprite);
+            }
+            if (mapData[y][x] == 'E')
+            {
+                sf::Vector2f pos = { x * SIZEX, y * SIZEY };
+                std::unique_ptr<Bokoblin> bok = std::make_unique<Bokoblin>();
+                bok->init(Shared::playerSprite, pos);
+                Shared::enemies.push_back(std::move(bok));
             }
 
-        }
-    }
-    for (size_t y = 0; y < mapDonjonData.size(); ++y) {
-        for (size_t x = 0; x < mapDonjonData[y].size(); ++x) {
-            if (mapDonjonData[y][x] == 'w') {
+            if (mapData[y][x] == 'w') {
                 sf::Sprite wallDonjonSprite;
                 resize(wallDonjonTexture, wallDonjonSprite, SIZEX, SIZEY);
                 wallDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesWallDonjon.push_back(wallDonjonSprite);
             }
-            if (mapDonjonData[y][x] == 'f') {
+            if (mapData[y][x] == 'f') {
                 sf::Sprite floorDonjonSprite;
                 resize(floorDonjonTexture, floorDonjonSprite, SIZEX, SIZEY);
                 floorDonjonSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesFloorDonjon.push_back(floorDonjonSprite);
             }
+
         }
     }
+
+}
+
+void Map::clearVector()
+{
+    if (!mapData.empty())
+        mapData.clear();
+    if (!spritesWall.empty())
+        spritesWall.clear();
+    if (!spritesGrass.empty())
+        spritesGrass.clear();
+    if (!spritesHerbes.empty())
+        spritesHerbes.clear();
+    if (!spritesKorogus.empty())
+        spritesKorogus.clear();
+    if (!spritesCailloux.empty())
+        spritesCailloux.clear();
+    if (!spritesCaillouxEnMiette.empty())
+        spritesCaillouxEnMiette.clear();
+    if (!spritesBocaux.empty())
+        spritesBocaux.clear();
+    if (!spritesFairy.empty())
+        spritesFairy.clear();
+    if (!spritesReceptacles.empty())
+        spritesReceptacles.clear();
+    if (!spritesWallDonjon.empty())
+        spritesWallDonjon.clear();
+    if (!spritesFloorDonjon.empty())
+        spritesFloorDonjon.clear();
+    if (!doors.empty())
+        doors.clear();
+    if (!Shared::enemies.empty())
+        Shared::enemies.clear();
 }
 
 void Map::draw(sf::RenderWindow& window) {
-    for (auto elem : spritesGrass) {
-        window.draw(elem);
+    for (auto& elem : spritesGrass) {
+        if (!spritesGrass.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesHerbes) {
-        window.draw(elem);
+    for (auto& elem : spritesHerbes) {
+        if (!spritesHerbes.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesWall) {
-        window.draw(elem);
+    for (auto& elem : spritesWall) {
+        if (!spritesWall.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesCailloux) {
-        window.draw(elem);
+    for (auto& elem : spritesCailloux) {
+        if (!spritesCailloux.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesCaillouxEnMiette) {
-        window.draw(elem);
+    for (auto& elem : spritesCaillouxEnMiette) {
+        if (!spritesCaillouxEnMiette.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesBocaux) {
-        window.draw(elem);
+    for (auto& elem : spritesBocaux) {
+        if (!spritesBocaux.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesFairy) {
-        window.draw(elem);
+    for (auto& elem : spritesFairy) {
+        if (!spritesFairy.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesReceptacles) {
-        window.draw(elem);
+    for (auto& elem : spritesReceptacles) {
+        if (!spritesReceptacles.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesWallDonjon) {
-        window.draw(elem);
+    for (auto& elem : spritesWallDonjon) {
+        if (!spritesWallDonjon.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesFloorDonjon) {
-        window.draw(elem);
+    for (auto& elem : spritesFloorDonjon) {
+        if (!spritesFloorDonjon.empty())
+            window.draw(elem);
     }
-    for (auto elem : spritesPorte) {
-        window.draw(elem);
+    for (auto& elem : doors) {
+        if (!doors.empty())
+            window.draw(elem);
     }
 }
 
@@ -144,9 +189,6 @@ bool Map::isObstacle(double x, double y) {
     int tileY = y / (double)SIZEY;
 
     if (mapData[tileY][tileX] == '#' || mapData[tileY][tileX] == 'C') {
-        return true;
-    }
-    if (mapDonjonData[tileY][tileX] == 'w') {
         return true;
     }
     return false;

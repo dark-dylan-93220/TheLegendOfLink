@@ -3,6 +3,7 @@
 #include "SharedVariables.h"
 #include "Entity.h"
 #include "Eprojectiles.h"
+
 #include <iostream>
 
 class Player : public Entity
@@ -36,6 +37,7 @@ public:
     void update(float& deltaTime,sf::Event& event, Map& map) override;
     void draw(sf::RenderWindow& window) override;
     sf::Sprite getSprite();
+    void setPositionPlayer(sf::Vector2f newPos);
     int getRubis();
     void setRubis(int nb);
     void attaquer(sf::RenderWindow& window, Map& map);

@@ -1,7 +1,6 @@
 ﻿#include "Player.h"
-#include "SharedVariables.h"
-#include "Entity.h"
 #include "Game.hpp"
+
 Player::Player(): health(3) {}
 
 sf::Clock clo;
@@ -80,6 +79,20 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
             for (int i = 0; i < map.spritesWall.size(); i++) {
                 if (map.spritesWall[i].getGlobalBounds().intersects(projectile->getSprite().getGlobalBounds())) {
                     projectile->isColliding = true;
+                }
+            }
+            for (auto& wall : map.spritesWallDonjon)
+            {
+                if (wall.getGlobalBounds().intersects(projectile->getSprite().getGlobalBounds()))
+                {
+                    projectile->isColliding = true;
+                }
+            }
+            for (auto& ennemie : Shared::enemies)
+            {
+                if (projectile->getSprite().getGlobalBounds().intersects(ennemie->getSprite().getGlobalBounds()))
+                {
+                    ennemie->shouldBeDeleted = true;
                 }
             }
             projectile->lifetime += deltaTime;
@@ -229,6 +242,11 @@ void Player::draw(sf::RenderWindow& window)
 sf::Sprite Player::getSprite()
 {
     return spriteEntity;
+}
+
+void Player::setPositionPlayer(sf::Vector2f newPos)
+{
+    spriteEntity.setPosition(newPos);
 }
 int Player::getRubis() { return rubis; }
 void Player::setRubis(int nb) { rubis = nb; }

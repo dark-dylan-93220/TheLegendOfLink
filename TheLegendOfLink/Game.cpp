@@ -31,8 +31,6 @@ Game::Game() :
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 	map.loadFromFile("assets/tiles/map.txt");
-	mapDonjon.loadFromFile("assets/tiles/map_donjon.txt");
-	map.addVector();
 	// Save data
 	saveTime = 0.f;
 	totalPlayTime = 0.f;
@@ -45,6 +43,7 @@ Game::Game() :
 	isGameplayOn = false;
 	lockClick = false;
 	inDonjon = false;
+	changeMap = false;
 	selectedSave = "None";
 }
 
@@ -66,18 +65,18 @@ void Game::run() {
 	
 	Assets assets(window);
 
+	map.addVector();
+
 	player.init(Shared::playerSprite, spawnPos);
-	Bokoblin bok;
-	bok.init(Shared::playerSprite, spawnPos);
-	ennemies.push_back(bok);
 	
 	updateThread = std::thread(&Game::updateGame, this, std::ref(event));
 
 	while (window.isOpen() && isRunning) {
-
+		
 		pollEvents();
 		draw(assets);
-
+		
+		
 	}
 
 	updateThread.join();
@@ -381,22 +380,15 @@ void Game::pollEvents() {
 void Game::draw(Assets& assets) {
 
 	window.clear(sf::Color::Black);
-	mapView.setCenter(player.getSprite().getPosition());
-
+	
 	if (isGameplayOn) {
+		mapView.setCenter(player.getSprite().getPosition());
 		window.setView(mapView);
 		map.draw(window);
 
 		player.draw(window);
 		player.attaquer(window, map);
 
-
-		for (auto& bok : ennemies) {
-			bok.draw(window);
-		}
-
-		//std::cout << deltaTime << '\n';
-		//std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
 		for (int i = 0; i < map.spritesCailloux.size(); i++) {
 			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
 			{
@@ -404,8 +396,40 @@ void Game::draw(Assets& assets) {
 				break;
 			}
 		}
+
+		for (auto& bok : Shared::enemies) {
+			bok->draw(window);
+		}
 		
 		deltaTime = cloc.restart().asSeconds();
+		for (auto& door : map.doors)
+		{
+			if (door.getGlobalBounds().intersects(player.getSprite().getGlobalBounds()))
+			{
+
+				if (inDonjon)
+				{
+					inDonjon = false;
+					newMapFile = "assets/tiles/map.txt";
+				}
+				else
+				{
+					inDonjon = true;
+					newMapFile = "assets/tiles/map_donjon.txt";
+				}
+				changeMap = true;
+				break;
+			}
+			
+		}
+		if (changeMap)
+		{
+			changeMap = false;
+			map.clearVector();
+			map.loadFromFile(newMapFile);
+			map.addVector();
+			player.setPositionPlayer({ 10.f, 10.f });
+		}
 		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
@@ -441,14 +465,13 @@ void Game::updateGame(sf::Event& event) {
 
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);
-
-		for (auto& bok : ennemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
+		for (auto& bok : Shared::enemies) {
+			if (std::abs(player.getSprite().getPosition().x - bok->getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok->getSprite().getPosition().y) < 100)
 			{
-				bok.followUpdate(deltaTime, player);
+				bok->followUpdate(deltaTime, player);
 			}
 			else {
-				bok.update(deltaTime, event, map);
+				bok->update(deltaTime, event, map);
 			}
 		}
 		// Vérification des collisions avec les ennemis
@@ -457,6 +480,9 @@ void Game::updateGame(sf::Event& event) {
 				player.takeDamage(1);
 			}
 		}*/
+
+		
+		
 
 		// Vérification des collisions avec les objets récupérables
 		for (auto it = objects.begin(); it != objects.end(); ) {
@@ -481,6 +507,14 @@ void Game::updateGame(sf::Event& event) {
 			}
 			isGameplayOn = false;
 			isGameOver = true;
+		}
+
+		for (auto it = Shared::enemies.begin(); it != Shared::enemies.end(); ) {
+			if ((*it)->shouldBeDeleted) {
+				it = Shared::enemies.erase(it);
+			} else {
+				++it;
+			}
 		}
 		
 	}
