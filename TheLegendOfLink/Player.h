@@ -28,7 +28,6 @@ public:
     sf::Clock playerLockClick;
     sf::Vector2f tampon;
 
-
 public:
     int maxHealth = 6;
     bool possedeBocal = false;

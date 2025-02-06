@@ -1,4 +1,5 @@
 #pragma once
+
 // STD library
 #include <iostream>
 #include <thread>
@@ -13,10 +14,12 @@
 #include "SharedVariables.h"
 
 // Map / AssetLoader
-#include "Bokoblin.h"
-#include "Player.h"
 #include "Map.hpp"
 #include "AssetLoader.hpp"
+
+// Player / Ennemies related
+#include "Bokoblin.h"
+#include "Player.h"
 #include "Eprojectiles.h"
 
 class Game {
@@ -32,12 +35,14 @@ private:
 
 private:
 	sf::Vector2f spawnPos;
+	std::string selectedSave;
 	float spacingBetweenMapAndBorder;
-	float totalPlayTime = 0.f;
-	float saveTime = 0.f;
+	float totalPlayTime;
+	float saveTime;
 	bool isRunning;
 	bool isGameOver;
 	bool lockClick;
+	// Scenes
 	bool isHomePageOn;
 	bool isSettingsSceneOn;
 	bool isGameplayOn;
@@ -45,6 +50,9 @@ private:
 	bool inDonjon;
 	bool changeMap;
 	std::string newMapFile;
+	// Name choice
+	std::string nameChoice;
+	bool nameChoosing;
 
 public:
 	Game();

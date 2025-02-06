@@ -29,8 +29,16 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	// Ennemies
 	std::vector<std::unique_ptr<Bokoblin>> Shared::enemies;
 // SavePage
-
+	// Utils
+	float Shared::betweenSaveOneAndTwo;
+	float Shared::betweenSaveOneAndThree;
+	bool Shared::typingSaveOne;
+	bool Shared::typingSaveTwo;
+	bool Shared::typingSaveThree;
 	// STD Data
+	bool Shared::saveOneExists;
+	bool Shared::saveTwoExists;
+	bool Shared::saveThreeExists;
 	// Nom du joueur
 	std::string Shared::saveNameOne;
 	std::string Shared::saveNameTwo;
@@ -48,9 +56,13 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	int Shared::hasBocalTwo;
 	int Shared::hasBocalThree;
 	// Play time
-	float Shared::playTimeOne;
-	float Shared::playTimeTwo;
-	float Shared::playTimeThree;
+	sf::Text Shared::playTimeTextOne;
+	sf::Text Shared::playTimeTextTwo;
+	sf::Text Shared::playTimeTextThree;
+
+	std::string Shared::playTimeOne;
+	std::string Shared::playTimeTwo;
+	std::string Shared::playTimeThree;
 	// Dernière position
 	sf::Vector2f Shared::savedPosOne;
 	sf::Vector2f Shared::savedPosTwo;
@@ -59,8 +71,13 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	time_t Shared::lastSaveTimeOne;
 	time_t Shared::lastSaveTimeTwo;
 	time_t Shared::lastSaveTimeThree;
+
+	std::string Shared::lastSaveTimeOneString;
+	std::string Shared::lastSaveTimeTwoString;
+	std::string Shared::lastSaveTimeThreeString;
 	
 	// Texts
+	sf::Text Shared::nameCreationText;
 	sf::Text Shared::saveTitleText;
 	sf::Text Shared::nonCreatedSaveText;
 	sf::Text Shared::savePlayerNameText;
@@ -71,6 +88,10 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::Text Shared::saveRectOneText;
 	sf::Text Shared::saveRectTwoText;
 	sf::Text Shared::saveRectThreeText;
+
+	sf::Text Shared::lastSaveTimeTextOne;
+	sf::Text Shared::lastSaveTimeTextTwo;
+	sf::Text Shared::lastSaveTimeTextThree;
 
 	// Textures & Sprites
 	sf::Texture Shared::heartTexture;
