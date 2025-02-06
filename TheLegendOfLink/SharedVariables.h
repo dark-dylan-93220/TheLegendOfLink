@@ -29,6 +29,8 @@ public:
 	static sf::Texture projectileTexture;
 	static sf::Texture traderTexture;
 	static sf::Sprite projectileSprite;
+	static sf::Texture traderGUI;
+	static sf::Texture flecheTexture;
 	// RectangleShape
 	static sf::RectangleShape homePageBackground;
 	static sf::RectangleShape playButton;

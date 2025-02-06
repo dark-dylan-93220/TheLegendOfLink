@@ -44,7 +44,6 @@ Game::Game() :
 	map.addVector(trader);
 	isRunning = true;
 	inDonjon = false;
-	trader.init(Shared::traderTexture);
 }
 
 Game::~Game() {
@@ -75,7 +74,9 @@ void Game::run() {
 	Bokoblin bok;
 	bok.init(Shared::playerSprite, spawnPos);
 	ennemies.push_back(bok);
-	
+
+	trader.init(Shared::traderTexture);
+
 	updateThread = std::thread(&Game::updateGame, this,std::ref(event));
 
 	while (window.isOpen() && isRunning) {
@@ -229,30 +230,54 @@ void Game::draw(Assets& assets) {
 
 	window.clear(sf::Color::Black);
 	mapView.setCenter(player.getSprite().getPosition());
+	trader.setPos(sf::Vector2f(player.getSprite().getPosition().x - window.getDefaultView().getSize().x / 2, player.getSprite().getPosition().y - window.getDefaultView().getSize().y / 2));
 
 	if (isGameplayOn) {
-		window.setView(mapView);
-		map.draw(window);
-		player.draw(window);
-		player.attaquer(window, map);
-
-
-		for (auto& bok : ennemies) {
-			bok.draw(window);
-		}
-
-		//std::cout << deltaTime << '\n';
-		//std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
-		for (int i = 0; i < map.spritesCailloux.size(); i++) {
-			if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
-			{
-				map.spritesCailloux.erase(map.spritesCailloux.begin() + i);
-				break;
+		if (trader.getInventoryStatus()) {
+			map.draw(window);
+			trader.draw(window);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+				trader.selectItem(1);
 			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
+				trader.selectItem(2);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
+				trader.selectItem(3);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)) {
+				trader.selectItem(4);
+			}
+			
+			
+		}
+		else
+		{
+			window.setView(mapView);
+			map.draw(window);
+			player.draw(window);
+			player.attaquer(window, map);
+			trader.draw(window);
+
+
+			for (auto& bok : ennemies) {
+				bok.draw(window);
+			}
+
+			//std::cout << deltaTime << '\n';
+			//std::cout << std::fixed << std::setprecision(6) << (double)deltaTime << "s" << '\n';
+			for (int i = 0; i < map.spritesCailloux.size(); i++) {
+				if (map.spritesCailloux[i].getScale().x == 0 && map.spritesCailloux[i].getScale().y == 0)
+				{
+					map.spritesCailloux.erase(map.spritesCailloux.begin() + i);
+					break;
+				}
+			}
+
+			deltaTime = cloc.restart().asSeconds();
+			// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 		}
 		
-		deltaTime = cloc.restart().asSeconds();
-		// Plus de trucs � venir avec les ennemis, joueur, objets etc...
 	}
 	else if (isHomePageOn) {
 		window.setView(window.getDefaultView());
@@ -271,7 +296,6 @@ void Game::draw(Assets& assets) {
 		window.setView(window.getDefaultView());
 		assets.drawGameOver(window);
 	}
-
 	window.display();
 }
 
@@ -279,17 +303,38 @@ void Game::updateGame(sf::Event& event) {
 	while (window.isOpen() && isRunning) {
 		deltaTime = cloc.restart().asSeconds();
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-		player.update(deltaTime, event, map);
-
-		for (auto& bok : ennemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
-			{
-				bok.followUpdate(deltaTime, player);
-			}
-			else {
-				bok.update(deltaTime, event, map);
+		if (!trader.getInventoryStatus()) {
+			player.update(deltaTime, event, map);
+			for (auto& bok : ennemies) {
+				if (std::abs(player.getSprite().getPosition().x - bok.getSprite().getPosition().x) < 100 || std::abs(player.getSprite().getPosition().y - bok.getSprite().getPosition().y) < 100)
+				{
+					bok.followUpdate(deltaTime, player);
+				}
+				else {
+					bok.update(deltaTime, event, map);
+				}
 			}
 		}
+		
+		player.interact(trader);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && trader.getInventoryStatus()) {
+			int prix = trader.buyItem();
+			std::cout << prix << std::endl;
+			player.setRubis(player.getRubis() - prix);
+			if (prix == 20) {
+				player.possedeBocal = true;
+				trader.closeInventory();
+			}
+			else if (prix == 15 && player.possedeBocal) {
+				player.possedeFairy = true;
+				trader.closeInventory();
+			}
+			else if (prix == 5 ) {
+				player.possedeSword = true;
+				trader.closeInventory();
+			}
+		}
+		
 		// Vérification des collisions avec les ennemis
 		/*for (auto& enemy : ennemies) {
 			if (player.intersects(enemy) && !player.isCurrentlyInvincible()) {

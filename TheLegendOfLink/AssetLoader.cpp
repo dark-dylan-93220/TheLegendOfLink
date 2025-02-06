@@ -48,6 +48,9 @@ void Assets::loadAssetsFromFiles() {
 	Shared::caillouxEnMietteTexture.loadFromFile("assets/tiles/caillouxEnMiette.png");
 	Shared::projectileTexture.loadFromFile("assets/ennemies/projectile/rock.png");
 	Shared::traderTexture.loadFromFile("assets/pnjSprites/Marchand.png");
+	Shared::traderGUI.loadFromFile("assets/pnjSprites/traderGUI.png");
+	Shared::flecheTexture.loadFromFile("assets/pnjSprites/fleche.png");
+
 }
 
 void Assets::initHomePage(sf::RenderWindow& window) {

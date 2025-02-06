@@ -82,9 +82,9 @@ void Map::addVector(Trader& trader) {
                 porteSprite.setPosition(x * SIZEX, y * SIZEY);
                 spritesPorte.push_back(porteSprite);
             }
-            if (mapData[y][x] == 'T') { // la texture n'est pas appliquée
+            if (mapData[y][x] == 'T') { 
                 trader.setPosition(x * SIZEX, y * SIZEY);
-                std::cout << "tests" << std::endl;
+                std::cout << "testTrader" << std::endl;
             }
         }
     }
@@ -140,7 +140,6 @@ void Map::draw(sf::RenderWindow& window) {
     for (auto elem : spritesPorte) {
         window.draw(elem);
     }
-    
 }
 
 bool Map::isObstacle(double x, double y) {

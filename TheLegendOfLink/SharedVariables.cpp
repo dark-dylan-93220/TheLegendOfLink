@@ -21,6 +21,8 @@ sf::Texture Shared::caillouxEnMietteTexture;
 	sf::Texture Shared::projectileTexture;
 	sf::Sprite Shared::projectileSprite;
 	sf::Texture Shared::traderTexture;
+	sf::Texture Shared::traderGUI;
+	sf::Texture Shared::flecheTexture;
 	// RectangleShape
 	sf::RectangleShape Shared::homePageBackground;
 	sf::RectangleShape Shared::playButton;

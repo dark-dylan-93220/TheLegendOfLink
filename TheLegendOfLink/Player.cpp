@@ -180,39 +180,43 @@ void Player::update(float& deltaTime, sf::Event& event, Map& map)
 void Player::attaquer(sf::RenderWindow& window, Map& map) {
     resize(Shared::playerSwordTexture, swordPlayerSprite, 120, 120);
     resize(Shared::caillouxEnMietteTexture, caillouxEnMietteSprite, 80, 40);
-    if (isAttacking) { incrAttack++; }
-    if (incrAttack > 18) {
-        incrAttack = 0;
-        isAttacking = false;
-    }
-    if (incrAttack != 0) {
-        swordPlayerSprite.setPosition(spriteEntity.getPosition().x + spriteEntity.getGlobalBounds().width / 2, spriteEntity.getPosition().y + spriteEntity.getGlobalBounds().height / 2);
-        swordPlayerSprite.setRotation(incrAttack * 20);
-        window.draw(swordPlayerSprite);
-    }
-    for (int i = 0; i < map.spritesHerbes.size(); i++) {
-        if (swordPlayerSprite.getGlobalBounds().intersects(map.spritesHerbes[i].getGlobalBounds())) {
-            map.spritesHerbes.erase(map.spritesHerbes.begin() + i);
-            rubis++;
-            std::cout << "rubis : " << rubis << std::endl;
+    if (possedeSword)
+    {
+        if (isAttacking) { incrAttack++; }
+        if (incrAttack > 18) {
+            incrAttack = 0;
+            isAttacking = false;
         }
-    }
-    for (int i = 0; i < map.spritesCailloux.size(); i++) {
-        if(&map.spritesCailloux[i] && swordPlayerSprite.getGlobalBounds().intersects(map.spritesCailloux[i].getGlobalBounds())) {
-            caillouxEnMietteSprite.setPosition(map.spritesCailloux[i].getPosition());
-            map.spritesCailloux[i].setScale(0, 0);
-            map.spritesCaillouxEnMiette.push_back(caillouxEnMietteSprite);
+        if (incrAttack != 0) {
+            swordPlayerSprite.setPosition(spriteEntity.getPosition().x + spriteEntity.getGlobalBounds().width / 2, spriteEntity.getPosition().y + spriteEntity.getGlobalBounds().height / 2);
+            swordPlayerSprite.setRotation(incrAttack * 20);
+            window.draw(swordPlayerSprite);
+        }
+        for (int i = 0; i < map.spritesHerbes.size(); i++) {
+            if (swordPlayerSprite.getGlobalBounds().intersects(map.spritesHerbes[i].getGlobalBounds())) {
+                map.spritesHerbes.erase(map.spritesHerbes.begin() + i);
+                rubis++;
+                std::cout << "rubis : " << rubis << std::endl;
+            }
+        }
+        for (int i = 0; i < map.spritesCailloux.size(); i++) {
+            if (&map.spritesCailloux[i] && swordPlayerSprite.getGlobalBounds().intersects(map.spritesCailloux[i].getGlobalBounds())) {
+                caillouxEnMietteSprite.setPosition(map.spritesCailloux[i].getPosition());
+                map.spritesCailloux[i].setScale(0, 0);
+                map.spritesCaillouxEnMiette.push_back(caillouxEnMietteSprite);
 
-            rubis++;
-            std::cout << "rubis : " << rubis << std::endl;
+                rubis++;
+                std::cout << "rubis : " << rubis << std::endl;
+            }
         }
     }
+    
 }
 
 void Player::interact(Trader& trader) {
     sf::Vector2f posPlayer(spriteEntity.getPosition().x, spriteEntity.getPosition().y);
-    if (trader.isNear(posPlayer) && sf::Keyboard::isKeyPressed(sf::Keyboard::E)) { trader.openInventory(); }
-    if (trader.getInventoryStatus() && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) { trader.closeInventory(); }
+    if (trader.isNear(spriteEntity) && sf::Keyboard::isKeyPressed(sf::Keyboard::E)) { std::cout << "test" << std::endl; trader.openInventory(); }
+    if (trader.getInventoryStatus() && sf::Keyboard::isKeyPressed(sf::Keyboard::C)) { trader.closeInventory(); }
 }
 
 void Player::draw(sf::RenderWindow& window)
