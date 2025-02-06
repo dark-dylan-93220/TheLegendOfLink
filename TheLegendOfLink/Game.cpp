@@ -397,7 +397,8 @@ void Game::draw(Assets& assets) {
 		}
 
 		for (auto& bok : Shared::enemies) {
-			bok->draw(window);
+			if(bok != nullptr)
+				bok->draw(window);
 		}
 		for (auto& boss : Shared::bosses)
 		{
@@ -432,6 +433,14 @@ void Game::draw(Assets& assets) {
 		window.setView(window.getDefaultView());
 		assets.drawGameOver(window);
 	}
+	for (auto it = Shared::enemies.begin(); it != Shared::enemies.end(); ) {
+		if ((*it)->shouldBeDeleted) {
+			it = Shared::enemies.erase(it);
+		}
+		else {
+			++it;
+		}
+	}
 
 	window.display();
 }
@@ -446,12 +455,14 @@ void Game::updateGame(sf::Event& event) {
 		player.tampon = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		player.update(deltaTime, event, map);
 		for (auto& bok : Shared::enemies) {
-			if (std::abs(player.getSprite().getPosition().x - bok->getSprite().getPosition().x)  < 100 || std::abs(player.getSprite().getPosition().y - bok->getSprite().getPosition().y) < 100)
-			{
-				bok->followUpdate(deltaTime, player);
-			}
-			else {
-				bok->update(deltaTime, event, map);
+			if (bok != nullptr) {
+				if (std::abs(player.getSprite().getPosition().x - bok->getSprite().getPosition().x) < 100 || std::abs(player.getSprite().getPosition().y - bok->getSprite().getPosition().y) < 100)
+				{
+					bok->followUpdate(deltaTime, player);
+				}
+				else {
+					bok->update(deltaTime, event, map);
+				}
 			}
 		}
 		for (auto& boss : Shared::bosses)
@@ -508,13 +519,7 @@ void Game::updateGame(sf::Event& event) {
 			isGameOver = true;
 		}
 
-		for (auto it = Shared::enemies.begin(); it != Shared::enemies.end(); ) {
-			if ((*it)->shouldBeDeleted) {
-				it = Shared::enemies.erase(it);
-			} else {
-				++it;
-			}
-		}
+		
 		
 	}
 

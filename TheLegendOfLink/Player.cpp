@@ -270,6 +270,13 @@ void Player::attaquer(sf::RenderWindow& window, Map& map) {
             std::cout << "rubis : " << rubis << std::endl;
         }
     }
+    for (auto& bok : Shared::enemies)
+    {
+        if (swordPlayerSprite.getGlobalBounds().intersects(bok->getSprite().getGlobalBounds()))
+        {
+            bok->shouldBeDeleted = true;
+        }
+    }
 }
 
 void Player::draw(sf::RenderWindow& window)
